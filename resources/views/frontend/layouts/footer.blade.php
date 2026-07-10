@@ -6,7 +6,7 @@
                     <div class="widget footer-widget">
                         <div class="vs-widget-about">
                             <div class="footer-logo">
-                                <a href="index.html"><img src="{{ asset('/frontend/assets/img/logo.svg') }}" alt="logo"></a>
+                                <a href="/"><img src="{{ asset('/frontend/assets/img/logo.svg') }}" alt="logo"></a>
                             </div>
                             <p class="footer-text">
                                 provide detailed house cleaning sanitizing services for valued clients.

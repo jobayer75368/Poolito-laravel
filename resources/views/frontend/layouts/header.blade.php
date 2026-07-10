@@ -61,34 +61,25 @@
                                     <li class="menu-item-has-children mega-menu-wrap">
                                         <a href="#">Pages</a>
                                         <ul class="mega-menu">
-                                            <li><a href="shop.html">Pagelist 1</a>
-                                            </li>
-                                            <li><a href="#">Pagelist 2</a>
-                                                <ul>
-                                                    <li><a href="blog.html">Blog</a></li>
-                                                    <li><a href="blog-details.html">Blog Details</a></li>
-                                                    <li><a href="service.html">service</a></li>
-                                                    <li><a href="/service_details">Service Details</a></li>
-                                                </ul>
-                                            </li>
+
                                             <li><a href="#">Pagelist 3</a>
                                                 <ul>
-                                                    <li><a href="team.html">Team</a></li>
-                                                    <li><a href="team-details.html">Team Details</a></li>
-                                                    <li><a href="contact.html">Contact Us</a></li>
+                                                    <li><a href="/team">Team</a></li>
+                                                    <li><a href="/team_details">Team Details</a></li>
+                                                    <li><a href="/contact">Contact Us</a></li>
                                                 </ul>
                                             </li>
                                             <li><a href="#">Pagelist 4</a>
                                                 <ul>
-                                                    <li><a href="portfolio.html">portfolio</a></li>
-                                                    <li><a href="portfolio-details.html">portfolio Details</a></li>
-                                                    <li><a href="404.html">Error Page</a></li>
+                                                    <li><a href="/portfolio">portfolio</a></li>
+                                                    <li><a href="/portfolio_details">portfolio Details</a></li>
+                                                    <li><a href="/404">Error Page</a></li>
                                                 </ul>
                                             </li>
                                         </ul>
                                     </li>
                                     <li>
-                                        <a href="contact.html">Contact</a>
+                                        <a href="/contact">Contact</a>
                                     </li>
                                 </ul>
                             </nav>
