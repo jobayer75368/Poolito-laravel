@@ -71,10 +71,10 @@
                             <form action="https://html.vecurosoft.com/poolito/demo/mail.php" method="post" class="ajax-contact">
                                 <div class="row gx-3">
                                     <div class="col-md-6 form-group">
-                                        <input name="fname" type="text" class="form-control" placeholder="Fast Name *" required="">
+                                        <input name="fname" type="text" class="form-control" placeholder="First Name *" required="">
                                     </div>
                                     <div class="col-md-6 form-group">
-                                        <input name="lname" type="text" class="form-control" placeholder="Lase Name *" required="">
+                                        <input name="lname" type="text" class="form-control" placeholder="Last Name *" required="">
                                     </div>
 
                                     <div class="col-md-6 form-group">
