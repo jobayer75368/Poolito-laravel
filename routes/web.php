@@ -45,3 +45,21 @@ Route::get('/portfolio_details', function () {
 Route::get('/shop', function () {
     return view('frontend.shop');
 });
+
+// backend start
+
+Route::get('/admin/dashboard', function () {
+    return view('backend.dashboard');
+});
+Route::get('/admin/users', function () {
+    return view('backend.users');
+});
+Route::get('/admin/profile', function () {
+    return view('backend.profile');
+});
+Route::get('/admin/user_details', function () {
+    return view('backend.user_details');
+});
+Route::get('/admin/settings', function () {
+    return view('backend.settings');
+});

@@ -85,7 +85,7 @@
                         <div class="col-xl-auto col-lg-6 col-6">
                             <div class="media-style">
                                 <div class="media-inner">
-                                    <span class="counter-icon"><img src="{{ asset('/frontend/') }}assets/img/icon/counter-icon-1-2.svg" alt="icon"></span>
+                                    <span class="counter-icon"><img src="{{ asset('/frontend/assets/img/icon/counter-icon-1-2.svg') }}" alt="icon"></span>
                                     <div class="media-counter">
                                         <div class="media-count">
                                             <h2 class="media-title h3 counter-number" data-count="45">00</h2>
