@@ -1,6 +1,6 @@
 <aside class="admin-sidebar" id="adminSidebar" aria-label="Main navigation">
     <div class="sidebar-header">
-        <a class="brand-mark" href="index.html" aria-label="adminHMD dashboard">
+        <a class="brand-mark" href="/admin/dashboard" aria-label="adminHMD dashboard">
             <span class="brand-icon"><i class="bi bi-grid-1x2-fill" aria-hidden="true"></i></span>
             <span class="brand-copy">
                 <span class="brand-title">Poolito Admin</span>
@@ -26,35 +26,31 @@
             <span class="nav-icon"><i class="bi bi-person-badge" aria-hidden="true"></i></span>
             <span class="nav-text">Profile</span>
         </a>
-        <a class="nav-link" href="charts.html">
-            <span class="nav-icon"><i class="bi bi-bar-chart-line" aria-hidden="true"></i></span>
-            <span class="nav-text">Charts</span>
-        </a>
-        <a class="nav-link" href="tables.html">
+        <a class="nav-link" href="/admin/tables">
             <span class="nav-icon"><i class="bi bi-table" aria-hidden="true"></i></span>
             <span class="nav-text">Tables</span>
         </a>
-        <a class="nav-link" href="forms.html">
+        <a class="nav-link" href="/admin/forms">
             <span class="nav-icon"><i class="bi bi-ui-checks-grid" aria-hidden="true"></i></span>
             <span class="nav-text">Forms</span>
         </a>
-        <a class="nav-link" href="components.html">
+        <a class="nav-link" href="/admin/components">
             <span class="nav-icon"><i class="bi bi-grid-3x3-gap" aria-hidden="true"></i></span>
             <span class="nav-text">Components</span>
         </a>
-        <a class="nav-link" href="alerts.html">
-            <span class="nav-icon"><i class="bi bi-exclamation-triangle" aria-hidden="true"></i></span>
+        <a class="nav-link" href="/admin/alerts>
+            <span class=" nav-icon"><i class="bi bi-exclamation-triangle" aria-hidden="true"></i></span>
             <span class="nav-text">Alerts</span>
         </a>
-        <a class="nav-link" href="modals.html">
+        <a class="nav-link" href="/admin/modals">
             <span class="nav-icon"><i class="bi bi-window-stack" aria-hidden="true"></i></span>
             <span class="nav-text">Modals</span>
         </a>
-        <a class="nav-link" href="settings.html">
+        <a class="nav-link" href="/admin/settings">
             <span class="nav-icon"><i class="bi bi-gear" aria-hidden="true"></i></span>
             <span class="nav-text">Settings</span>
         </a>
-        <a class="nav-link" href="blank.html">
+        <a class="nav-link" href="/admin/blank">
             <span class="nav-icon"><i class="bi bi-file-earmark" aria-hidden="true"></i></span>
             <span class="nav-text">Blank Page</span>
         </a>

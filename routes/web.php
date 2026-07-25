@@ -1,13 +1,11 @@
 <?php
 
-use App\Http\Controllers\frontend\HomeController;
+use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('frontend.index');
 });
-
-Route::get('/', [HomeController::class, 'index', function () {}]);
 
 Route::get('/about', function () {
     return view('frontend.about');
@@ -20,9 +18,6 @@ Route::get('/service_details', function () {
 });
 Route::get('/blog', function () {
     return view('frontend.blog');
-});
-Route::get('/blog_details', function () {
-    return view('frontend.blog_details');
 });
 Route::get('/team', function () {
     return view('frontend.team');
@@ -45,21 +40,14 @@ Route::get('/portfolio_details', function () {
 Route::get('/shop', function () {
     return view('frontend.shop');
 });
-
-// backend start
-
-Route::get('/admin/dashboard', function () {
+Route::get('/dashboard', function () {
     return view('backend.dashboard');
+})->middleware(['auth', 'verified'])->name('dashboard');
+
+Route::middleware('auth')->group(function () {
+    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
-Route::get('/admin/users', function () {
-    return view('backend.users');
-});
-Route::get('/admin/profile', function () {
-    return view('backend.profile');
-});
-Route::get('/admin/user_details', function () {
-    return view('backend.user_details');
-});
-Route::get('/admin/settings', function () {
-    return view('backend.settings');
-});
+
+require __DIR__ . '/auth.php';
