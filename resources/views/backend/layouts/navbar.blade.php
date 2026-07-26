@@ -43,14 +43,36 @@
                     <li>
                         <hr class="dropdown-divider">
                     </li>
-                    <li>
-                        <form method="POST" action="{{ route('logout') }}" class="dropdown-item">
-                            @csrf
-                            <input type="submit" value="Logout" class="bg-transparent border-0">
-                        </form>
+                    <li data-bs-toggle="modal" data-bs-target="#confirmModal">
+                        <button
+                            type="button"
+                            class="dropdown-item"
+                            data-bs-toggle="modal"
+                            data-bs-target="#confirmModal">
+                            Logout
+                        </button>
                     </li>
                 </ul>
             </div>
         </div>
     </div>
 </nav>
+
+<!-- logout modal  -->
+<div class="modal fade" id="confirmModal" tabindex="-1" aria-labelledby="confirmModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 class="modal-title h5" id="confirmModalLabel">Confirm Action</h2><button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">Are you sure you want to logout?</div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Cancel</button>
+                <form method="POST" action="{{ route('logout') }}" class="dropdown-item">
+                    @csrf
+                    <input type="submit" value="Confirm" class="btn btn-primary">
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
