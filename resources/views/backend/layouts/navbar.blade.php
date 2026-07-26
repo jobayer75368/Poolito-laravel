@@ -21,12 +21,12 @@
                 </button>
                 <div class="dropdown-menu dropdown-menu-end notification-menu">
                     <div class="dropdown-header fw-bold text-body">Notifications</div>
-                    <a class="dropdown-item" href="/admin/users">
+                    <a class="dropdown-item" href="{{ route('admin.users') }}">
                         <span class="notification-title">New user registered</span>
                         <span class="notification-time">4 minutes ago</span>
                     </a>
-                    <a class="dropdown-item" href="/admin/settings">
-                        <span class="notification-title">Security review completed</span>
+                    <a class="dropdown-item" href="{{ route('admin.settings') }}>
+                        <span class=" notification-title">Security review completed</span>
                         <span class="notification-time">1 hour ago</span>
                     </a>
                 </div>
@@ -38,8 +38,8 @@
                     <span class=" d-none d-sm-inline">Admin</span>
                 </button>
                 <ul class="dropdown-menu dropdown-menu-end">
-                    <li><a class="dropdown-item" href="{{ route('admin/profile') }}">Profile</a></li>
-                    <li><a class="dropdown-item" href="{{route('admin/settings')}}">Account settings</a></li>
+                    <li><a class="dropdown-item" href="{{ route('admin.profile') }}">Profile</a></li>
+                    <li><a class="dropdown-item" href="{{route('admin.settings')}}">Account settings</a></li>
                     <li>
                         <hr class="dropdown-divider">
                     </li>
@@ -66,13 +66,12 @@
                 <h2 class="modal-title h5" id="confirmModalLabel">Confirm Action</h2><button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">Are you sure you want to logout?</div>
-            <div class="modal-footer">
+
+            <form method="POST" action="{{ route('logout') }}" class="dropdown-item modal-footer">
+                @csrf
                 <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Cancel</button>
-                <form method="POST" action="{{ route('logout') }}" class="dropdown-item">
-                    @csrf
-                    <input type="submit" value="Confirm" class="btn btn-primary">
-                </form>
-            </div>
+                <input type="submit" value="Confirm" class="btn btn-primary">
+            </form>
         </div>
     </div>
 </div>

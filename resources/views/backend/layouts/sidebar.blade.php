@@ -1,8 +1,8 @@
 <aside class="admin-sidebar" id="adminSidebar" aria-label="Main navigation">
     <div class="sidebar-header">
-        <a class="brand-mark" href="{{ route('admin/dashboard') }}" aria-label="adminHMD dashboard">
+        <a class="brand-mark" href="{{ route('admin.dashboard') }}" aria-label="adminHMD dashboard">
             <span class="brand-icon">
-                <!-- <img src="{{ asset('backend/assets/images/favicon.ico') }}" alt="Poolito icon"> -->
+                <img class="" src="{{ asset('favicon.ico') }}" alt="Poolito icon">
             </span>
             <span class="brand-copy">
                 <span class="brand-title">Poolito Admin</span>
@@ -12,39 +12,46 @@
     </div>
 
     <nav class="sidebar-nav">
-        <a class="nav-link active" href="/admin/dashboard" aria-current="page">
+        <a class="nav-link {{ request()->routeIs('admin.dashboard') ? 'active' :''}}" href="{{ route('admin.dashboard') }}" aria-current="page">
             <span class="nav-icon"><i class="bi bi-speedometer2" aria-hidden="true"></i></span>
             <span class="nav-text">Dashboard</span>
         </a>
-        <a class="nav-link" href="{{ route('admin/users') }}">
+
+        <a class="nav-link {{ request()->routeIs('admin.users') ? 'active' :''}}" href="{{ route('admin.users') }}">
             <span class="nav-icon"><i class="bi bi-people" aria-hidden="true"></i></span>
             <span class="nav-text">Users</span>
         </a>
-        <a class="nav-link" href="{{ route('admin/profile') }}">
+
+        <a class="nav-link {{ request()->routeIs('admin.profile') ? 'active' :''}}" href="{{ route('admin.profile') }}">
             <span class="nav-icon"><i class="bi bi-person-badge" aria-hidden="true"></i></span>
             <span class="nav-text">Profile</span>
         </a>
 
-        <a class="nav-link" href="{{ route('admin/forms') }}">
+        <a class="nav-link {{ request()->routeIs('admin.forms') ? 'active' :''}}" href="{{ route('admin.forms') }}">
             <span class="nav-icon"><i class="bi bi-ui-checks-grid" aria-hidden="true"></i></span>
             <span class="nav-text">Forms</span>
         </a>
-        <a class="nav-link" href="{{ route('admin/components') }}">
+
+        <a class="nav-link {{ request()->routeIs('admin.components') ? 'active' :''}}" href="{{ route('admin.components') }}">
             <span class="nav-icon"><i class="bi bi-grid-3x3-gap" aria-hidden="true"></i></span>
             <span class="nav-text">Components</span>
         </a>
-        <a class="nav-link" href="{{ route('admin/alerts') }}">
+
+        <a class="nav-link {{ request()->routeIs('admin.alerts') ? 'active' :''}}" href="{{ route('admin.alerts') }}">
             <span class=" nav-icon"><i class="bi bi-exclamation-triangle" aria-hidden="true"></i></span>
             <span class="nav-text">Alerts</span>
         </a>
-        <a class="nav-link" href="{{ route('admin/modals') }}">
+
+        <a class="nav-link {{ request()->routeIs('admin.modals') ? 'active' :''}}" href="{{ route('admin.modals') }}">
             <span class="nav-icon"><i class="bi bi-window-stack" aria-hidden="true"></i></span>
             <span class="nav-text">Modals</span>
         </a>
-        <a class="nav-link" href="{{ route('admin/settings') }}">
+
+        <a class="nav-link {{ request()->routeIs('admin.settings') ? 'active' :''}}" href="{{ route('admin.settings') }}">
             <span class="nav-icon"><i class="bi bi-gear" aria-hidden="true"></i></span>
             <span class="nav-text">Settings</span>
         </a>
+
         <a class="nav-link" href="/admin/blank">
             <span class="nav-icon"><i class="bi bi-file-earmark" aria-hidden="true"></i></span>
             <span class="nav-text">Blank Page</span>
@@ -52,7 +59,7 @@
     </nav>
 
     <div class="sidebar-user">
-        <img class="avatar-img avatar-md sidebar-user-avatar" src="{{ asset('backend/assets/images/avatar/avatar.jpg') }}" alt="Admin Hasan">
+        <img class=" avatar-md sidebar-user-avatar" src="{{ asset('backend/assets/images/avatar/avatar.jpg') }}" alt="Admin">
         <strong>Admin</strong>
         <small>Active Workspace</small>
     </div>

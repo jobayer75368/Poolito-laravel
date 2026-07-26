@@ -155,7 +155,7 @@
       var profileNameEls = document.querySelectorAll(".profile-name");
       var profileAvatarEls = document.querySelectorAll(".profile-button .avatar-img, .profile-button img");
 
-      if (sidebarNameEl) sidebarNameEl.textContent = user.name;
+      // if (sidebarNameEl) sidebarNameEl.textContent = user.name;
       if (sidebarWorkspaceEl) sidebarWorkspaceEl.textContent = user.workspace;
       if (sidebarAvatar && user.avatar) { sidebarAvatar.src = user.avatar; sidebarAvatar.alt = user.name; }
 
