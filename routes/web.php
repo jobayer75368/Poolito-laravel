@@ -9,38 +9,42 @@ Route::get('/', function () {
 
 Route::get('/about', function () {
     return view('frontend.about');
-});
+})->name('about');
 Route::get('/service', function () {
     return view('frontend.service');
-});
+})->name('service');
 Route::get('/service_details', function () {
     return view('frontend.service_details');
-});
+})->name('service_details');
 Route::get('/blog', function () {
     return view('frontend.blog');
-});
+})->name('blog');
 Route::get('/team', function () {
     return view('frontend.team');
 });
 Route::get('/team_details', function () {
     return view('frontend.team_details');
-});
+})->name('team_details');
 Route::get('/contact', function () {
     return view('frontend.contact');
-});
+})->name('contact');
 Route::get('/404', function () {
     return view('frontend.404');
 });
 Route::get('/portfolio', function () {
     return view('frontend.portfolio');
-});
+})->name('portfolio');
 Route::get('/portfolio_details', function () {
     return view('frontend.portfolio_details');
-});
+})->name('portfolio_details');
 Route::get('/shop', function () {
     return view('frontend.shop');
-});
-Route::get('/dashboard', function () {
+})->name('shop');
+
+
+// / ******Backend starts here *******///
+
+Route::get('/admin/dashboard', function () {
     return view('backend.dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
@@ -51,3 +55,17 @@ Route::middleware('auth')->group(function () {
 });
 
 require __DIR__ . '/auth.php';
+
+
+Route::get('/admin/users', function () {
+    return view('backend.users');
+})->name('admin/users');
+Route::get('/admin/profile', function () {
+    return view('backend.profile');
+})->name('admin/profile');
+Route::get('/admin/user_details', function () {
+    return view('backend.user_details');
+})->name('admin/user_details');
+Route::get('/admin/settings', function () {
+    return view('backend.settings');
+})->name('admin/settings');

@@ -34,8 +34,8 @@
 
             <div class="dropdown">
                 <button class="profile-button dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                    <img class="avatar-img avatar-sm" src="../assets/images/avatar/avatar.jpg" alt="Admin Hasan">
-                    <span class="profile-name d-none d-sm-inline">Admin Hasan</span>
+                    <img class="avatar-img avatar-sm" src="{{ asset('backend/assets/images/avatar/avatar.jpg') }}" alt="Admin">
+                    <span class="profile-name d-none d-sm-inline">Admin</span>
                 </button>
                 <ul class="dropdown-menu dropdown-menu-end">
                     <li><a class="dropdown-item" href="/admin/profile">Profile</a></li>
@@ -46,7 +46,7 @@
                     <li>
                         <form method="POST" action="{{ route('logout') }}">
                             @csrf
-                            <input type="submit" value="Logout">
+                            <input type="submit" value="Logout" class="flex justify-center">
                         </form>
                     </li>
                 </ul>

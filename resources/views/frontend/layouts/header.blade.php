@@ -42,7 +42,7 @@
                                         <a href="/">Home</a>
                                     </li>
                                     <li>
-                                        <a href="/about">About Us</a>
+                                        <a href="{{ route('about') }}">About Us</a>
                                     </li>
                                     <li class="menu-item-has-children">
                                         <a href="/service">Service</a>

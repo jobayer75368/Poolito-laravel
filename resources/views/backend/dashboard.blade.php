@@ -81,7 +81,6 @@
                             <h2 class="h5 mb-1 section-title"><i class="bi bi-graph-up-arrow" aria-hidden="true"></i><span>Sales Performance</span></h2>
                             <p class="text-muted mb-0">Monthly revenue compared with operational targets.</p>
                         </div>
-                        <a class="btn btn-light btn-sm" href="charts.html">View Details</a>
                     </div>
 
                     <div class="chart-bars" aria-label="Sales performance chart">
@@ -134,7 +133,7 @@
                     <h2 class="h5 mb-1 section-title"><i class="bi bi-people" aria-hidden="true"></i><span>Recent Users</span></h2>
                     <p class="text-muted mb-0">Latest account activity across the workspace.</p>
                 </div>
-                <a class="btn btn-outline-secondary btn-sm" href="users.html">Manage Users</a>
+                <a class="btn btn-outline-secondary btn-sm" href="/admin/users">Manage Users</a>
             </div>
             <div class="table-responsive">
                 <table class="table align-middle mb-0">
