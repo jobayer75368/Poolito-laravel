@@ -33,20 +33,20 @@
             </div>
 
             <div class="dropdown">
-                <button class="profile-button dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                    <img class="avatar-img avatar-sm" src="{{ asset('backend/assets/images/avatar/avatar.jpg') }}" alt="Admin">
-                    <span class="profile-name d-none d-sm-inline">Admin</span>
+                <button class="profile-button dropdown-toggle" data-bs-toggle="dropdown" type="button" aria-expanded="false">
+                    <img class="avatar-img avatar-sm" src="{{ asset('backend/assets/images/avatar/avatar.jpg') }}" alt="Admin Profile">
+                    <span class=" d-none d-sm-inline">Admin</span>
                 </button>
                 <ul class="dropdown-menu dropdown-menu-end">
-                    <li><a class="dropdown-item" href="/admin/profile">Profile</a></li>
-                    <li><a class="dropdown-item" href="admin/settings">Account settings</a></li>
+                    <li><a class="dropdown-item" href="{{ route('admin/profile') }}">Profile</a></li>
+                    <li><a class="dropdown-item" href="{{route('admin/settings')}}">Account settings</a></li>
                     <li>
                         <hr class="dropdown-divider">
                     </li>
                     <li>
-                        <form method="POST" action="{{ route('logout') }}">
+                        <form method="POST" action="{{ route('logout') }}" class="dropdown-item">
                             @csrf
-                            <input type="submit" value="Logout" class="flex justify-center">
+                            <input type="submit" value="Logout" class="bg-transparent border-0">
                         </form>
                     </li>
                 </ul>

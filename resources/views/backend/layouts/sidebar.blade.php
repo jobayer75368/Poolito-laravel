@@ -1,7 +1,9 @@
 <aside class="admin-sidebar" id="adminSidebar" aria-label="Main navigation">
     <div class="sidebar-header">
-        <a class="brand-mark" href="/admin/dashboard" aria-label="adminHMD dashboard">
-            <span class="brand-icon"><i class="bi bi-grid-1x2-fill" aria-hidden="true"></i></span>
+        <a class="brand-mark" href="{{ route('admin/dashboard') }}" aria-label="adminHMD dashboard">
+            <span class="brand-icon">
+                <!-- <img src="{{ asset('backend/assets/images/favicon.ico') }}" alt="Poolito icon"> -->
+            </span>
             <span class="brand-copy">
                 <span class="brand-title">Poolito Admin</span>
                 <span class="brand-subtitle">Admin Template</span>
@@ -14,39 +16,32 @@
             <span class="nav-icon"><i class="bi bi-speedometer2" aria-hidden="true"></i></span>
             <span class="nav-text">Dashboard</span>
         </a>
-        <a class="nav-link" href="/admin/users">
+        <a class="nav-link" href="{{ route('admin/users') }}">
             <span class="nav-icon"><i class="bi bi-people" aria-hidden="true"></i></span>
             <span class="nav-text">Users</span>
         </a>
-        <a class="nav-link" href="/admin/add-user">
-            <span class="nav-icon"><i class="bi bi-person-plus" aria-hidden="true"></i></span>
-            <span class="nav-text">Add User</span>
-        </a>
-        <a class="nav-link" href="/admin/profile">
+        <a class="nav-link" href="{{ route('admin/profile') }}">
             <span class="nav-icon"><i class="bi bi-person-badge" aria-hidden="true"></i></span>
             <span class="nav-text">Profile</span>
         </a>
-        <a class="nav-link" href="/admin/tables">
-            <span class="nav-icon"><i class="bi bi-table" aria-hidden="true"></i></span>
-            <span class="nav-text">Tables</span>
-        </a>
-        <a class="nav-link" href="/admin/forms">
+
+        <a class="nav-link" href="{{ route('admin/forms') }}">
             <span class="nav-icon"><i class="bi bi-ui-checks-grid" aria-hidden="true"></i></span>
             <span class="nav-text">Forms</span>
         </a>
-        <a class="nav-link" href="/admin/components">
+        <a class="nav-link" href="{{ route('admin/components') }}">
             <span class="nav-icon"><i class="bi bi-grid-3x3-gap" aria-hidden="true"></i></span>
             <span class="nav-text">Components</span>
         </a>
-        <a class="nav-link" href="/admin/alerts>
+        <a class="nav-link" href="{{ route('admin/alerts') }}">
             <span class=" nav-icon"><i class="bi bi-exclamation-triangle" aria-hidden="true"></i></span>
             <span class="nav-text">Alerts</span>
         </a>
-        <a class="nav-link" href="/admin/modals">
+        <a class="nav-link" href="{{ route('admin/modals') }}">
             <span class="nav-icon"><i class="bi bi-window-stack" aria-hidden="true"></i></span>
             <span class="nav-text">Modals</span>
         </a>
-        <a class="nav-link" href="/admin/settings">
+        <a class="nav-link" href="{{ route('admin/settings') }}">
             <span class="nav-icon"><i class="bi bi-gear" aria-hidden="true"></i></span>
             <span class="nav-text">Settings</span>
         </a>

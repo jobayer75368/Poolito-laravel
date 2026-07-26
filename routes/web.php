@@ -46,7 +46,7 @@ Route::get('/shop', function () {
 
 Route::get('/admin/dashboard', function () {
     return view('backend.dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+})->middleware(['auth', 'verified'])->name('admin/dashboard');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
@@ -60,12 +60,31 @@ require __DIR__ . '/auth.php';
 Route::get('/admin/users', function () {
     return view('backend.users');
 })->name('admin/users');
+
 Route::get('/admin/profile', function () {
     return view('backend.profile');
 })->name('admin/profile');
+
 Route::get('/admin/user_details', function () {
     return view('backend.user_details');
 })->name('admin/user_details');
+
+Route::get('/admin/forms', function () {
+    return view('backend.forms');
+})->name('admin/forms');
+
+Route::get('/admin/components', function () {
+    return view('backend.components');
+})->name('admin/components');
+
+Route::get('/admin/alerts', function () {
+    return view('backend.alerts');
+})->name('admin/alerts');
+
+Route::get('/admin/modals', function () {
+    return view('backend.modals');
+})->name('admin/modals');
+
 Route::get('/admin/settings', function () {
     return view('backend.settings');
 })->name('admin/settings');

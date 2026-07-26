@@ -17,9 +17,9 @@
     <section class="row g-3">
       <div class="col-12 col-xl-4">
         <div class="panel h-100 text-center profile-card">
-          <div class="profile-cover"><img src="../assets/images/png/dasher-ui-bootstrap-5.jpg" alt="adminHMD dashboard preview"></div>
-          <img class="avatar-img avatar-xl profile-photo" src="../assets/images/avatar/avatar.jpg" alt="Admin Hasan">
-          <h2 class="h5 mt-3 mb-1">Admin Hasan</h2>
+          <div class="profile-cover"><img src="{{ asset('backend/assets/images/png/dasher-ui-bootstrap-5.jpg') }}" alt="adminHMD dashboard preview"></div>
+          <img class="avatar-img avatar-xl profile-photo" src="{{ asset('backend/assets/images/avatar/avatar.jpg') }}" alt="Admin">
+          <h2 class="h5 mt-3 mb-1">Admin</h2>
           <p class="text-muted mb-3">Product Administrator</p>
           <div class="d-flex justify-content-center gap-2"><span class="badge text-bg-primary">Admin</span><span class="badge text-bg-success">Verified</span></div>
           <div class="info-list mt-4 text-start">
@@ -38,7 +38,7 @@
             </div>
           </div>
           <div class="row g-3">
-            <div class="col-md-6"><label class="form-label" for="profileName">Name</label><input class="form-control" id="profileName" type="text" value="Admin Hasan" required>
+            <div class="col-md-6"><label class="form-label" for="profileName">Name</label><input class="form-control" id="profileName" type="text" value="Admin " required>
               <div class="invalid-feedback">Name is required.</div>
             </div>
             <div class="col-md-6"><label class="form-label" for="profileEmail">Email</label><input class="form-control" id="profileEmail" type="email" value="admin@example.com" required>

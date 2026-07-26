@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="{{ asset('backend/assets/css/bootstrap.min.css') }}">
     <link rel="stylesheet" href="{{ asset('backend/assets/vendors/bootstrap-icons/bootstrap-icons.css') }}">
     <link rel="stylesheet" href="{{ asset('backend/assets/css/style.css') }}">
+    <link rel="icon" href="{{ asset('/frontend/assets/img/favicon.ico') }}" type="image/x-icon">
 </head>
 
 <body>
