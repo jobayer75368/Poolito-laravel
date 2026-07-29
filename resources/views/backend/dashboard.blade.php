@@ -202,7 +202,7 @@
                         <tr>
                             <td>
                                 <div class="d-flex align-items-center gap-2">
-                                    <img class="avatar-img avatar-sm" src="../assets/images/avatar/avatar-5.jpg" alt="Jon Oliver">
+                                    <img class="avatar-img avatar-sm" src="{{ asset('backend/assets/images/avatar/avatar-5.jpg') }}" alt="Jon Oliver">
                                     <div>
                                         <p class="fw-semibold mb-0">Jon Oliver</p>
                                         <p class="text-muted small mb-0">jon@example.com</p>

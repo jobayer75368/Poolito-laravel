@@ -53,18 +53,9 @@ Route::get('/shop', function () {
 
 // / ******Backend starts here *******///
 
-Route::get('admin/dashboard', function () {
+Route::get('dashboard', function () {
     return view('backend.dashboard');
-})->middleware(['auth', 'verified'])->name('admin.dashboard');
-
-Route::middleware('auth')->group(function () {
-    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
-    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
-    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
-});
-
-require __DIR__ . '/auth.php';
-
+})->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::get('admin/users', function () {
     return view('backend.users');
@@ -97,3 +88,11 @@ Route::get('admin/modals', function () {
 Route::get('admin/settings', function () {
     return view('backend.settings');
 })->name('admin.settings');
+
+Route::middleware('auth')->group(function () {
+    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+});
+
+require __DIR__ . '/auth.php';
