@@ -138,7 +138,7 @@
                         <tr>
                             <td>
                                 <div class="d-flex align-items-center gap-2">
-                                    <img class="avatar-img avatar-sm" src="../assets/images/avatar/avatar-1.jpg" alt="Sarah Ahmed">
+                                    <img class="avatar-img avatar-sm" src="{{ asset('backend/assets/images/avatar/avatar-1.jpg') }}" alt="Sarah Ahmed">
                                     <div>
                                         <p class="fw-semibold mb-0">Sarah Ahmed</p>
                                         <p class="text-muted small mb-0">sarah@example.com</p>
@@ -154,7 +154,7 @@
                         <tr>
                             <td>
                                 <div class="d-flex align-items-center gap-2">
-                                    <img class="avatar-img avatar-sm" src="../assets/images/avatar/avatar-2.jpg" alt="Rafi Khan">
+                                    <img class="avatar-img avatar-sm" src="{{ asset('backend/assets/images/avatar/avatar-2.jpg') }}" alt="Rafi Khan">
                                     <div>
                                         <p class="fw-semibold mb-0">Rafi Khan</p>
                                         <p class="text-muted small mb-0">rafi@example.com</p>
@@ -170,7 +170,7 @@
                         <tr>
                             <td>
                                 <div class="d-flex align-items-center gap-2">
-                                    <img class="avatar-img avatar-sm" src="../assets/images/avatar/avatar-3.jpg" alt="Nadia Islam">
+                                    <img class="avatar-img avatar-sm" src="{{ asset('backend/assets/images/avatar/avatar-3.jpg') }}" alt="Nadia Islam">
                                     <div>
                                         <p class="fw-semibold mb-0">Nadia Islam</p>
                                         <p class="text-muted small mb-0">nadia@example.com</p>
@@ -186,7 +186,7 @@
                         <tr>
                             <td>
                                 <div class="d-flex align-items-center gap-2">
-                                    <img class="avatar-img avatar-sm" src="../assets/images/avatar/avatar-4.jpg" alt="Mina Torres">
+                                    <img class="avatar-img avatar-sm" src="{{ asset('backend/assets/images/avatar/avatar-4.jpg') }}" alt="Mina Torres">
                                     <div>
                                         <p class="fw-semibold mb-0">Mina Torres</p>
                                         <p class="text-muted small mb-0">mina@example.com</p>

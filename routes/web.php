@@ -53,11 +53,11 @@ Route::get('/shop', function () {
 
 // / ******Backend starts here *******///
 
-Route::get('dashboard', function () {
+Route::get('/dashboard', function () {
     return view('backend.dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
-Route::get('admin/users', function () {
+Route::get('users', function () {
     return view('backend.users');
 })->name('admin.users');
 
