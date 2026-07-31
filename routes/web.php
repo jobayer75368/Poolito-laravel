@@ -53,41 +53,45 @@ Route::get('/shop', function () {
 
 // / ******Backend starts here *******///
 
-Route::get('/dashboard', function () {
-    return view('backend.dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+Route::prefix('admin')->middleware('auth')->group(function () {
 
-Route::get('users', function () {
-    return view('backend.users');
-})->name('admin.users');
+    // Dashboard 
+    Route::get('/dashboard', function () {
+        return view('backend.dashboard');
+    })->name('admin.dashboard');
 
-Route::get('admin/profile', function () {
-    return view('backend.profile');
-})->name('admin.profile');
+    Route::get('/users', function () {
+        return view('backend.users');
+    })->name('admin.users');
+    Route::get('/profile', function () {
+        return view('backend.profile');
+    })->name('admin.profile');
 
-Route::get('admin/user_details', function () {
-    return view('backend.user_details');
-})->name('admin.user_details');
+    Route::get('/user_details', function () {
+        return view('backend.user_details');
+    })->name('admin.user_details');
 
-Route::get('admin/forms', function () {
-    return view('backend.forms');
-})->name('admin.forms');
+    Route::get('/forms', function () {
+        return view('backend.forms');
+    })->name('admin.forms');
 
-Route::get('admin/components', function () {
-    return view('backend.components');
-})->name('admin.components');
+    Route::get('/components', function () {
+        return view('backend.components');
+    })->name('admin.components');
 
-Route::get('admin/alerts', function () {
-    return view('backend.alerts');
-})->name('admin.alerts');
+    Route::get('/alerts', function () {
+        return view('backend.alerts');
+    })->name('admin.alerts');
 
-Route::get('admin/modals', function () {
-    return view('backend.modals');
-})->name('admin.modals');
+    Route::get('/modals', function () {
+        return view('backend.modals');
+    })->name('admin.modals');
 
-Route::get('admin/settings', function () {
-    return view('backend.settings');
-})->name('admin.settings');
+    Route::get('/settings', function () {
+        return view('backend.settings');
+    })->name('admin.settings');
+});
+
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

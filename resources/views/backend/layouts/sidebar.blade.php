@@ -1,6 +1,6 @@
 <aside class="admin-sidebar" id="adminSidebar" aria-label="Main navigation">
     <div class="sidebar-header">
-        <a class="brand-mark" href="{{ route('dashboard') }}" aria-label="adminHMD dashboard">
+        <a class="brand-mark" href="{{ route('admin.dashboard') }}" aria-label="adminHMD dashboard">
             <span class="brand-icon">
                 <img class="" src="{{ asset('favicon.ico') }}" alt="Poolito icon">
             </span>
@@ -12,7 +12,7 @@
     </div>
 
     <nav class="sidebar-nav">
-        <a class="nav-link {{ request()->routeIs('dashboard') ? 'active' :''}}" href="{{ route('dashboard') }}" aria-current="page">
+        <a class="nav-link {{ request()->routeIs('admin.dashboard') ? 'active' :''}}" href="{{ route('admin.dashboard') }}" aria-current="page">
             <span class="nav-icon"><i class="bi bi-speedometer2" aria-hidden="true"></i></span>
             <span class="nav-text">Dashboard</span>
         </a>
