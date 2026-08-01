@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Backend\UserController;
 
 Route::get('/', function () {
     return view('frontend.index');
@@ -60,9 +61,11 @@ Route::prefix('admin')->middleware('auth')->group(function () {
         return view('backend.dashboard');
     })->name('admin.dashboard');
 
-    Route::get('/users', function () {
-        return view('backend.users');
-    })->name('admin.users');
+    Route::get(
+        '/users',
+        [UserController::class, 'index']
+    )->name('admin.users');
+
     Route::get('/profile', function () {
         return view('backend.profile');
     })->name('admin.profile');
