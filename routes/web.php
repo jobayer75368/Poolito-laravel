@@ -4,6 +4,9 @@ use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Backend\UserController;
 
+
+
+// / ******Frontend starts here *******///
 Route::get('/', function () {
     return view('frontend.index');
 });
@@ -51,6 +54,7 @@ Route::get('/shop', function () {
     return view('frontend.shop');
 })->name('shop');
 
+// / ******Frontend starts here *******///
 
 // / ******Backend starts here *******///
 

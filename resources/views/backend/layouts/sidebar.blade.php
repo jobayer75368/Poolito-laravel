@@ -28,8 +28,10 @@
         </a>
 
         <a class="nav-link {{ request()->routeIs('admin.forms') ? 'active' :''}}" href="{{ route('admin.forms') }}">
-            <span class="nav-icon"><i class="bi bi-ui-checks-grid" aria-hidden="true"></i></span>
-            <span class="nav-text">Forms</span>
+            <span class="nav-icon">
+                <i class="bi bi-tools"></i>
+            </span>
+            <span class="nav-text">Services</span>
         </a>
 
         <a class="nav-link {{ request()->routeIs('admin.components') ? 'active' :''}}" href="{{ route('admin.components') }}">
