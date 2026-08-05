@@ -21,7 +21,7 @@
             <span class="metric-label">Total Users</span>
             <span class="metric-icon"><i class="bi bi-people" aria-hidden="true"></i></span>
           </div>
-          <div class="metric-value">8,742</div>
+          <div class="metric-value">{{ $totalUsers }}</div>
           <div class="metric-meta">
             <span class="text-success">+5.1%</span>
             <span>this month</span>

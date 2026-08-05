@@ -10,6 +10,7 @@ class UserController extends Controller
     public function index()
     {
         $users = User::latest()->get();
-        return view('backend.users', compact('users'));
+        $totalUsers = count($users);
+        return view('backend.users', compact('users', 'totalUsers'));
     }
 }
