@@ -76,7 +76,7 @@
       <div class="panel-header">
         <div>
           <h2 class="h5 mb-1 section-title"><i class="bi bi-table" aria-hidden="true"></i><span>User List</span></h2>
-          <p class="text-muted mb-0">Search, review, and manage team member accounts.</p>
+          <p class="text-muted mb-0">Search, review, and manage user accounts.</p>
         </div>
         <div class="d-flex flex-wrap gap-2">
           <input class="form-control form-control-sm table-search" type="search" placeholder="Search users" data-table-search="usersTable" aria-label="Search users">

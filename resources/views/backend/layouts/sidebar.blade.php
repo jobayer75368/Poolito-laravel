@@ -27,11 +27,11 @@
             <span class="nav-text">Profile</span>
         </a>
 
-        <a class="nav-link {{ request()->routeIs('admin.forms') ? 'active' :''}}" href="{{ route('admin.forms') }}">
+        <a class="nav-link {{ request()->routeIs('admin.services') ? 'active' :''}}" href="{{ route('admin.services') }}">
             <span class="nav-icon">
                 <i class="bi bi-tools"></i>
             </span>
-            <span class="nav-text">Services</span>
+            <span class="nav-text">servicess</span>
         </a>
 
         <a class="nav-link {{ request()->routeIs('admin.components') ? 'active' :''}}" href="{{ route('admin.components') }}">

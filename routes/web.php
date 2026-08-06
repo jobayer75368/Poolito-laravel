@@ -78,9 +78,14 @@ Route::prefix('admin')->middleware('auth')->group(function () {
         return view('backend.user_details');
     })->name('admin.user_details');
 
-    Route::get('/forms', function () {
-        return view('backend.forms');
-    })->name('admin.forms');
+    // service management 
+    Route::get('/services', function () {
+        return view('backend.service.services');
+    })->name('admin.services');
+
+    Route::get('/service_add', function () {
+        return view('backend.service.service_add');
+    })->name('admin.service_add');
 
     Route::get('/components', function () {
         return view('backend.components');
