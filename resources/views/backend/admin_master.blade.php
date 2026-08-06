@@ -26,8 +26,9 @@
     <link rel="stylesheet" href="{{ asset('backend/assets/css/style.css') }}">
     <link rel="icon" href="{{ asset('/frontend/assets/img/favicon.ico') }}" type="image/x-icon">
 
-    <!-- quill text editor  -->
-    <!-- <link href="https://cdn.jsdelivr.net/npm/quill@2.0.3/dist/quill.snow.css" rel="stylesheet" /> -->
+    <!-- summernote text editor css  -->
+    <link href="https://cdn.jsdelivr.net/npm/summernote@0.9.0/dist/summernote-bs5.min.css" rel="stylesheet">
+
 </head>
 
 <body>
