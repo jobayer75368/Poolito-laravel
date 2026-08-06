@@ -44,13 +44,13 @@
 
             <div class="col-12">
               <label class="form-label" for="shortDescription">Short Description</label>
-              <textarea class="form-control" id="shortDescription" rows="5" required></textarea>
+              <textarea class="form-control editor" id="shortDescription" rows="5" required></textarea>
               <div class="invalid-feedback">Message is required.</div>
             </div>
 
             <div class="col-12">
               <label class="form-label" for="longDescription">Long Description</label>
-              <textarea class="form-control" id="longDescription" rows="5"></textarea>
+              <textarea class="form-control editor" id="longDescription" rows="5"></textarea>
             </div>
 
             <div class="col-12">

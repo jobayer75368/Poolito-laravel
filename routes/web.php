@@ -9,7 +9,7 @@ use App\Http\Controllers\Backend\UserController;
 // / ******Frontend starts here *******///
 Route::get('/', function () {
     return view('frontend.index');
-});
+})->name('index');
 
 Route::get('/about', function () {
     return view('frontend.about');
