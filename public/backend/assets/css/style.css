@@ -691,7 +691,7 @@ html[data-theme="dark"] .profile-button .avatar-sm {
 }
 
 .table-search {
-  width: min(260px, 100%);
+  width: min(200px);
   border-color: var(--admin-border);
   border-radius: 8px;
 }
@@ -1487,9 +1487,9 @@ html[data-theme="dark"] .text-bg-danger {
     width: 100%;
   }
 
-  .table-search {
+  /* .table-search {
     width: 100%;
-  }
+  } */
 
   .auth-page,
   .error-page {

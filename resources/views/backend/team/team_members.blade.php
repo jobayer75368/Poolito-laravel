@@ -8,7 +8,7 @@
           <i class="bi bi-tools"></i>
         </span>
         <div>
-          <h1 class="h3 mb-1">Service Management</h1>
+          <h1 class="h3 mb-1">Team Management</h1>
         </div>
       </div>
       <div>
@@ -17,9 +17,9 @@
             <a class="link-opacity-25-hover" href="{{ route('admin.dashboard') }}">Dashboard </a>
           </li>/
           <li>
-            Service List
+            Members List
           </li>/
-          <li><a class="link-opacity-25-hover" href="{{ route('admin.service_add') }}"> Add Service</a></li>
+          <li><a class="link-opacity-25-hover" href="{{ route('admin.member_add') }}"> Add Member</a></li>
         </ul>
       </div>
 
@@ -28,11 +28,11 @@
     <section class="panel mt-3">
       <div class="panel-header">
         <div>
-          <h2 class="h5 mb-1 section-title"><i class="bi bi-table" aria-hidden="true"></i><span>Service List</span></h2>
+          <h2 class="h5 mb-1 section-title"><i class="bi bi-table" aria-hidden="true"></i><span>Members List</span></h2>
         </div>
         <div class="d-flex gap-2 justify-content-right">
           <!-- <input class="form-control form-control-sm table-search" type="search" placeholder="Search services" data-table-search="usersTable" aria-label="Search users"> -->
-          <a class="d-flex " href="{{ route('admin.service_add') }}">
+          <a class="d-flex " href="{{ route('admin.member_add') }}">
             <i class="bi bi-plus-square-fill h1"></i>
           </a>
         </div>

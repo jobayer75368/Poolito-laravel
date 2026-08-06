@@ -8,7 +8,7 @@
                     <i class="bi bi-tools"></i>
                 </span>
                 <div>
-                    <h1 class="h3 mb-1">Service Management</h1>
+                    <h1 class="h3 mb-1">Team Management</h1>
                 </div>
             </div>
             <div>
@@ -16,13 +16,12 @@
                     <li>
                         <a class="link-opacity-25-hover" href="{{ route('admin.dashboard') }}">Dashboard </a>
                     </li>/
-                    <li><a class="link-opacity-25-hover" href="{{ route('admin.services') }}">Service List </a></li>/
                     <li>
-                        Add Service
-                    </li>
+                        <a class="link-opacity-25-hover" href="{{ route('admin.team_members') }}">Members List</a>
+                    </li>/
+                    <li>Add Member</li>
                 </ul>
             </div>
-
         </div>
 
         <section class="row g-3">
@@ -32,35 +31,28 @@
                         <div>
                             <h2 class="h5 mb-1 section-title">
                                 <i class="bi bi-tools"></i>
-                                <span>Add Service</span>
+                                <span>Add New Member</span>
                             </h2>
                         </div>
                     </div>
                     <div class="row g-3">
                         <div class="col-md-12">
-                            <label class="form-label" for="formName">Service Title</label>
+                            <label class="form-label" for="formName">Name</label>
                             <input class="form-control" id="formName" required>
                             <div class="invalid-feedback">Full name is required.</div>
                         </div>
                         <div class="col-md-12">
-                            <label class="form-label" for="formName">Service Slug</label>
+                            <label class="form-label" for="formName">Slug</label>
                             <input class="form-control" id="formName" required>
                             <div class="invalid-feedback">Full name is required.</div>
                         </div>
                         <div class="col-md-12">
-                            <label class="form-label" for="formService">Service Icon</label>
+                            <label class="form-label" for="formService">Role</label>
                             <input class="form-control" id="formService" type="text">
                         </div>
 
-
                         <div class="col-12">
-                            <label class="form-label" for="shortDescription">Short Description</label>
-                            <textarea class="form-control summernote" id="shortDescription" rows="5" required></textarea>
-                            <div class="invalid-feedback">Message is required.</div>
-                        </div>
-
-                        <div class="col-12">
-                            <label class="form-label" for="longDescription">Long Description</label>
+                            <label class="form-label" for="longDescription">Details</label>
                             <textarea class="form-control summernote" id="longDescription" rows="5"></textarea>
                         </div>
 
@@ -74,7 +66,7 @@
                         </div>
 
                         <div class="col-12">
-                            <label class="form-label" for="serviceImg">Service Image</label>
+                            <label class="form-label" for="serviceImg">Image</label>
                             <input class="form-control" id="serviceImg" type="file">
                             <div class="invalid-feedback">Service Image is required.</div>
                         </div>

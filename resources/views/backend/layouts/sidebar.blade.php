@@ -27,11 +27,17 @@
             <span class="nav-text">Profile</span>
         </a>
 
-        <a class="nav-link {{ request()->routeIs('admin.services') ? 'active' :''}}" href="{{ route('admin.services') }}">
+        <a @class(['nav-link', 'active'=> request()->routeIs(['admin.services', 'admin.service_add'])]) href="{{ route('admin.services') }}">
             <span class="nav-icon">
                 <i class="bi bi-tools"></i>
             </span>
             <span class="nav-text">servicess</span>
+        </a>
+        <a @class(['nav-link', 'active'=> request()->routeIs(['admin.team_members', 'admin.member_add'])]) href="{{ route('admin.team_members') }}">
+            <span class="nav-icon">
+                <i class="bi bi-people"></i>
+            </span>
+            <span class="nav-text">Team</span>
         </a>
 
         <a class="nav-link {{ request()->routeIs('admin.components') ? 'active' :''}}" href="{{ route('admin.components') }}">

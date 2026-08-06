@@ -87,6 +87,16 @@ Route::prefix('admin')->middleware('auth')->group(function () {
         return view('backend.service.service_add');
     })->name('admin.service_add');
 
+    // Team management 
+    Route::get('/team_members', function () {
+        return view('backend.team.team_members');
+    })->name('admin.team_members');
+
+    Route::get('/member_add', function () {
+        return view('backend.team.member_add');
+    })->name('admin.member_add');
+
+
     Route::get('/components', function () {
         return view('backend.components');
     })->name('admin.components');
