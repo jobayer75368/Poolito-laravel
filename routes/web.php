@@ -27,6 +27,10 @@ Route::get('/blog', function () {
     return view('frontend.blog');
 })->name('blog');
 
+Route::get('/blog_details', function () {
+    return view('frontend.blog_details');
+})->name('blog_details');
+
 Route::get('/team', function () {
     return view('frontend.team');
 })->name('team');

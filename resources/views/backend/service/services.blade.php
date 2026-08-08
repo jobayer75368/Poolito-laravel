@@ -32,8 +32,8 @@
         </div>
         <div class="d-flex gap-2 justify-content-right">
           <!-- <input class="form-control form-control-sm table-search" type="search" placeholder="Search services" data-table-search="usersTable" aria-label="Search users"> -->
-          <a class="d-flex " href="{{ route('admin.service_add') }}">
-            <i class="bi bi-plus-square-fill h1"></i>
+          <a class="d-flex justify-content-center align-items-center btn btn-sm btn-info" href="{{ route('admin.service_add') }}">
+            <i class="bi bi-plus-square-fill fs-4"></i>Add Service
           </a>
         </div>
       </div>
