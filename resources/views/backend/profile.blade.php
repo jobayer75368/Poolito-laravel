@@ -24,7 +24,6 @@
           <div class="d-flex justify-content-center gap-2"><span class="badge text-bg-primary">Admin</span><span class="badge text-bg-success">Verified</span></div>
           <div class="info-list mt-4 text-start">
             <div><span>Email</span><strong>admin@example.com</strong></div>
-            <div><span>Department</span><strong>Product Ops</strong></div>
             <div><span>Time Zone</span><strong>Asia/Dhaka</strong></div>
           </div>
         </div>

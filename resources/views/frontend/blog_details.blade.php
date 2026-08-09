@@ -207,7 +207,7 @@
                                         <input type="text" class="form-control" placeholder="your name *">
                                     </div>
                                     <div class="col-md-6 form-group">
-                                        <input type="email" class="form-control" placeholder="your name *">
+                                        <input type="email" class="form-control" placeholder="your email *">
                                     </div>
                                     <div class="col-12">
                                         <div class="vs-custom-checkbox">

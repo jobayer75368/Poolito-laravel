@@ -129,8 +129,8 @@
         </div>
     </div>
 
-    <span class="shape-mockup" style="right: 0; top: 0px;"><img src="{{ asset('/frontend/') }}assets/img/shapes/service-shape-1.png" alt="team element"></span>
-    <span class="shape-mockup z-index-n1" style="left: 0; bottom: 0px;"><img src="{{ asset('/frontend/') }}assets/img/shapes/team-shep3.png" alt="team element"></span>
+    <span class="shape-mockup" style="right: 0; top: 0px;"><img src="{{ asset('/frontend/assets/img/shapes/service-shape-1.png') }}" alt="team element"></span>
+    <span class="shape-mockup z-index-n1" style="left: 0; bottom: 0px;"><img src="{{ asset('/frontend/assets/img/shapes/team-shep3.png') }}" alt="team element"></span>
 </section>
 
 @endsection

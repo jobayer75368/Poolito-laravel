@@ -36,29 +36,71 @@
                         </div>
                     </div>
                     <div class="row g-3">
-                        <div class="col-md-12">
+                        <div class="col-md-6">
                             <label class="form-label" for="formName">Name</label>
                             <input class="form-control" id="formName" required>
                             <div class="invalid-feedback">Full name is required.</div>
                         </div>
-                        <div class="col-md-12">
+                        <div class="col-md-6">
                             <label class="form-label" for="formName">Slug</label>
                             <input class="form-control" id="formName" required>
                             <div class="invalid-feedback">Full name is required.</div>
                         </div>
-                        <div class="col-md-12">
-                            <label class="form-label" for="formService">Role</label>
+                        <div class="col-md-6">
+                            <label class="form-label" for="formService">Designation</label>
                             <input class="form-control" id="formService" type="text">
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label" for="memberAge">Age</label>
+                            <input class="form-control" id="memberAge" type="number">
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label" for="memberPhone">Phone Number</label>
+                            <input class="form-control" id="memberPhone" type="phone">
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label" for="memberEmail">Email</label>
+                            <input class="form-control" id="memberEmail" type="email">
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label" for="memberAddress">Address</label>
+                            <input class="form-control" id="memberAddress" type="text">
+                        </div>
+
+                        <div class="col-md-6">
+                            <label class="form-label" for="memberExperience">Experience</label>
+                            <input class="form-control" id="memberExperience" type="number">
                         </div>
 
                         <div class="col-12">
-                            <label class="form-label" for="longDescription">Details</label>
+                            <label class="form-label" for="longDescription">Description</label>
                             <textarea class="form-control summernote" id="longDescription" rows="5"></textarea>
                         </div>
 
+                        <div class="my-5">
+                            <h6>Social Links</h6>
+                            <div class="col-md-12 px-4 pt-3">
+                                <div>
+                                    <label class="form-label" for="facebook">Facebook</label>
+                                    <input class="form-control" id="facebook" type="url">
+                                </div>
+
+                                <div>
+                                    <label class="form-label" for="linkedin">Linkedin</label>
+                                    <input class="form-control" id="linkedin" type="url">
+                                </div>
+
+                                <div>
+                                    <label class="form-label" for="instagram">Instagram</label>
+                                    <input class="form-control" id="instagram" type="url">
+                                </div>
+
+                            </div>
+                        </div>
+
                         <div class="col-12">
-                            <label class="form-label" for="status">Status</label>
-                            <select class="form-control" name="status" id="status">
+                            <label class="form-label" for="memberImage">Status</label>
+                            <select class="form-control" name="status" id="memberImage">
                                 <option value="active">Active</option>
                                 <option value="inactive">Inactive</option>
                             </select>

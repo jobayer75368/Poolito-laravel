@@ -91,7 +91,18 @@ Route::prefix('admin')->middleware('auth')->group(function () {
         return view('backend.service.service_add');
     })->name('admin.service_add');
 
+
+    // Blog management 
+    Route::get('/blogs', function () {
+        return view('backend.blog.blogs');
+    })->name('admin.blogs');
+
+    Route::get('/create_blog', function () {
+        return view('backend.blog.create_blog');
+    })->name('admin.create_blog');
+
     // Team management 
+
     Route::get('/team_members', function () {
         return view('backend.team.team_members');
     })->name('admin.team_members');

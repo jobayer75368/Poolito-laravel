@@ -31,8 +31,16 @@
             <span class="nav-icon">
                 <i class="bi bi-tools"></i>
             </span>
-            <span class="nav-text">servicess</span>
+            <span class="nav-text">Service</span>
         </a>
+
+        <a @class(['nav-link', 'active'=> request()->routeIs(['admin.blogs', 'admin.create_blog'])]) href="{{ route('admin.blogs') }}">
+            <span class="nav-icon">
+                <i class="bi bi-journal-text"></i>
+            </span>
+            <span class="nav-text">Blogs</span>
+        </a>
+
         <a @class(['nav-link', 'active'=> request()->routeIs(['admin.team_members', 'admin.member_add'])]) href="{{ route('admin.team_members') }}">
             <span class="nav-icon">
                 <i class="bi bi-people"></i>
