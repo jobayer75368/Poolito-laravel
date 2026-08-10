@@ -41,11 +41,19 @@
             <span class="nav-text">Blogs</span>
         </a>
 
+
         <a @class(['nav-link', 'active'=> request()->routeIs(['admin.team_members', 'admin.member_add'])]) href="{{ route('admin.team_members') }}">
             <span class="nav-icon">
                 <i class="bi bi-people"></i>
             </span>
             <span class="nav-text">Team</span>
+        </a>
+
+        <a @class(['nav-link', 'active'=> request()->routeIs(['admin.portfolios', 'admin.create-portfolio'])]) href="{{ route('admin.portfolios') }}">
+            <span class="nav-icon">
+                <i class="bi bi-briefcase"></i>
+            </span>
+            <span class="nav-text">Portfolio</span>
         </a>
 
         <a class="nav-link {{ request()->routeIs('admin.components') ? 'active' :''}}" href="{{ route('admin.components') }}">

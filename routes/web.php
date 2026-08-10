@@ -111,6 +111,16 @@ Route::prefix('admin')->middleware('auth')->group(function () {
         return view('backend.team.member_add');
     })->name('admin.member_add');
 
+    // Portfolio management 
+
+    Route::get('/portfolios', function () {
+        return view('backend.portfolio.portfolios');
+    })->name('admin.portfolios');
+
+    Route::get('/create_portfolio', function () {
+        return view('backend.portfolio.create_portfolio');
+    })->name('admin.create_portfolio');
+
 
     Route::get('/components', function () {
         return view('backend.components');
