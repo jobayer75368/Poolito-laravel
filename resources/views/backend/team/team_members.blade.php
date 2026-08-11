@@ -31,9 +31,8 @@
           <h2 class="h5 mb-1 section-title"><i class="bi bi-table" aria-hidden="true"></i><span>Members List</span></h2>
         </div>
         <div class="d-flex gap-2 justify-content-right">
-          <!-- <input class="form-control form-control-sm table-search" type="search" placeholder="Search services" data-table-search="usersTable" aria-label="Search users"> -->
-          <a class="d-flex " href="{{ route('admin.member_add') }}">
-            <i class="bi bi-plus-square-fill h1"></i>
+          <a class="d-flex justify-content-center align-items-center btn btn-sm btn-info" href="{{ route('admin.member_add') }}">
+            <i class="bi bi-plus-square-fill fs-4"></i>Add Member
           </a>
         </div>
       </div>

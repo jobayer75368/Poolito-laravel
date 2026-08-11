@@ -31,7 +31,6 @@
           <h2 class="h5 mb-1 section-title"><i class="bi bi-table" aria-hidden="true"></i><span>Service List</span></h2>
         </div>
         <div class="d-flex gap-2 justify-content-right">
-          <!-- <input class="form-control form-control-sm table-search" type="search" placeholder="Search services" data-table-search="usersTable" aria-label="Search users"> -->
           <a class="d-flex justify-content-center align-items-center btn btn-sm btn-info" href="{{ route('admin.service_add') }}">
             <i class="bi bi-plus-square-fill fs-4"></i>Add Service
           </a>
@@ -42,16 +41,18 @@
           <thead>
             <tr>
               <th scope="col">Sl</th>
-              <th scope="col">Name</th>
-              <th scope="col">Email</th>
+              <th scope="col">Title</th>
+              <th scope="col">Slug</th>
+              <th scope="col">Image</th>
               <th scope="col">Status</th>
-              <th scope="col">Joined</th>
+              <th scope="col">Created</th>
               <th scope="col" class="text-end">Action</th>
             </tr>
           </thead>
           <tbody>
 
             <tr class="fw-semibold mb-0">
+              <td></td>
               <td></td>
               <td></td>
               <td></td>

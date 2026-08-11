@@ -31,9 +31,8 @@
                     <h2 class="h5 mb-1 section-title"><i class="bi bi-table" aria-hidden="true"></i><span>Blog List</span></h2>
                 </div>
                 <div class="d-flex gap-2 justify-content-right">
-                    <!-- <input class="form-control form-control-sm table-search" type="search" placeholder="Search services" data-table-search="usersTable" aria-label="Search users"> -->
-                    <a class="d-flex " href="{{ route('admin.create_blog') }}">
-                        <i class="bi bi-plus-square-fill h1"></i>
+                    <a class="d-flex justify-content-center align-items-center btn btn-sm btn-info" href="{{ route('admin.create_blog') }}">
+                        <i class="bi bi-plus-square-fill fs-4"></i>Create Blog
                     </a>
                 </div>
             </div>
@@ -43,7 +42,8 @@
                         <tr>
                             <th scope="col">Sl</th>
                             <th scope="col">Title</th>
-                            <th scope="col">Blog Image</th>
+                            <th scope="col">Slug</th>
+                            <th scope="col">Image</th>
                             <th scope="col">Status</th>
                             <th scope="col">Posted At</th>
                             <th scope="col" class="text-end">Action</th>
@@ -52,6 +52,7 @@
                     <tbody>
 
                         <tr class="fw-semibold mb-0">
+                            <td></td>
                             <td></td>
                             <td></td>
                             <td></td>
