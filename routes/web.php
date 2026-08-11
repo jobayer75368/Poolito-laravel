@@ -121,6 +121,11 @@ Route::prefix('admin')->middleware('auth')->group(function () {
         return view('backend.portfolio.create_portfolio');
     })->name('admin.create_portfolio');
 
+    Route::get('/messages', function () {
+        return view('backend.message.messages');
+    })->name('admin.messages');
+
+
 
     Route::get('/components', function () {
         return view('backend.components');
