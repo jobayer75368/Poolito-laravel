@@ -94,11 +94,12 @@
                                     </div>
                                 </div>
                             </form>
-                            <p class="success mb-0 mt-3">
-                                @if(session('success'))
+
+                            @if(session('success'))
+                            <p class="btn btn-success mb-0 mt-3">
                                 {{ session('success') }}
-                                @endif
                             </p>
+                            @endif
                         </div>
                     </div>
                 </div>

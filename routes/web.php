@@ -66,7 +66,7 @@ Route::get('/shop', function () {
 
 // / ******Backend starts here *******///
 
-Route::prefix('admin')->middleware('auth')->name('admin')->group(function () {
+Route::prefix('admin')->middleware('auth')->name('admin.')->group(function () {
 
     // Dashboard 
     Route::get('/dashboard', function () {
@@ -128,25 +128,27 @@ Route::prefix('admin')->middleware('auth')->name('admin')->group(function () {
     // Message management 
     Route::get('/messages', [MessageController::class, 'index'])->name('message.index');
 
-    Route::post('/messages', [MessageController::class, 'destroy'])->name('message.destroy');
+    Route::get('/messages/{id}', [MessageController::class, 'show'])->name('message.show');
+
+    Route::post('/messages/{id}', [MessageController::class, 'destroy'])->name('message.destroy');
 
 
 
     Route::get('/components', function () {
         return view('backend.components');
-    })->name('admin.components');
+    })->name('components');
 
     Route::get('/alerts', function () {
         return view('backend.alerts');
-    })->name('admin.alerts');
+    })->name('alerts');
 
     Route::get('/modals', function () {
         return view('backend.modals');
-    })->name('admin.modals');
+    })->name('modals');
 
     Route::get('/settings', function () {
         return view('backend.settings');
-    })->name('admin.settings');
+    })->name('settings');
 });
 
 

@@ -34,9 +34,8 @@
                 <table class="table align-middle mb-0" id="usersTable" data-searchable-table>
                     <thead>
                         <tr>
-                            <th scope="col">Sl</th>
-                            <th scope="col">Name</th>
-                            <th scope="col">Phone</th>
+                            <th>Sl</th>
+                            <th>Name</th>
                             <th scope="col">Email</th>
                             <th scope="col">Message</th>
                             <th scope="col">Posted at</th>
@@ -44,16 +43,25 @@
                         </tr>
                     </thead>
                     <tbody>
+                        @foreach ($messages as $key=>$message)
 
                         <tr class="fw-semibold mb-0">
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td class="text-end"><a class="btn btn-light btn-sm" href="{{ route('admin.user_details') }}">View</a></td>
+                            <td>{{ $key+1 }}</td>
+                            <td>{{ $message->first_name }} {{ $message->last_name }}</td>
+                            <td>{{ $message->email }}</td>
+                            <td>{{ $message->message }}</td>
+                            <td>{{ $message->created_at->format('M d, Y') }}</td>
+                            <td class="text-end d-flex gap-2">
+
+                                <a class="btn btn-light btn-sm" href="{{ route('admin.message.show',$message->id) }}">View</a>
+                                <a type="submit" class="btn btn-sm btn-outline-danger" data-bs-toggle="modal"
+                                    data-bs-target="#deleteConfirmModal">
+                                    <i class="bi bi-trash me-1"></i>
+                                </a>
+
+                            </td>
                         </tr>
+                        @endforeach
 
 
 
@@ -74,4 +82,21 @@
         </section>
     </div>
 </main>
+<!-- Delete modal  -->
+<div class="modal fade" id="deleteConfirmModal" tabindex="-1" aria-labelledby="confirmModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 class="modal-title h5" id="confirmModalLabel">Confirm Action</h2><button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">Are you sure you want to Delete this message?</div>
+
+            <form method="POST" action="{{ route('admin.message.destroy',$message->id) }}" class="dropdown-item modal-footer">
+                @csrf
+                <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Cancel</button>
+                <input type="submit" value="Confirm" class="btn btn-primary">
+            </form>
+        </div>
+    </div>
+</div>
 @endsection

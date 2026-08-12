@@ -26,4 +26,19 @@ class MessageController extends Controller
         Message::create($validateData);
         return redirect()->route('contact')->with('success', 'Message sent successfully!');
     }
+
+    public function show($id)
+    {
+
+        $message = Message::findOrFail($id);
+        return view('backend.message.show', compact('message'));
+    }
+
+    public function destroy($id)
+    {
+
+        $message = Message::findOrFail($id);
+        $message->delete();
+        return redirect()->route('admin.message.index')->with('success', 'Message deleted successfully!');
+    }
 }
