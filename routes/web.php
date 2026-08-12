@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\backend\MessageController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Backend\UserController;
@@ -43,6 +44,9 @@ Route::get('/contact', function () {
     return view('frontend.contact');
 })->name('contact');
 
+// Send Message 
+Route::post('/contact', [MessageController::class, 'store'])->name('message.store');
+
 Route::get('/404', function () {
     return view('frontend.404');
 });
@@ -58,72 +62,73 @@ Route::get('/shop', function () {
     return view('frontend.shop');
 })->name('shop');
 
-// / ******Frontend starts here *******///
+// / ******Frontend ends here *******///
 
 // / ******Backend starts here *******///
 
-Route::prefix('admin')->middleware('auth')->group(function () {
+Route::prefix('admin')->middleware('auth')->name('admin')->group(function () {
 
     // Dashboard 
     Route::get('/dashboard', function () {
         return view('backend.dashboard');
-    })->name('admin.dashboard');
+    })->name('dashboard');
 
     Route::get(
         '/users',
         [UserController::class, 'index']
-    )->name('admin.users');
+    )->name('users');
 
     Route::get('/profile', function () {
         return view('backend.profile');
-    })->name('admin.profile');
+    })->name('profile');
 
     Route::get('/user_details', function () {
         return view('backend.user_details');
-    })->name('admin.user_details');
+    })->name('user_details');
 
     // service management 
     Route::get('/services', function () {
         return view('backend.service.services');
-    })->name('admin.services');
+    })->name('services');
 
     Route::get('/service_add', function () {
         return view('backend.service.service_add');
-    })->name('admin.service_add');
+    })->name('service_add');
 
 
     // Blog management 
     Route::get('/blogs', function () {
         return view('backend.blog.blogs');
-    })->name('admin.blogs');
+    })->name('blogs');
 
     Route::get('/create_blog', function () {
         return view('backend.blog.create_blog');
-    })->name('admin.create_blog');
+    })->name('create_blog');
 
     // Team management 
 
     Route::get('/team_members', function () {
         return view('backend.team.team_members');
-    })->name('admin.team_members');
+    })->name('team_members');
 
     Route::get('/member_add', function () {
         return view('backend.team.member_add');
-    })->name('admin.member_add');
+    })->name('member_add');
 
     // Portfolio management 
 
     Route::get('/portfolios', function () {
         return view('backend.portfolio.portfolios');
-    })->name('admin.portfolios');
+    })->name('portfolios');
 
     Route::get('/create_portfolio', function () {
         return view('backend.portfolio.create_portfolio');
-    })->name('admin.create_portfolio');
+    })->name('create_portfolio');
 
-    Route::get('/messages', function () {
-        return view('backend.message.messages');
-    })->name('admin.messages');
+    // Message management 
+    Route::get('/messages', [MessageController::class, 'index'])->name('message.index');
+
+    Route::post('/messages', [MessageController::class, 'destroy'])->name('message.destroy');
 
 
 

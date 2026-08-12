@@ -68,31 +68,37 @@
                 <div class="form-style2 wow animate__fadeInUp" data-wow-delay="0.55s">
                     <div class="vs-comment-form">
                         <div id="respond">
-                            <form action="https://html.vecurosoft.com/poolito/demo/mail.php" method="post" class="ajax-contact">
+                            <form action="{{ route('message.store') }}" method="post" class="">
+                                @csrf
                                 <div class="row gx-3">
                                     <div class="col-md-6 form-group">
-                                        <input name="fname" type="text" class="form-control" placeholder="First Name *" required="">
+                                        <input name="first_name" type="text" class="form-control" placeholder="First Name *" required>
                                     </div>
                                     <div class="col-md-6 form-group">
-                                        <input name="lname" type="text" class="form-control" placeholder="Last Name *" required="">
+                                        <input name="last_name" type="text" class="form-control" placeholder="Last Name *">
                                     </div>
 
                                     <div class="col-md-6 form-group">
-                                        <input name="number" type="number" class="form-control" placeholder="Your Phone *" required="">
+                                        <input name="phone" type="number" class="form-control" placeholder="Your Phone *" required>
                                     </div>
+
                                     <div class="col-md-6 form-group">
-                                        <input name="email" type="email" class="form-control" placeholder="Your Email *" required="">
+                                        <input name="email" type="email" class="form-control" placeholder="Your Email *">
                                     </div>
+
                                     <div class="col-12  form-group mt-1 mb-30">
-                                        <textarea name="message" class="form-control" placeholder="your message ..."
-                                            required=""></textarea>
+                                        <textarea name="message" class="form-control" placeholder="your message ..." required></textarea>
                                     </div>
                                     <div class="col-12 form-group mb-0">
                                         <button class="vs-btn" type="submit">Send message</button>
                                     </div>
                                 </div>
                             </form>
-                            <p class="form-messages mb-0 mt-3"></p>
+                            <p class="success mb-0 mt-3">
+                                @if(session('success'))
+                                {{ session('success') }}
+                                @endif
+                            </p>
                         </div>
                     </div>
                 </div>

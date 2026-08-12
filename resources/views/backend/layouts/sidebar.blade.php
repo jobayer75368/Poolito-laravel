@@ -56,7 +56,7 @@
             <span class="nav-text">Portfolio</span>
         </a>
 
-        <a @class(['nav-link', 'active'=> request()->routeIs(['admin.messages'])]) href="{{ route('admin.messages') }}">
+        <a @class(['nav-link', 'active'=> request()->routeIs(['message.index'])]) href="{{ route('message.index') }}">
             <span class="nav-icon">
                 <i class="bi bi-chat-text"></i>
             </span>
