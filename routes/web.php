@@ -69,9 +69,7 @@ Route::get('/shop', function () {
 Route::prefix('admin')->middleware('auth')->name('admin.')->group(function () {
 
     // Dashboard 
-    Route::get('/dashboard', function () {
-        return view('backend.dashboard');
-    })->name('dashboard');
+    Route::get('/dashboard', [UserController::class, 'dashboardIndex'])->name('dashboard');
 
     Route::get(
         '/users',
