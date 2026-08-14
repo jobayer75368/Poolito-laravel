@@ -16,7 +16,7 @@
                     <li>
                         <a class="link-opacity-25-hover" href="{{ route('admin.dashboard') }}">Dashboard </a>
                     </li>/
-                    <li><a class="link-opacity-25-hover" href="{{ route('admin.services') }}">Service List </a></li>/
+                    <li><a class="link-opacity-25-hover" href="{{ route('admin.service.index') }}">Service List </a></li>/
                     <li>
                         Add Service
                     </li>
@@ -27,7 +27,8 @@
 
         <section class="row g-3">
             <div class="col-12 col-xl-12">
-                <form class="panel needs-validation" novalidate>
+                <form action="{{ route('admin.service.store') }}" method="POST" enctype="multipart/form-data">
+                    @csrf
                     <div class="panel-header">
                         <div>
                             <h2 class="h5 mb-1 section-title">
@@ -38,30 +39,31 @@
                     </div>
                     <div class="row g-3">
                         <div class="col-md-12">
-                            <label class="form-label" for="formName">Service Title</label>
-                            <input class="form-control" id="formName" required>
+                            <label class="form-label" for="serviceTitle">Service Title</label>
+                            <input class="form-control" id="serviceTitle" name="service_title" required>
                             <div class="invalid-feedback">Full name is required.</div>
-                        </div>
-                        <div class="col-md-12">
-                            <label class="form-label" for="formName">Service Slug</label>
-                            <input class="form-control" id="formName" required>
-                            <div class="invalid-feedback">Full name is required.</div>
-                        </div>
-                        <div class="col-md-12">
-                            <label class="form-label" for="formService">Service Icon</label>
-                            <input class="form-control" id="formService" type="text">
                         </div>
 
+                        <div class="col-md-12">
+                            <label class="form-label" for="serviceSlug">Service Slug</label>
+                            <input class="form-control" id="serviceSlug" name="service_slug" required>
+                            <div class="invalid-feedback">Full name is required.</div>
+                        </div>
+
+                        <div class="col-md-12">
+                            <label class="form-label" for="serviceIcon">Service Icon</label>
+                            <input class="form-control" id="formService" name="service_icon" type="text">
+                        </div>
 
                         <div class="col-12">
                             <label class="form-label" for="shortDescription">Short Description</label>
-                            <textarea class="form-control summernote" id="shortDescription" rows="5" required></textarea>
-                            <div class="invalid-feedback">Message is required.</div>
+                            <textarea class="form-control summernote" id="shortDescription" rows="5" name="short_description"></textarea>
+                            <!-- <div class="invalid-feedback">Message is required.</div> -->
                         </div>
 
                         <div class="col-12">
                             <label class="form-label" for="longDescription">Long Description</label>
-                            <textarea class="form-control summernote" id="longDescription" rows="5"></textarea>
+                            <textarea class="form-control summernote" id="longDescription" name="long_description" rows="5"></textarea>
                         </div>
 
                         <div class="col-12">
@@ -75,7 +77,7 @@
 
                         <div class="col-12">
                             <label class="form-label" for="serviceImg">Service Image</label>
-                            <input class="form-control" id="serviceImg" type="file">
+                            <input class="form-control" id="serviceImg" name="service_image" type="file">
                             <div class="invalid-feedback">Service Image is required.</div>
                         </div>
 
@@ -85,13 +87,6 @@
                     </div>
                 </form>
             </div>
-
-            <!-- <div class="col-12 col-xl-5">
-        <div class="panel h-100">
-          <h2 class="h5 mb-3 section-title"><i class="bi bi-input-cursor-text" aria-hidden="true"></i><span>Input States</span></h2><input class="form-control mb-3" value="Default input"><input class="form-control is-valid mb-3" value="Valid input"><input class="form-control is-invalid mb-3" value="Invalid input">
-          <div class="form-check"><input class="form-check-input" type="checkbox" id="sampleCheck" checked><label class="form-check-label" for="sampleCheck">Sample checkbox</label></div>
-        </div>
-      </div> -->
 
         </section>
     </div>

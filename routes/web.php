@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\backend\MessageController;
+use App\Http\Controllers\backend\ServiceController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Backend\UserController;
@@ -85,9 +86,9 @@ Route::prefix('admin')->middleware('auth')->name('admin.')->group(function () {
     })->name('user_details');
 
     // service management 
-    Route::get('/services', function () {
-        return view('backend.service.services');
-    })->name('services');
+    Route::get('/services', [ServiceController::class, 'index'])->name('service.index');
+    Route::get('/services/create', [ServiceController::class, 'create'])->name('service.create');
+    Route::post('/services/store', [ServiceController::class, 'store'])->name('service.store');
 
     Route::get('/service_add', function () {
         return view('backend.service.service_add');

@@ -19,7 +19,7 @@
           <li>
             Service List
           </li>/
-          <li><a class="link-opacity-25-hover" href="{{ route('admin.service_add') }}"> Add Service</a></li>
+          <li><a class="link-opacity-25-hover" href="{{ route('admin.service.create') }}"> Add Service</a></li>
         </ul>
       </div>
 
@@ -31,7 +31,7 @@
           <h2 class="h5 mb-1 section-title"><i class="bi bi-table" aria-hidden="true"></i><span>Service List</span></h2>
         </div>
         <div class="d-flex gap-2 justify-content-right">
-          <a class="d-flex justify-content-center align-items-center btn btn-sm btn-info" href="{{ route('admin.service_add') }}">
+          <a class="d-flex justify-content-center align-items-center btn btn-sm btn-info" href="{{ route('admin.service.create') }}">
             <i class="bi bi-plus-square-fill fs-4"></i>Add Service
           </a>
         </div>
@@ -51,15 +51,17 @@
           </thead>
           <tbody>
 
+            @foreach ($services as $key=>$service)
             <tr class="fw-semibold mb-0">
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
+              <td>{{ $key+1 }}</td>
+              <td>{{ $service->service_title }}</td>
+              <td>{{ $service->service_slug }}</td>
+              <td>{{ $service->service_image }}</td>
               <td><span class="badge text-bg-success">Active</span></td>
-              <td></td>
+              <td>{{ $service->created_at }}</td>
               <td class="text-end"><a class="btn btn-light btn-sm" href="{{ route('admin.user_details') }}">View</a></td>
             </tr>
+            @endforeach
 
 
 
