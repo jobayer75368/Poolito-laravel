@@ -53,7 +53,7 @@
                             <td>{{ $message->created_at->format('M d, Y') }}</td>
                             <td class="text-end d-flex gap-2">
 
-                                <a class="btn btn-light btn-sm" href="{{ route('admin.message.show',$message->id) }}">View</a>
+                                <a class="btn btn-light btn-sm" href="{{ route('admin.message.show',$message->id) }}"><i class="bi bi-eye"></i></a>
                                 <a type="submit" class="btn btn-sm btn-outline-danger" data-bs-toggle="modal"
                                     data-bs-target="#deleteConfirmModal">
                                     <i class="bi bi-trash me-1"></i>

@@ -57,9 +57,19 @@
               <td>{{ $service->service_title }}</td>
               <td>{{ $service->service_slug }}</td>
               <td>{{ $service->service_image }}</td>
-              <td><span class="badge text-bg-success">Active</span></td>
+              <td><span class="badge bg-{{ $service->status=='active'?'success':'danger' }}">{{ ucwords($service->status) }}</span></td>
               <td>{{ $service->created_at }}</td>
-              <td class="text-end"><a class="btn btn-light btn-sm" href="{{ route('admin.user_details') }}">View</a></td>
+              <td>
+                <div class="text-end d-flex justify-content-center align-items-center gap-2">
+                  <a class="btn btn-light btn-sm" href="{{ route('admin.user_details') }}"><i class="bi bi-eye"></i></a>
+                  <a class="btn btn-sm btn-outline-primary" href="">
+                    <i class="bi bi-pencil-square"></i>
+                  </a>
+                  <a class="btn btn-sm btn-outline-danger" href="">
+                    <i class="bi bi-trash"></i>
+                  </a>
+                </div>
+              </td>
             </tr>
             @endforeach
 

@@ -20,15 +20,26 @@ class ServiceController extends Controller
         return view('backend.service.create');
     }
     public function store(Request $request)
+
     {
+
+        // $request->validate([
+        //     'service_image' => 'required|image',
+        // ]);
+        $image_path = null;
+        if ($request->hasFile('service_image')) {
+            $image_path = $request->file('service_image')->store('service_images', 'public');
+        }
+
         Service::create([
+
             'service_title' => $request->service_title,
             'service_slug' => $request->service_slug,
             'service_icon' => $request->service_icon,
             'short_description' => $request->short_description,
             'long_description' => $request->long_description,
             'status' => $request->status,
-            'service_image' => $request->service_image ?? 'avatar.jpg',
+            'service_image' => $image_path,
             'created_by' => Auth::user()->id,
             'updated_by' => Auth::user()->id,
 
