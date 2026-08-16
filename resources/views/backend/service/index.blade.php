@@ -42,7 +42,6 @@
             <tr>
               <th scope="col">Sl</th>
               <th scope="col">Title</th>
-              <th scope="col">Slug</th>
               <th scope="col">Image</th>
               <th scope="col">Status</th>
               <th scope="col">Created</th>
@@ -55,13 +54,14 @@
             <tr class="fw-semibold mb-0">
               <td>{{ $key+1 }}</td>
               <td>{{ $service->service_title }}</td>
-              <td>{{ $service->service_slug }}</td>
-              <td>{{ $service->service_image }}</td>
+              <td>
+                <img style="height: 80px;" src="{{ '/storage/'. $service->service_image }}" alt="{{ $service->service_title }}">
+              </td>
               <td><span class="badge bg-{{ $service->status=='active'?'success':'danger' }}">{{ ucwords($service->status) }}</span></td>
               <td>{{ $service->created_at }}</td>
               <td>
                 <div class="text-end d-flex justify-content-center align-items-center gap-2">
-                  <a class="btn btn-light btn-sm" href="{{ route('admin.user_details') }}"><i class="bi bi-eye"></i></a>
+                  <a class="btn btn-light btn-sm" href="{{ route('admin.service.show',$service->id) }}"><i class="bi bi-eye"></i></a>
                   <a class="btn btn-sm btn-outline-primary" href="">
                     <i class="bi bi-pencil-square"></i>
                   </a>

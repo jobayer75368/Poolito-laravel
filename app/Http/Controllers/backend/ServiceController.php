@@ -46,4 +46,10 @@ class ServiceController extends Controller
         ]);
         return redirect()->route('admin.service.index');
     }
+
+    public function show($id)
+    {
+        $service = Service::findOrFail($id);
+        return view('backend.service.show', compact('service'));
+    }
 }
