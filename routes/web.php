@@ -87,13 +87,19 @@ Route::prefix('admin')->middleware('auth')->name('admin.')->group(function () {
 
     // service management 
     Route::get('/services', [ServiceController::class, 'index'])->name('service.index');
+
     Route::get('/services/create', [ServiceController::class, 'create'])->name('service.create');
+
     Route::post('/services/store', [ServiceController::class, 'store'])->name('service.store');
+
     Route::get('/services/{id}', [ServiceController::class, 'show'])->name('service.show');
 
-    Route::get('/service_add', function () {
-        return view('backend.service.service_add');
-    })->name('service_add');
+    Route::get('/services/edit/{id}', [ServiceController::class, 'edit'])->name('service.edit');
+
+    Route::post('/services/update/{id}', [ServiceController::class, 'update'])->name('service.update');
+
+    Route::post('/services/delete/{id}', [ServiceController::class, 'destroy'])->name('service.destroy');
+
 
 
     // Blog management 

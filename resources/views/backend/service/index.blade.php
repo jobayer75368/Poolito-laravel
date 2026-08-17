@@ -37,6 +37,14 @@
         </div>
       </div>
       <div class="table-responsive">
+        <div>
+          @if (session('success'))
+          <h3 class="badge bg-success">
+            {{ session('success') }}
+          </h3>
+
+          @endif
+        </div>
         <table class="table align-middle mb-0" id="usersTable" data-searchable-table>
           <thead>
             <tr>
@@ -54,20 +62,37 @@
             <tr class="fw-semibold mb-0">
               <td>{{ $key+1 }}</td>
               <td>{{ $service->service_title }}</td>
+
               <td>
-                <img style="height: 80px;" src="{{ '/storage/'. $service->service_image }}" alt="{{ $service->service_title }}">
+                <img style="height: 80px;" src="{{$service->service_image? asset('storage/'.$service->service_image ): asset('no-image.png') }}" alt="{{ $service->service_title }}">
               </td>
-              <td><span class="badge bg-{{ $service->status=='active'?'success':'danger' }}">{{ ucwords($service->status) }}</span></td>
-              <td>{{ $service->created_at }}</td>
+
+              <td>
+                <span class="badge bg-{{ $service->status=='active'?'success':'danger' }}">{{ ucwords($service->status) }}</span>
+              </td>
+
+              <td>{{ $service->created_at->format('d M Y, h:i A') }}</td>
+
               <td>
                 <div class="text-end d-flex justify-content-center align-items-center gap-2">
-                  <a class="btn btn-light btn-sm" href="{{ route('admin.service.show',$service->id) }}"><i class="bi bi-eye"></i></a>
-                  <a class="btn btn-sm btn-outline-primary" href="">
+
+                  <a class="btn btn-light btn-sm" href="{{ route('admin.service.show',$service->id) }}">
+                    <i class="bi bi-eye"></i>
+                  </a>
+
+                  <a class="btn btn-sm btn-outline-primary" href="{{ route('admin.service.edit',$service->id) }}">
                     <i class="bi bi-pencil-square"></i>
                   </a>
-                  <a class="btn btn-sm btn-outline-danger" href="">
+
+                  <form action="{{ route('admin.service.destroy',$service->id) }}" method="POST">
+                    @csrf
+                    <button type="submit" class="btn btn-sm btn-outline-danger">
+                      <i class="bi bi-trash"></i>
+                    </button>
+                  </form>
+                  <!-- <a class="btn btn-sm btn-outline-danger" href="{{ route('admin.service.destroy',$service->id) }}">
                     <i class="bi bi-trash"></i>
-                  </a>
+                  </a> -->
                 </div>
               </td>
             </tr>

@@ -31,6 +31,14 @@
                 </div>
             </div>
             <div class="table-responsive">
+                <div>
+                    @if (session('success'))
+                    <h3 class="badge bg-success">
+                        {{ session('success') }}
+                    </h3>
+
+                    @endif
+                </div>
                 <table class="table align-middle mb-0" id="usersTable" data-searchable-table>
                     <thead>
                         <tr>

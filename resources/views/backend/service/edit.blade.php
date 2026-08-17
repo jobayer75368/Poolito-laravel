@@ -18,7 +18,7 @@
                     </li>/
                     <li><a class="link-opacity-25-hover" href="{{ route('admin.service.index') }}">Service List </a></li>/
                     <li>
-                        Add Service
+                        Edit Service
                     </li>
                 </ul>
             </div>
@@ -27,63 +27,64 @@
 
         <section class="row g-3">
             <div class="col-12 col-xl-12">
-                <form action="{{ route('admin.service.store') }}" method="POST" enctype="multipart/form-data">
+                <form action="{{ route('admin.service.update',$service->id) }}" method="POST" enctype="multipart/form-data">
                     @csrf
                     <div class="panel-header">
                         <div>
                             <h2 class="h5 mb-1 section-title">
                                 <i class="bi bi-tools"></i>
-                                <span>Add Service</span>
+                                <span>Edit Service</span>
                             </h2>
                         </div>
                     </div>
                     <div class="row g-3">
                         <div class="col-md-12">
                             <label class="form-label" for="serviceTitle">Service Title</label>
-                            <input class="form-control" id="serviceTitle" name="service_title" required>
+                            <input class="form-control" id="serviceTitle" name="service_title" value="{{ $service->service_title }}" required>
                             <div class="invalid-feedback">Full name is required.</div>
                         </div>
 
                         <div class="col-md-12">
                             <label class="form-label" for="serviceSlug">Service Slug</label>
-                            <input class="form-control" id="serviceSlug" name="service_slug" required>
+                            <input class="form-control" id="serviceSlug" name="service_slug" value="{{ $service->service_slug }}" required>
                             <div class="invalid-feedback">Slug is required.</div>
                         </div>
 
                         <div class="col-md-12">
                             <label class="form-label" for="serviceIcon">Service Icon</label>
-                            <input class="form-control" id="formService" name="service_icon" type="text">
+                            <input class="form-control" id="formService" name="service_icon" type="text" value="{{ $service->service_icon }}">
                         </div>
 
                         <div class="col-12">
                             <label class="form-label" for="shortDescription">Short Description</label>
-                            <textarea class="form-control summernote" id="shortDescription" rows="5" name="short_description"></textarea>
+                            <textarea class="form-control summernote" id="shortDescription" rows="5" name="short_description">{{ $service->short_description }}</textarea>
                             <!-- <div class="invalid-feedback">Message is required.</div> -->
                         </div>
 
                         <div class="col-12">
                             <label class="form-label" for="longDescription">Long Description</label>
-                            <textarea class="form-control summernote" id="longDescription" name="long_description" rows="5"></textarea>
+                            <textarea class="form-control summernote" id="longDescription" name="long_description" rows="5">{{ $service->long_description }}</textarea>
                         </div>
 
                         <div class="col-12">
                             <label class="form-label" for="status">Status</label>
                             <select class="form-control" name="status" id="status">
-                                <option value="active">Active</option>
-                                <option value="inactive">Inactive</option>
+                                <option value="active" @selected($service->status=='active')>Active</option>
+
+                                <option value="inactive" @selected($service->status=='inactive')>Inactive</option>
                             </select>
 
                         </div>
 
                         <div class="col-12">
                             <label class="form-label" for="serviceImg">Service Image</label>
-                            <input class="form-control" id="serviceImg" name="service_image" type="file">
+                            <input class="form-control" id="serviceImg" name="service_image" type="file" value="{{ $service->service_image }}">
                             <div class="invalid-feedback">Service Image is required.</div>
                         </div>
 
                     </div>
                     <div class="d-flex justify-start mt-4">
-                        <button class="btn btn-primary" type="submit">Submit</button>
+                        <button class="btn btn-primary" type="submit">Update</button>
                     </div>
                 </form>
             </div>
