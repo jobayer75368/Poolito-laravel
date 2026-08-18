@@ -47,9 +47,9 @@
                         </div>
                     </div>
 
-                    <div class="d-flex align-items-center gap-2" data-bs-toggle="modal" data-bs-target="#deleteConfirmModal">
-                        <a type="submit" class="btn btn-sm btn-outline-danger" data-bs-toggle="modal"
-                            data-bs-target="#deleteConfirmModal">
+                    <div class="d-flex align-items-center gap-2">
+                        <a class="btn btn-sm btn-outline-danger" data-bs-toggle="modal"
+                            data-bs-target="#messageDeleteModal">
                             <i class="bi bi-trash me-1"></i> Delete
                         </a>
                     </div>
@@ -94,8 +94,9 @@
     </div>
 </main>
 
+
 <!-- Delete modal  -->
-<div class="modal fade" id="deleteConfirmModal" tabindex="-1" aria-labelledby="confirmModalLabel" aria-hidden="true">
+<div class="modal fade" id="messageDeleteModal" tabindex="-1" aria-labelledby="confirmModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
             <div class="modal-header">
@@ -103,7 +104,7 @@
             </div>
             <div class="modal-body">Are you sure you want to Delete this message?</div>
 
-            <form method="POST" action="{{ route('admin.message.destroy',$message->id) }}" class="dropdown-item modal-footer">
+            <form method="POST" action="{{ route('admin.message.destroy',$message->id) }}" class=" modal-footer">
                 @csrf
                 <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Cancel</button>
                 <input type="submit" value="Confirm" class="btn btn-primary">

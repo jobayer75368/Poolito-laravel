@@ -52,7 +52,7 @@
               <th scope="col">Title</th>
               <th scope="col">Image</th>
               <th scope="col">Status</th>
-              <th scope="col">Created</th>
+              <th scope="col">Created At</th>
               <th scope="col" class="text-end">Action</th>
             </tr>
           </thead>
@@ -64,7 +64,7 @@
               <td>{{ $service->service_title }}</td>
 
               <td>
-                <img style="height: 80px;" src="{{$service->service_image? asset('storage/'.$service->service_image ): asset('no-image.png') }}" alt="{{ $service->service_title }}">
+                <img style="width: 120px;" src="{{$service->service_image && Storage::disk('public')->exists($service->service_image)? asset('storage/'.$service->service_image ): asset('no-image.png') }}" alt="{{ $service->service_title }}">
               </td>
 
               <td>
@@ -84,37 +84,44 @@
                     <i class="bi bi-pencil-square"></i>
                   </a>
 
-                  <form action="{{ route('admin.service.destroy',$service->id) }}" method="POST">
-                    @csrf
-                    <button type="submit" class="btn btn-sm btn-outline-danger">
-                      <i class="bi bi-trash"></i>
-                    </button>
-                  </form>
-                  <!-- <a class="btn btn-sm btn-outline-danger" href="{{ route('admin.service.destroy',$service->id) }}">
-                    <i class="bi bi-trash"></i>
-                  </a> -->
+                  <a type="submit" class="btn btn-sm btn-outline-danger" data-bs-toggle="modal"
+                    data-bs-target="#serviceDeleteModal{{ $service->id }}">
+                    <i class="bi bi-trash me-1"></i>
+                  </a>
                 </div>
               </td>
             </tr>
             @endforeach
 
 
-
           </tbody>
         </table>
-      </div>
-      <div class="d-flex flex-column flex-sm-row align-items-sm-center justify-content-between gap-3 mt-3">
-        <p class="text-muted small mb-0">Showing 1 to 5 of 124 services</p>
-        <nav aria-label="Users pagination">
-          <ul class="pagination pagination-sm mb-0">
-            <li class="page-item disabled"><a class="page-link" href="#">Previous</a></li>
-            <li class="page-item active"><a class="page-link" href="#">1</a></li>
-            <li class="page-item"><a class="page-link" href="#">2</a></li>
-            <li class="page-item"><a class="page-link" href="#">Next</a></li>
-          </ul>
-        </nav>
+
       </div>
     </section>
+
   </div>
 </main>
+
+<!-- Delete modal  -->
+@foreach ($services as $service )
+
+<div class="modal fade" id="serviceDeleteModal{{ $service->id }}" tabindex="-1" aria-labelledby="confirmModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2 class="modal-title h5" id="confirmModalLabel">Confirm Action</h2><button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">Are you sure you want to Delete this service?</div>
+
+      <form method="POST" action="{{ route('admin.service.destroy',$service->id) }}" class="modal-footer">
+        @csrf
+        <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Cancel</button>
+        <input type="submit" value="Confirm" class="btn btn-primary">
+      </form>
+    </div>
+  </div>
+</div>
+@endforeach
+
 @endsection

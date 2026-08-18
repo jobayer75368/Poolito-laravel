@@ -57,13 +57,16 @@
                             <td>{{ $key+1 }}</td>
                             <td>{{ $message->first_name }} {{ $message->last_name }}</td>
                             <td>{{ $message->email }}</td>
-                            <td>{{ $message->message }}</td>
+                            <td>{{ Str::limit($message->message, 20) }}</td>
                             <td>{{ $message->created_at->format('M d, Y') }}</td>
                             <td class="text-end d-flex gap-2">
 
-                                <a class="btn btn-light btn-sm" href="{{ route('admin.message.show',$message->id) }}"><i class="bi bi-eye"></i></a>
+                                <a class="btn btn-light btn-sm" href="{{ route('admin.message.show',$message->id) }}">
+                                    <i class="bi bi-eye"></i>
+                                </a>
+
                                 <a type="submit" class="btn btn-sm btn-outline-danger" data-bs-toggle="modal"
-                                    data-bs-target="#deleteConfirmModal">
+                                    data-bs-target="#messageDeleteModal{{ $message->id }}">
                                     <i class="bi bi-trash me-1"></i>
                                 </a>
 
@@ -71,27 +74,17 @@
                         </tr>
                         @endforeach
 
-
-
                     </tbody>
                 </table>
             </div>
-            <div class="d-flex flex-column flex-sm-row align-items-sm-center justify-content-between gap-3 mt-3">
-                <p class="text-muted small mb-0">Showing 1 to 5 of 124 Portfolios</p>
-                <nav aria-label="Users pagination">
-                    <ul class="pagination pagination-sm mb-0">
-                        <li class="page-item disabled"><a class="page-link" href="#">Previous</a></li>
-                        <li class="page-item active"><a class="page-link" href="#">1</a></li>
-                        <li class="page-item"><a class="page-link" href="#">2</a></li>
-                        <li class="page-item"><a class="page-link" href="#">Next</a></li>
-                    </ul>
-                </nav>
-            </div>
         </section>
+
     </div>
 </main>
+
+@foreach ($messages as $message )
 <!-- Delete modal  -->
-<div class="modal fade" id="deleteConfirmModal" tabindex="-1" aria-labelledby="confirmModalLabel" aria-hidden="true">
+<div class="modal fade" id="messageDeleteModal{{ $message->id }}" tabindex="-1" aria-labelledby="confirmModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
             <div class="modal-header">
@@ -99,7 +92,7 @@
             </div>
             <div class="modal-body">Are you sure you want to Delete this message?</div>
 
-            <form method="POST" action="{{ route('admin.message.destroy',$message->id) }}" class="dropdown-item modal-footer">
+            <form method="POST" action="{{ route('admin.message.destroy',$message->id) }}" class="modal-footer">
                 @csrf
                 <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Cancel</button>
                 <input type="submit" value="Confirm" class="btn btn-primary">
@@ -107,4 +100,5 @@
         </div>
     </div>
 </div>
+@endforeach
 @endsection

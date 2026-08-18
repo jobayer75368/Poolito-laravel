@@ -12,25 +12,36 @@
                     <h1 class="h3 mb-1">Service Details</h1>
                 </div>
             </div>
-            <div>
+
+            <div class="d-flex align-items-end flex-column gap-3">
                 <ul class="list-unstyled d-flex gap-1 mb-0">
                     <li><a class="link-opacity-25-hover" href="{{ route('admin.dashboard') }}">Dashboard</a> /</li>
                     <li><a class="link-opacity-25-hover" href="{{ route('admin.service.index') }}">Service List</a> /</li>
                     <li>Show</li>
                 </ul>
+
+                <div class="d-flex gap-2">
+                    <a href="{{ route('admin.service.edit', $service->id) }}" class="btn btn-outline-primary btn-sm">
+                        <i class="bi bi-pencil-square me-1"></i> Edit
+                    </a>
+
+                    <a class="btn btn-sm btn-outline-danger" data-bs-toggle="modal"
+                        data-bs-target="#serviceDeleteModal">
+                        <i class="bi bi-trash me-1"></i> Delete
+                    </a>
+                </div>
             </div>
         </div>
 
-        <div class="row g-4 mt-1">
+        <div class="row g-3">
 
             {{-- Left column: image + meta info --}}
             <div class="col-lg-4">
                 <section class="panel h-100">
                     <div class="p-3">
-                        <img src="{{ '/storage/'.$service->service_image }}"
+                        <img src="{{$service->service_image && Storage::disk('public')->exists($service->service_image)? asset('storage/'.$service->service_image ): asset('no-image.png') }}" alt="{{ $service->service_title }}"
                             class="rounded-3 w-100 mb-3"
-                            style="height: 200px; object-fit: cover;"
-                            alt="{{ $service->service_title }}">
+                            style="height: 200px; object-fit: cover;">
 
                         <div class="d-flex align-items-center gap-2 mb-3">
                             <span class="fs-3 text-primary">
@@ -95,4 +106,23 @@
         </div>
     </div>
 </main>
+
+
+<!-- Delete modal  -->
+<div class="modal fade" id="serviceDeleteModal" tabindex="-1" aria-labelledby="confirmModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 class="modal-title h5" id="confirmModalLabel">Confirm Action</h2><button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">Are you sure you want to Delete this Service?</div>
+
+            <form method="POST" action="{{ route('admin.service.destroy',$service->id) }}" class=" modal-footer">
+                @csrf
+                <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Cancel</button>
+                <input type="submit" value="Confirm" class="btn btn-primary">
+            </form>
+        </div>
+    </div>
+</div>
 @endsection
