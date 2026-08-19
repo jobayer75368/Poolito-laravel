@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\backend\BlogController;
 use App\Http\Controllers\backend\MessageController;
 use App\Http\Controllers\backend\ServiceController;
 use App\Http\Controllers\ProfileController;
@@ -103,13 +104,18 @@ Route::prefix('admin')->middleware('auth')->name('admin.')->group(function () {
 
 
     // Blog management 
-    Route::get('/blogs', function () {
-        return view('backend.blog.blogs');
-    })->name('blogs');
+    Route::get('/blogs', [BlogController::class, 'index'])->name('blog.index');
 
-    Route::get('/create_blog', function () {
-        return view('backend.blog.create_blog');
-    })->name('create_blog');
+    Route::get('/blogs/create', [BlogController::class, 'create'])->name('blog.create');
+    Route::post('/blogs/store', [BlogController::class, 'store'])->name('blog.store');
+
+    Route::get('/blogs/show/{id}', [BlogController::class, 'show'])->name('blog.show');
+
+    Route::get('/blogs/edit/{id}', [BlogController::class, 'edit'])->name('blog.edit');
+
+    Route::post('/service/update/{id}', [BlogController::class, 'update'])->name('servie.update');
+
+    Route::post('/blogs/delete/{id}', [BlogController::class, 'destroy'])->name('blog.destroy');
 
     // Team management 
 

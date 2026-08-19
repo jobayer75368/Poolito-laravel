@@ -19,7 +19,7 @@
                     <li>
                         Blog List
                     </li>/
-                    <li><a class="link-opacity-25-hover" href="{{ route('admin.create_blog') }}"> Create Blog</a></li>
+                    <li><a class="link-opacity-25-hover" href="{{ route('admin.blog.create')}}"> Create Blog</a></li>
                 </ul>
             </div>
 
