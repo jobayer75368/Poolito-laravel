@@ -4,12 +4,14 @@ namespace App\Http\Controllers\backend;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\Blog;
 
 class BlogController extends Controller
 {
     public function index()
     {
-        return view('backend.blog.index');
+        $blogs = Blog::with('creator', 'updater')->get();
+        return view('backend.blog.index', compact('blogs'));
     }
 
     public function create()
@@ -20,15 +22,17 @@ class BlogController extends Controller
     {
         return redirect()->route('admin.blog.index');
     }
-    public function show()
+    public function show(int $id)
     {
-        return view('backend.blog.show');
+        $blog = Blog::findOrFail($id);
+        return view('backend.blog.show', compact('blog'));;
     }
-    public function edit()
+    public function edit(int $id)
     {
-        return view('backend.blog.edit');
+        $blog = Blog::findOrFail($id);
+        return view('backend.blog.edit', compact('blog'));
     }
-    public function update()
+    public function update(Request $request, $id)
     {
         return redirect()->route('admin.blog.index');
     }

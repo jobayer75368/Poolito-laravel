@@ -19,7 +19,7 @@
                     <li>
                         Blog List
                     </li>/
-                    <li><a class="link-opacity-25-hover" href="{{ route('admin.blog.create')}}"> Create Blog</a></li>
+                    <li><a class="link-opacity-25-hover" href="{{ route('admin.blog.create') }}"> Add Blog</a></li>
                 </ul>
             </div>
 
@@ -31,53 +31,97 @@
                     <h2 class="h5 mb-1 section-title"><i class="bi bi-table" aria-hidden="true"></i><span>Blog List</span></h2>
                 </div>
                 <div class="d-flex gap-2 justify-content-right">
-                    <a class="d-flex justify-content-center align-items-center btn btn-sm btn-info" href="{{ route('admin.create_blog') }}">
-                        <i class="bi bi-plus-square-fill fs-4"></i>Create Blog
+                    <a class="d-flex justify-content-center align-items-center btn btn-sm btn-info" href="{{ route('admin.blog.create') }}">
+                        <i class="bi bi-plus-square-fill fs-4"></i>Add Blog
                     </a>
                 </div>
             </div>
             <div class="table-responsive">
+                <div>
+                    @if (session('success'))
+                    <h3 class="badge bg-success">
+                        {{ session('success') }}
+                    </h3>
+
+                    @endif
+                </div>
                 <table class="table align-middle mb-0" id="usersTable" data-searchable-table>
                     <thead>
                         <tr>
                             <th scope="col">Sl</th>
                             <th scope="col">Title</th>
-                            <th scope="col">Slug</th>
                             <th scope="col">Image</th>
                             <th scope="col">Status</th>
-                            <th scope="col">Posted At</th>
+                            <th scope="col">Created At</th>
                             <th scope="col" class="text-end">Action</th>
                         </tr>
                     </thead>
                     <tbody>
 
+                        @foreach ($blogs as $key=>$blog)
                         <tr class="fw-semibold mb-0">
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td><span class="badge text-bg-success">Active</span></td>
-                            <td></td>
-                            <td class="text-end"><a class="btn btn-light btn-sm" href="{{ route('admin.user_details') }}">View</a></td>
-                        </tr>
+                            <td>{{ $key+1 }}</td>
+                            <td>{{ $blog->blog_title }}</td>
 
+                            <td>
+                                <img style="width: 120px;" src="{{$blog->blog_image && Storage::disk('public')->exists($blog->blog_image)? asset('storage/'.$blog->blog_image ): asset('no-image.png') }}" alt="{{ $blog->blog_title }}">
+                            </td>
+
+                            <td>
+                                <span class="badge bg-{{ $blog->status=='active'?'success':'danger' }}">{{ ucwords($blog->status) }}</span>
+                            </td>
+
+                            <td>{{ $blog->created_at->format('d M Y, h:i A') }}</td>
+
+                            <td>
+                                <div class="text-end d-flex justify-content-center align-items-center gap-2">
+
+                                    <a class="btn btn-light btn-sm" href="{{ route('admin.blog.show',$blog->id) }}">
+                                        <i class="bi bi-eye"></i>
+                                    </a>
+
+                                    <a class="btn btn-sm btn-outline-primary" href="{{ route('admin.blog.edit',$blog->id) }}">
+                                        <i class="bi bi-pencil-square"></i>
+                                    </a>
+
+                                    <a type="submit" class="btn btn-sm btn-outline-danger" data-bs-toggle="modal"
+                                        data-bs-target="#blogDeleteModal{{ $blog->id }}">
+                                        <i class="bi bi-trash me-1"></i>
+                                    </a>
+                                </div>
+                            </td>
+                        </tr>
+                        @endforeach
 
 
                     </tbody>
                 </table>
-            </div>
-            <div class="d-flex flex-column flex-sm-row align-items-sm-center justify-content-between gap-3 mt-3">
-                <p class="text-muted small mb-0">Showing 1 to 5 of 124 blogs</p>
-                <nav aria-label="Users pagination">
-                    <ul class="pagination pagination-sm mb-0">
-                        <li class="page-item disabled"><a class="page-link" href="#">Previous</a></li>
-                        <li class="page-item active"><a class="page-link" href="#">1</a></li>
-                        <li class="page-item"><a class="page-link" href="#">2</a></li>
-                        <li class="page-item"><a class="page-link" href="#">Next</a></li>
-                    </ul>
-                </nav>
+
             </div>
         </section>
+
     </div>
 </main>
+
+<!-- Delete modal  -->
+@foreach ($blogs as $blog )
+
+<div class="modal fade" id="blogDeleteModal{{ $blog->id }}" tabindex="-1" aria-labelledby="confirmModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 class="modal-title h5" id="confirmModalLabel">Confirm Action</h2><button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">Are you sure you want to Delete this Blog?</div>
+
+            <form method="POST" action="{{ route('admin.blog.destroy',$blog->id) }}" class="modal-footer">
+                @csrf
+                <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Cancel</button>
+                <input type="submit" value="Confirm" class="btn btn-primary">
+            </form>
+        </div>
+    </div>
+</div>
+@endforeach
+
 @endsection

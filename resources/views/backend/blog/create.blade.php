@@ -17,7 +17,7 @@
                         <a class="link-opacity-25-hover" href="{{ route('admin.dashboard') }}">Dashboard </a>
                     </li>/
                     <li>
-                        <a class="link-opacity-25-hover" href="{{ route('admin.blogs') }}">Blog List</a>
+                        <a class="link-opacity-25-hover" href="{{ route('admin.blog.index') }}">Blog List</a>
                     </li>/
                     <li>Create Blog</li>
                 </ul>
@@ -26,7 +26,8 @@
 
         <section class="row g-3">
             <div class="col-12 col-xl-12">
-                <form class="panel needs-validation" novalidate>
+                <form action="{{ route('admin.blog.store') }}" class="panel needs-validation" method="POST" enctype="multipart/form-data" novalidate>
+                    @csrf
                     <div class="panel-header">
                         <div>
                             <h2 class="h5 mb-1 section-title">
@@ -43,18 +44,21 @@
                         </div>
                         <div class="col-md-6">
                             <label class="form-label" for="blogSlug">Slug</label>
-                            <input class="form-control" id="blogSlug" type="text" required>
+                            <input class="form-control" id="blogSlug" type="text" name="blog_slug" required>
                             <div class="invalid-feedback">Blog Slug is required.</div>
                         </div>
 
                         <div class="col-12">
+
                             <label class="form-label" for="shortDescription">Short Description</label>
-                            <textarea class="form-control summernote" id="shortDescription" rows="5"></textarea>
+
+                            <textarea class="form-control summernote" id="shortDescription" rows="5" name="short_description"></textarea>
+
                         </div>
 
                         <div class="col-12">
                             <label class="form-label" for="longDescription">Long Description</label>
-                            <textarea class="form-control summernote" id="longDescription" rows="5"></textarea>
+                            <textarea class="form-control summernote" id="longDescription" rows="5" name="long_description"></textarea>
                         </div>
 
 
@@ -71,7 +75,7 @@
 
                         <div class="col-12">
                             <label class="form-label" for="blogImg">Image</label>
-                            <input class="form-control" id="blogImg" type="file">
+                            <input class="form-control" id="blogImg" type="file" name="blog_image">
                             <div class="invalid-feedback">Blog Image is required.</div>
                         </div>
 

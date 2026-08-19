@@ -16,7 +16,7 @@ class ServiceController extends Controller
 {
     public function index()
     {
-        $services = Service::with('creator')->get();
+        $services = Service::with('creator', 'updater')->get();
         return view('backend.service.index', compact('services'));
     }
 
