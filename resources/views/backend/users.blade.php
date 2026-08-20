@@ -11,7 +11,10 @@
           <p class="text-muted mb-0">Review accounts, roles, account status, and team ownership.</p>
         </div>
       </div>
-      <div class="heading-actions"><a class="btn btn-outline-secondary btn-sm" href="tables.html"><i class="bi bi-download" aria-hidden="true"></i> Export</a><a class="btn btn-primary btn-sm" href="add-user.html"><i class="bi bi-person-plus" aria-hidden="true"></i> Add User</a></div>
+      <div class="heading-actions">
+        <a class="btn btn-primary btn-sm" href="add-user.html">
+          <i class="bi bi-person-plus" aria-hidden="true"></i> Add User</a>
+      </div>
     </div>
 
     <section class="row g-3 mt-1" aria-label="User summary">
@@ -35,11 +38,7 @@
             <span class="metric-label">Active</span>
             <span class="metric-icon"><i class="bi bi-check2-circle" aria-hidden="true"></i></span>
           </div>
-          <div class="metric-value">7,980</div>
-          <div class="metric-meta">
-            <span class="text-success">91%</span>
-            <span>healthy accounts</span>
-          </div>
+          <div class="metric-value"></div>
         </article>
       </div>
 
@@ -49,11 +48,7 @@
             <span class="metric-label">Pending</span>
             <span class="metric-icon"><i class="bi bi-hourglass-split" aria-hidden="true"></i></span>
           </div>
-          <div class="metric-value">184</div>
-          <div class="metric-meta">
-            <span class="text-warning">12</span>
-            <span>need approval</span>
-          </div>
+          <div class="metric-value"></div>
         </article>
       </div>
 
@@ -63,11 +58,7 @@
             <span class="metric-label">Suspended</span>
             <span class="metric-icon"><i class="bi bi-slash-circle" aria-hidden="true"></i></span>
           </div>
-          <div class="metric-value">38</div>
-          <div class="metric-meta">
-            <span class="text-danger">4</span>
-            <span>flagged today</span>
-          </div>
+          <div class="metric-value"></div>
         </article>
       </div>
     </section>

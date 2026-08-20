@@ -49,7 +49,7 @@
             <span class="nav-text">Team</span>
         </a>
 
-        <a @class(['nav-link', 'active'=> request()->routeIs(['admin.portfolios', 'admin.create_portfolio'])]) href="{{ route('admin.portfolios') }}">
+        <a @class(['nav-link', 'active'=> request()->routeIs(['admin.portfolio.index', 'admin.portfolio.create','admin.portfolio.show','admin.portfolio.edit'])]) href="{{ route('admin.portfolio.index') }}">
             <span class="nav-icon">
                 <i class="bi bi-briefcase"></i>
             </span>

@@ -7,6 +7,7 @@ use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Backend\UserController;
 use App\Http\Controllers\backend\MemberController;
+use App\Http\Controllers\backend\PortfolioController;
 
 // / ******Frontend starts here *******///
 Route::get('/', function () {
@@ -130,16 +131,18 @@ Route::prefix('admin')->middleware('auth')->name('admin.')->group(function () {
     });
 
 
-
     // Portfolio management 
+    Route::controller(PortfolioController::class)->group(function () {
+        Route::get('/portfolios', 'index')->name('portfolio.index');
+        Route::get('/portfolios/create', 'create')->name('portfolio.create');
+        Route::post('/portfolios/store', 'store')->name('portfolio.store');
+        Route::get('/portfolios/show/{id}', 'show')->name('portfolio.show');
+        Route::get('/portfolios/edit/{id}', 'edit')->name('portfolio.edit');
+        Route::post('/portfolios/update/{id}', 'update')->name('portfolio.update');
+        Route::post('/portfolios/delete/{id}', 'destroy')->name('portfolio.destroy');
+    });
 
-    Route::get('/portfolios', function () {
-        return view('backend.portfolio.portfolios');
-    })->name('portfolios');
 
-    Route::get('/create_portfolio', function () {
-        return view('backend.portfolio.create_portfolio');
-    })->name('create_portfolio');
 
     // Message management 
     Route::get('/messages', [MessageController::class, 'index'])->name('message.index');
