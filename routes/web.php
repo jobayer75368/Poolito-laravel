@@ -6,8 +6,7 @@ use App\Http\Controllers\backend\ServiceController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Backend\UserController;
-
-
+use App\Http\Controllers\backend\MemberController;
 
 // / ******Frontend starts here *******///
 Route::get('/', function () {
@@ -117,15 +116,20 @@ Route::prefix('admin')->middleware('auth')->name('admin.')->group(function () {
 
     Route::post('/blogs/delete/{id}', [BlogController::class, 'destroy'])->name('blog.destroy');
 
+
     // Team management 
 
-    Route::get('/team_members', function () {
-        return view('backend.team.team_members');
-    })->name('team_members');
+    Route::controller(MemberController::class)->group(function () {
+        Route::get('/team_members', 'index')->name('team.index');
+        Route::get('/team_members/create', 'create')->name('team.create');
+        Route::post('/team_members/store', 'store')->name('team.store');
+        Route::get('/team_members/show/{id}', 'show')->name('team.show');
+        Route::get('/team_memebers/edit/{id}', 'edit')->name('team.edit');
+        Route::post('/team_memebers/update/{id}', 'update')->name('team.update');
+        Route::post('/team_memebers/delete/{id}', 'destroy')->name('team.destroy');
+    });
 
-    Route::get('/member_add', function () {
-        return view('backend.team.member_add');
-    })->name('member_add');
+
 
     // Portfolio management 
 

@@ -88,7 +88,7 @@
                             <h2 class="h6 text-muted text-uppercase mb-2">Short Description</h2>
                             <div class="border border-secondary-subtle rounded-3 p-3 bg-body-tertiary lh-lg text-body text-break"
                                 style="white-space: pre-line;">
-                                {{ $service->short_description }}
+                                {!! $service->short_description!!}
                             </div>
                         </div>
 
@@ -96,7 +96,7 @@
                             <h2 class="h6 text-muted text-uppercase mb-2">Long Description</h2>
                             <div class="border border-secondary-subtle rounded-3 p-3 bg-body-tertiary lh-lg text-body text-break"
                                 style="white-space: pre-line;">
-                                {{ $service->long_description }}
+                                {!!$service->long_description !!}
                             </div>
                         </div>
                     </div>

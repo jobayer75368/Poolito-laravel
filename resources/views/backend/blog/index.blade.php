@@ -84,7 +84,7 @@
                                         <i class="bi bi-pencil-square"></i>
                                     </a>
 
-                                    <a type="submit" class="btn btn-sm btn-outline-danger" data-bs-toggle="modal"
+                                    <a class="btn btn-sm btn-outline-danger" data-bs-toggle="modal"
                                         data-bs-target="#blogDeleteModal{{ $blog->id }}">
                                         <i class="bi bi-trash me-1"></i>
                                     </a>
