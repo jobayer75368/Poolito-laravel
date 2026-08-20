@@ -28,9 +28,9 @@ class ServiceController extends Controller
 
     {
 
-        // $request->validate([
-        //     'service_image' => 'required|image',
-        // ]);
+        $request->validate([
+            'service_image' => 'required|image',
+        ]);
         $image_path = null;
         if ($request->hasFile('service_image')) {
             $image_path = $request->file('service_image')->store('service_images', 'public');
@@ -51,19 +51,19 @@ class ServiceController extends Controller
         return redirect()->route('admin.service.index');
     }
 
-    public function show($id)
+    public function show(int $id)
     {
         $service = Service::findOrFail($id);
         return view('backend.service.show', compact('service'));
     }
 
-    public function edit($id)
+    public function edit(int $id)
     {
         $service = Service::findOrFail($id);
         return view('backend.service.edit', compact('service'));
     }
 
-    public function update(Request $request, $id)
+    public function update(Request $request, int $id)
 
     {
 
@@ -95,7 +95,7 @@ class ServiceController extends Controller
         return redirect()->route('admin.service.index')->with('success', 'Service Updated Successfully');
     }
 
-    public function destroy($id)
+    public function destroy(int $id)
     {
         DB::beginTransaction();
         try {

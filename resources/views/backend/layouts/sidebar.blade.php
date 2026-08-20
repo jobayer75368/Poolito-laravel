@@ -34,7 +34,7 @@
             <span class="nav-text">Service</span>
         </a>
 
-        <a @class(['nav-link', 'active'=> request()->routeIs(['admin.blog.index', 'admin.blog.create','admin.blog.update','admin.blog.show'])]) href="{{ route('admin.blog.index') }}">
+        <a @class(['nav-link', 'active'=> request()->routeIs(['admin.blog.index', 'admin.blog.create','admin.blog.edit','admin.blog.show'])]) href="{{ route('admin.blog.index') }}">
             <span class="nav-icon">
                 <i class="bi bi-journal-text"></i>
             </span>

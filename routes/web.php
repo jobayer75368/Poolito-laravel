@@ -113,7 +113,7 @@ Route::prefix('admin')->middleware('auth')->name('admin.')->group(function () {
 
     Route::get('/blogs/edit/{id}', [BlogController::class, 'edit'])->name('blog.edit');
 
-    Route::post('/service/update/{id}', [BlogController::class, 'update'])->name('servie.update');
+    Route::post('/blogs/update/{id}', [BlogController::class, 'update'])->name('blog.update');
 
     Route::post('/blogs/delete/{id}', [BlogController::class, 'destroy'])->name('blog.destroy');
 

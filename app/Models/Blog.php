@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Blog extends Model
 {
+    protected $guarded = [];
     public function creator()
     {
         return $this->belongsTo(User::class, 'created_by');
