@@ -213,111 +213,33 @@
             </div>
         </div>
         <div class="row vs-carousel" data-slide-show="4" data-ml-slide-show="3" data-lg-slide-show="3" data-md-slide-show="2" data-autoplay="true" data-arrows="true">
+            @foreach ($services as $service )
             <div class="col-lg-3 wow animate__fadeInUp" data-wow-delay="0.25s">
                 <div class="vs-service__style1">
                     <div class="vs-service__img">
-                        <a href="/service_details">
-                            <img src="{{ asset('/frontend/assets/img/service/service-img-1-1.jpg') }}" alt="Serevice Image">
+                        <a class="d-flex justify-content-center" href="{{ route('service_details',$service->service_slug) }}">
+                            <img src="{{$service->service_image && Storage::disk('public')->exists($service->service_image)? asset('storage/'.$service->service_image ): asset('no-image.png') }}" alt="{{ $service->service_title }}" alt="Serevice Image" style="height: 285px; width: 420px;">
                         </a>
                     </div>
                     <div class="vs-service__body">
                         <div class="vs-service__header">
                             <div class="vs-service__content">
                                 <p class="vs-service__subtitle">cleaning 01</p>
-                                <h2 class="vs-service__title h6"><a href="/service-details">home service</a></h2>
+                                <h2 class="vs-service__title h6">
+                                    <a href="{{ route('service_details',$service->service_slug) }}">{{ $service->service_title }}</a>
+                                </h2>
                             </div>
                             <div class="vs-service__icon">
-                                <img src="{{ asset('/frontend/assets/img/icon/service-icon-1-1.svg') }}" alt="Service Icon">
+                                <img src="{{$service->service_icon && Storage::disk('public')->exists($service->service_icon)? asset('storage/'.$service->service_icon ): asset('no-image.png') }}" alt="{{ $service->service_title }}" style="height: 50px;">
                             </div>
                         </div>
-                        <p class="vs-service__text">aweep & mopsd vacuum floor House Cleaners.</p>
+                        <p class="vs-service__text">
+                            {{ Str::words(strip_tags($service->short_description), 12, '...') }}
+                        </p>
                     </div>
                 </div>
             </div>
-            <div class="col-lg-3 wow animate__fadeInUp" data-wow-delay="0.45s">
-                <div class="vs-service__style1">
-                    <div class="vs-service__img">
-                        <a href="/service-details">
-                            <img src="{{ asset('/frontend/assets/img/service/service-img-1-2.jpg') }}" alt="Serevice Image">
-                        </a>
-                    </div>
-                    <div class="vs-service__body">
-                        <div class="vs-service__header">
-                            <div class="vs-service__content">
-                                <p class="vs-service__subtitle">cleaning 01</p>
-                                <h2 class="vs-service__title h6"><a href="/service-details">Kitchen Clean</a></h2>
-                            </div>
-                            <div class="vs-service__icon">
-                                <img src="{{ asset('/frontend/assets/img/icon/service-icon-1-2.svg') }}" alt="Service Icon">
-                            </div>
-                        </div>
-                        <p class="vs-service__text">aweep & mopsd vacuum floor House Cleaners.</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-3 wow animate__fadeInUp" data-wow-delay="0.65s">
-                <div class="vs-service__style1">
-                    <div class="vs-service__img">
-                        <a href="/service-details">
-                            <img src="{{ asset('/frontend/assets/img/service/service-img-1-3.jpg') }}" alt="Serevice Image">
-                        </a>
-                    </div>
-                    <div class="vs-service__body">
-                        <div class="vs-service__header">
-                            <div class="vs-service__content">
-                                <p class="vs-service__subtitle">cleaning 01</p>
-                                <h2 class="vs-service__title h6"><a href="/service-details">Purification</a></h2>
-                            </div>
-                            <div class="vs-service__icon">
-                                <img src="{{ asset('/frontend/assets/img/icon/service-icon-1-3.svg') }}" alt="Service Icon">
-                            </div>
-                        </div>
-                        <p class="vs-service__text">aweep & mopsd vacuum floor House Cleaners.</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-3 wow animate__fadeInUp" data-wow-delay="0.85s">
-                <div class="vs-service__style1">
-                    <div class="vs-service__img">
-                        <a href="/service_details">
-                            <img src="{{ asset('/frontend/assets/img/service/service-img-1-4.jpg') }}" alt="Serevice Image">
-                        </a>
-                    </div>
-                    <div class="vs-service__body">
-                        <div class="vs-service__header">
-                            <div class="vs-service__content">
-                                <p class="vs-service__subtitle">cleaning 01</p>
-                                <h2 class="vs-service__title h6"><a href="/service_details">Bed & Mattres</a></h2>
-                            </div>
-                            <div class="vs-service__icon">
-                                <img src="{{ asset('/frontend/assets/img/icon/service-icon-1-4.svg') }}" alt="Service Icon">
-                            </div>
-                        </div>
-                        <p class="vs-service__text">aweep & mopsd vacuum floor House Cleaners.</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-3 wow animate__fadeInUp" data-wow-delay="0.95s">
-                <div class="vs-service__style1">
-                    <div class="vs-service__img">
-                        <a href="/service_details">
-                            <img src="{{ asset('/frontend/assets/img/service/service-img-1-5.jpg') }}" alt="Serevice Image">
-                        </a>
-                    </div>
-                    <div class="vs-service__body">
-                        <div class="vs-service__header">
-                            <div class="vs-service__content">
-                                <p class="vs-service__subtitle">cleaning 01</p>
-                                <h2 class="vs-service__title h6"><a href="/service_details">House Clean</a></h2>
-                            </div>
-                            <div class="vs-service__icon">
-                                <img src="{{ asset('/frontend/assets/img/icon/service-icon-1-4.svg') }}" alt="Service Icon">
-                            </div>
-                        </div>
-                        <p class="vs-service__text">aweep & mopsd vacuum floor House Cleaners.</p>
-                    </div>
-                </div>
-            </div>
+            @endforeach
         </div>
     </div>
     <span class="shape-mockup z-index-n1 d-xl-block d-none" style="right: 0; top: 0px;"><img src="{{ asset('/frontend/assets/img/shapes/service-shape-1.png') }}" alt="counter element"></span>
@@ -651,72 +573,28 @@
             </div>
         </div>
         <div class="row align-items-center">
+            @foreach ($blogs as $blog )
             <div class="col-xl-6 wow animate__fadeInUp" data-wow-delay="0.35s">
                 <div class="vs-blog__style1  mb-0">
                     <div class="blog-img">
-                        <a href="blog-details.html"><img src="{{ asset('/frontend/assets/img/blog/blog-s-2-1.jpg') }}" alt="Blog Image"></a>
-                        <a href="blog.html" class="blog-cate">deep cleaning</a>
+                        <a class="d-flex justify-content-center" href="{{ route('service_details',$blog->blog_slug) }}">
+                            <img src="{{$blog->blog_image && Storage::disk('public')->exists($blog->blog_image)? asset('storage/'.$blog->blog_image ): asset('no-image.png') }}" alt="{{ $blog->blog_title }}" alt="Serevice Image" style="height: 285px; width: 420px;">
+                        </a>
+                        <a href="blog.html" class="blog-cate">{{ $blog->title }}</a>
                     </div>
                     <div class="blog-content">
                         <div class="blog-inner-author">
-                            <a href="blog.html" class="blog-date"><i class="fa-regular fa-calendar-days"></i>April 27, 2024</a>
+                            <a href="blog.html" class="blog-date"><i class="fa-regular fa-calendar-days"></i>{{ $blog->created_at }}</a>
                             <a href="blog.html" class="blog-date"><i class="far fa-comments"></i>0 Comments</a>
                         </div>
-                        <h2 class="blog-title"><a href="blog-details.html">Residential House & Apartment Cleaning Services Include</a></h2>
+                        <h2 class="blog-title"><a href="{{ route('blog_details',$blog->blog_slug) }}}">{{ Str::words(strip_tags($blog->short_description), 12, '...') }}</a></h2>
                         <div class="blog-btn">
                             <a class="link-btn" href="blog-details.html"><span class="icon"><i class="fa-solid fa-arrow-right"></i></span>Read More</a>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="col-xl-6 wow animate__fadeInUp" data-wow-delay="0.65s">
-                <div class="blog-box2">
-                    <div class="vs-blog__style1 style2 mb-25">
-                        <div class="row gx-4 align-items-center">
-                            <div class="col-xl-auto">
-                                <div class="blog-img">
-                                    <a href="blog-details.html"><img src="{{ asset('/frontend/assets/img/blog/blog-s-2-2.jpg') }}" alt="Blog Image"></a>
-                                    <a href="blog.html" class="blog-cate">Bedroom</a>
-                                </div>
-                            </div>
-                            <div class="col">
-                                <div class="blog-content">
-                                    <div class="blog-inner-author">
-                                        <a href="blog.html" class="blog-date"><i class="fa-regular fa-calendar-days"></i>April 27, 2024</a>
-                                        <a href="blog.html" class="blog-date"><i class="far fa-comments"></i>0 Comments</a>
-                                    </div>
-                                    <h2 class="blog-title"><a href="blog-details.html">Get Launches Cleaning room service</a></h2>
-                                    <div class="blog-btn">
-                                        <a class="link-btn" href="blog-details.html"><span class="icon"><i class="fa-solid fa-arrow-right"></i></span>Read More</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="vs-blog__style1 style2 mb-0">
-                        <div class="row gx-4 align-items-center">
-                            <div class="col-xl-auto">
-                                <div class="blog-img">
-                                    <a href="blog-details.html"><img src="{{ asset('/frontend/assets/img/blog/blog-s-2-3.jpg') }}" alt="Blog Image"></a>
-                                    <a href="blog.html" class="blog-cate">Mattress</a>
-                                </div>
-                            </div>
-                            <div class="col">
-                                <div class="blog-content">
-                                    <div class="blog-inner-author">
-                                        <a href="blog.html" class="blog-date"><i class="fa-regular fa-calendar-days"></i>April 27, 2024</a>
-                                        <a href="blog.html" class="blog-date"><i class="far fa-comments"></i>0 Comments</a>
-                                    </div>
-                                    <h2 class="blog-title"><a href="blog-details.html">exclusive coupon for 10% off cleaning</a></h2>
-                                    <div class="blog-btn">
-                                        <a class="link-btn" href="blog-details.html"><span class="icon"><i class="fa-solid fa-arrow-right"></i></span>Read More</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            @endforeach
         </div>
     </div>
 </section>

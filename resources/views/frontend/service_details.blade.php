@@ -23,24 +23,15 @@
             <div class="row gx-60 g-5">
                 <div class="col-lg-4">
                     <div class="widget widget_categories style2 wow animate__fadeInUp wow-animated" data-wow-delay="0.75s">
-                        <h3 class="widget_title">all project</h3>
+                        <h3 class="widget_title">all Services</h3>
                         <div class="widget_content">
                             <ul>
+                                @foreach ( $allServices as $allService )
                                 <li>
-                                    <a href="/blog_details"><i class="fa-solid fa-angles-right"></i>Air Purification</a>
+                                    <a href="/blog_details">
+                                        <i class="fa-solid fa-angles-right"></i>{{ $allService->service_title }}</a>
                                 </li>
-                                <li>
-                                    <a href="/blog_details"><i class="fa-solid fa-angles-right"></i>Bed & Mattress Cleaning</a>
-                                </li>
-                                <li>
-                                    <a href="/blog_details"><i class="fa-solid fa-angles-right"></i>Kitchen Cleaning</a>
-                                </li>
-                                <li>
-                                    <a href="/blog_details"><i class="fa-solid fa-angles-right"></i>Aromatizing</a>
-                                </li>
-                                <li>
-                                    <a href="/blog_details"><i class="fa-solid fa-angles-right"></i>Bathroom Sanitation</a>
-                                </li>
+                                @endforeach
                             </ul>
                         </div>
                     </div>
@@ -58,52 +49,13 @@
                 </div>
                 <div class="col-lg-8">
                     <div class="portfolio-img mb-40 wow animate__fadeInUp" data-wow-delay="0.20s">
-                        <img src="{{ asset('/frontend/assets/img/service/s-d-1.jpg') }}" alt="service-Image">
+                        <img src="{{$service->service_image && Storage::disk('public')->exists($service->service_image)? asset('storage/'.$service->service_image ): asset('no-image.png') }}" alt="{{ $service->service_title }}" style="height: 415px; width: 100%;">
                     </div>
-                    <h2 class="portfolio-title h3 mb-20 wow animate__fadeInUp" data-wow-delay="0.25s">Dining & Living Room Cleaning</h2>
-                    <p class="portfolio-text mb-20 wow animate__fadeInUp" data-wow-delay="0.35s">
-                        closed system where recircultng cleaning solution is applied (often with nozzles) cleans, rinses and sanitises equipment.
-                        The CIP system is usually automatically controlled and the cleaning sequeces are given optimum timing for efficient cleaning
-                        of all parts of the plants. Knowing the different types of cleaning is essential to ensure main types of cleaning that dea.
-                    </p>
-                    <p class="portfolio-text mb-30 wow animate__fadeInUp" data-wow-delay="0.45s">
-                        Rainbow’s high techngy system with the help of nanles reoving unseen dust mites and bed bugs can cause harmful diseases because of dirters.
-                        This also includes changing the bed linens shee provided reoving the specialized deep unseen dust mites client.
-                    </p>
-                    <h2 class="portfolio-title h4 mb-20 wow animate__fadeInUp" data-wow-delay="0.55s">What the Benefits?</h2>
-                    <p class="portfolio-text wow animate__fadeInUp" data-wow-delay="0.65s">
-                        Giving to your bed a new life to breathe by closed system where recircltng cleaning solution is applied (often with nozzles) cleans,
-                        rinses and sanitises equipment. The CIP system the help of nanles reoving unseen dust mites and bed bugs can cause harmful diseases because of dirters.
-                        usually automatically controlled and the cleaning sequeces are given
-                    </p>
-                    <div class="list-box1 mb-35 wow animate__fadeInUp animation-style2" data-wow-delay="0.50s">
-                        <ul class="list-style2 wow animate__fadeInUp wow-animated" data-wow-delay="0.30s">
-                            <li class="list-icon"><i class="fas fa-arrow-circle-right"></i>Bed & Mattress Cleaning</li>
-                            <li class="list-icon"><i class="fas fa-arrow-circle-right"></i>Kitchen Cleaning</li>
-                        </ul>
-                        <ul class="list-style2 wow animate__fadeInUp wow-animated" data-wow-delay="0.30s">
-                            <li class="list-icon"><i class="fas fa-arrow-circle-right"></i>Giving to your bed a new life to breathe</li>
-                            <li class="list-icon"><i class="fas fa-arrow-circle-right"></i>Floor Vacuuming & Mopping</li>
-                        </ul>
-                    </div>
-                    <div class="row align-items-center">
-                        <div class=" col-lg-6">
-                            <div class=" wow animate__fadeInUp wow-animated" data-wow-delay="0.65s">
-                                <img src="{{ asset('/frontend/assets/img/service/s-d-2.jpg') }}" alt="Service Image">
-                            </div>
-                        </div>
-                        <div class=" col-lg-6">
-                            <div class=" wow animate__fadeInUp wow-animated" data-wow-delay="0.65s">
-                                <img src="{{ asset('/frontend/assets/img/service/s-d-3.jpg') }}" alt="Service Image">
-                            </div>
-                        </div>
-                    </div>
-                    <p class="portfolio-text mt-30 mb-0 wow animate__fadeInUp" data-wow-delay="0.65s">
-                        Dlosed system where recircultng cleaning solution is applied (often with nozzles) cleans,
-                        rinses and sanitises equipment. The CIP system is usually automatically controlled and the cleaning
-                        sequeces are given optimum timing for efficient cleaning of all parts of the plants. Knowing the different
-                        types of cleaning is essential to ensure main types of cleaning that dea.
-                    </p>
+                    <h2 class="portfolio-title h3 mb-20 wow animate__fadeInUp" data-wow-delay="0.25s">{{ $service->service_title }}</h2>
+
+                    <div>{!!$service->short_description!!}</div>
+                    <div class="text-break">{!! $service->long_description !!}</div>
+
                 </div>
             </div>
         </div>

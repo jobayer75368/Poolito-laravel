@@ -8,31 +8,24 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Backend\UserController;
 use App\Http\Controllers\backend\MemberController;
 use App\Http\Controllers\backend\PortfolioController;
+use App\Http\Controllers\frontend\HomeController;
 
 // / ******Frontend starts here *******///
-Route::get('/', function () {
-    return view('frontend.index');
-})->name('index');
+Route::get('/', HomeController::class)->name('home');
+
+// Service 
+Route::get('/services', [HomeController::class, 'serviceIndex'])->name('services');
+
+Route::get('/services/{slug}', [HomeController::class, 'serviceDetails'])->name('service_details');
 
 Route::get('/about', function () {
     return view('frontend.about');
 })->name('about');
 
-Route::get('/service', function () {
-    return view('frontend.service');
-})->name('service');
+// Blogs 
+Route::get('/blogs', [HomeController::class, 'blogIndex'])->name('blogs');
 
-Route::get('/service_details', function () {
-    return view('frontend.service_details');
-})->name('service_details');
-
-Route::get('/blog', function () {
-    return view('frontend.blog');
-})->name('blog');
-
-Route::get('/blog_details', function () {
-    return view('frontend.blog_details');
-})->name('blog_details');
+Route::get('/blogs_details/{slug}', [HomeController::class, 'blogDetails'])->name('blog_details');
 
 Route::get('/team', function () {
     return view('frontend.team');

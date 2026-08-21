@@ -52,7 +52,13 @@
 
                         <div class="col-md-12">
                             <label class="form-label" for="serviceIcon">Service Icon</label>
-                            <input class="form-control" id="formService" name="service_icon" type="text" value="{{ $service->service_icon }}">
+                            <input class="form-control" id="formService" name="service_icon" type="file">
+                            <div class="mt-2">
+                                <img id="serviceIconPreview"
+                                    src="{{ $service->service_icon ? asset('storage/'.$service->service_icon) : '' }}"
+                                    alt=""
+                                    style="height:50px; {{ $service->service_icon ? '' : 'display:none;' }}">
+                            </div>
                         </div>
 
                         <div class="col-12">
@@ -78,8 +84,14 @@
 
                         <div class="col-12">
                             <label class="form-label" for="serviceImg">Service Image</label>
-                            <input class="form-control" id="serviceImg" name="service_image" type="file" value="{{ $service->service_image }}">
+                            <input class="form-control" id="serviceImg" name="service_image" type="file">
                             <div class="invalid-feedback">Service Image is required.</div>
+                            <div class="mt-2">
+                                <img id="serviceImagePreview"
+                                    src="{{ $service->service_image ? asset('storage/'.$service->service_image) : '' }}"
+                                    alt=""
+                                    style="height:200px; {{ $service->service_image ? '' : 'display:none;' }}">
+                            </div>
                         </div>
 
                     </div>
@@ -92,4 +104,32 @@
         </section>
     </div>
 </main>
+
+<!-- Image preview  -->
+
+<script>
+    function previewImage(inputId, previewId) {
+        const input = document.getElementById(inputId);
+        const preview = document.getElementById(previewId);
+
+        input.addEventListener('change', function() {
+            const file = this.files[0];
+
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    preview.src = e.target.result;
+                    preview.style.display = 'block';
+                };
+                reader.readAsDataURL(file);
+            } else {
+                preview.src = '';
+                preview.style.display = 'none';
+            }
+        });
+    }
+
+    previewImage('formService', 'serviceIconPreview');
+    previewImage('serviceImg', 'serviceImagePreview');
+</script>
 @endsection

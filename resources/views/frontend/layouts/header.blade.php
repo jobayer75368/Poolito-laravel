@@ -45,14 +45,10 @@
                                         <a href="{{ route('about') }}">About Us</a>
                                     </li>
                                     <li class="menu-item-has-children">
-                                        <a href="/service">Service</a>
-                                        <ul class="sub-menu">
-                                            <li><a href="/service">Service</a></li>
-                                            <li><a href="/service_details">Service Details</a></li>
-                                        </ul>
+                                        <a href="{{ route('services') }}">Service</a>
                                     </li>
                                     <li class="menu-item-has-children">
-                                        <a href="/blog">Blog</a>
+                                        <a href="{{ route('blogs') }}">Blog</a>
                                         <ul class="sub-menu">
                                             <li><a href="/blog">Blog</a></li>
                                             <li><a href="/blog_details">Blog Details</a></li>

@@ -31,20 +31,26 @@ class ServiceController extends Controller
         $request->validate([
             'service_image' => 'required|image',
         ]);
-        $image_path = null;
+
+        $image_path1 = null;
+        if ($request->hasFile('service_icon')) {
+            $image_path1 = $request->file('service_icon')->store('service_icons', 'public');
+        }
+
+        $image_path2 = null;
         if ($request->hasFile('service_image')) {
-            $image_path = $request->file('service_image')->store('service_images', 'public');
+            $image_path2 = $request->file('service_image')->store('service_images', 'public');
         }
 
         Service::create([
 
             'service_title' => $request->service_title,
             'service_slug' => Str::slug($request->service_slug ?? $request->service_title),
-            'service_icon' => $request->service_icon,
+            'service_icon' => $image_path1,
             'short_description' => $request->short_description,
             'long_description' => $request->long_description,
             'status' => $request->status,
-            'service_image' => $image_path,
+            'service_image' => $image_path2,
             'created_by' => Auth::user()->id,
 
         ]);
@@ -71,24 +77,32 @@ class ServiceController extends Controller
         //     'service_image' => 'required|image',
         // ]);
         $service = Service::findOrFail($id);
-        $image_path = $service->service_image;
+        $image_path1 = $service->service_icon;
+        $image_path2 = $service->service_image;
+        if ($request->hasFile('service_icon')) {
+
+            if ($image_path1 && Storage::disk('public')->exists($image_path1)) {
+                Storage::disk('public')->delete($image_path1);
+            }
+            $image_path1 = $request->file('service_icon')->store('service_icons', 'public');
+        }
         if ($request->hasFile('service_image')) {
 
-            if ($image_path && Storage::disk('public')->exists($image_path)) {
-                Storage::disk('public')->delete($image_path);
+            if ($image_path2 && Storage::disk('public')->exists($image_path2)) {
+                Storage::disk('public')->delete($image_path2);
             }
-            $image_path = $request->file('service_image')->store('service_images', 'public');
+            $image_path2 = $request->file('service_image')->store('service_images', 'public');
         }
 
         $service->update([
 
             'service_title' => $request->service_title,
             'service_slug' => Str::slug($request->service_slug ?? $request->service_title),
-            'service_icon' => $request->service_icon,
+            'service_icon' => $image_path1,
             'short_description' => $request->short_description,
             'long_description' => $request->long_description,
             'status' => $request->status,
-            'service_image' => $image_path,
+            'service_image' => $image_path2,
             'updated_by' => Auth::user()->id,
 
         ]);
@@ -100,9 +114,13 @@ class ServiceController extends Controller
         DB::beginTransaction();
         try {
             $service = Service::findOrFail($id);
-            $image_path = $service->service_image;
-            if ($image_path && Storage::disk('public')->exists($image_path)) {
-                Storage::disk('public')->delete($image_path);
+            $image_path1 = $service->service_icon;
+            $image_path2 = $service->service_image;
+            if ($image_path1 && Storage::disk('public')->exists($image_path1)) {
+                Storage::disk('public')->delete($image_path1);
+            }
+            if ($image_path2 && Storage::disk('public')->exists($image_path2)) {
+                Storage::disk('public')->delete($image_path2);
             }
 
             $service->delete();

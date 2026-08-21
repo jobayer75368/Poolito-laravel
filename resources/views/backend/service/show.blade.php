@@ -42,12 +42,12 @@
                         <img src="{{$service->service_image && Storage::disk('public')->exists($service->service_image)? asset('storage/'.$service->service_image ): asset('no-image.png') }}" alt="{{ $service->service_title }}"
                             class="rounded-3 w-100 mb-3"
                             style="height: 200px; object-fit: cover;">
-
-                        <div class="d-flex align-items-center gap-2 mb-3">
-                            <span class="fs-3 text-primary">
-                                <i class="bi {{ $service->service_icon }}"></i>
-                            </span>
+                        <hr class="text-secondary-subtle">
+                        <div class="d-flex align-items-center justify-content-between gap-2 mb-3">
                             <span class="text-muted small">Service Icon</span>
+                            <span class="fs-3 text-primary">
+                                <img class="rounded-3 w-100 mb-3" src="{{$service->service_icon && Storage::disk('public')->exists($service->service_icon)? asset('storage/'.$service->service_icon ): asset('no-image.png') }}" alt="{{ $service->service_title }}" style="height: 50px; object-fit: cover;">
+                            </span>
                         </div>
 
                         <hr class="text-secondary-subtle">
