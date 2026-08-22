@@ -25,59 +25,19 @@
             <div class="col-lg-9 pe-4">
                 <div class="vs-blog mb-0 blog-single wow animate__fadeInUp wow-animated">
                     <div class="blog-img">
-                        <img src="{{ asset('/frontend/assets/img/blog/blog-s-1-1.jpg') }}" alt="Blog Image">
+                        <img src="{{$blog->blog_image && Storage::disk('public')->exists($blog->blog_image)? asset('storage/'.$blog->blog_image ): asset('no-image.png') }}" alt="{{ $blog->blog_title }}" style="height: 100%; width: 100%">
                     </div>
                     <div class="blog-content">
                         <div class="blog-inner-author">
-                            <span>Written by:<a href="/blog">frenk</a></span>
-                            <a href="/blog" class="blog-date"><i class="fa-regular fa-calendar-days"></i>April 27, 2024</a>
+                            <span>Written by:<a href="/blog">{{ $blog->creator->name ?? 'N/A' }}</a></span>
+                            <a href="/blog" class="blog-date"><i class="fa-regular fa-calendar-days"></i>{{ $blog->created_at->format('d M Y, h:i A') ?? 'N/A' }}</a>
                         </div>
-                        <h2 class="blog-title">Dining & Living Room Cleaning</h2>
-                        <p class="blog-text wow animate__fadeInUp" data-wow-delay="0.25s">
-                            Rainbow’s high techngy system with the help of nanleees our reoving unseen dusot mites and bed bugs can cause
-                            harmfully diseases because of dirters. any This also includes changing home bes linens share providd reovinsg that
-                            specialized deep unseen unseen dust echngy mites client. We hand-deliver peace of mind and a tidy space, as well
-                            as the luxury of spare time to residents all across Chicago.
-                        </p>
-                        <p class="blog-text wow animate__fadeInUp" data-wow-delay="0.25s">
-                            harmfully diseases because of dirters. This also includes changing home in a bes linens share providd reovinsg that
-                            specialized deep unseen unseen dust echngy mites client. We hand-deliver peace of mind and a tidy space, as well
-                            as the luxury of spare time to residents all across Chicago.
-                        </p>
-                        <blockquote class="vs-quote wow animate__fadeInUp" data-wow-delay="0.25s">
-                            <p>“ Derek Ramsay and Ellen Adarna known thriving acting carers clean home can be nearly impossible “</p>
-                            <cite>Written by: frenk</cite>
-                        </blockquote>
-                        <p class="blog-text mb-30 wow animate__fadeInUp" data-wow-delay="0.25s">
-                            Window diseases because of dirters. This also includes changing home bes linens share providd reovinsg that
-                            specialized deep unseen unseen dust echngy mites client. We hand-deliver peace of mind and a tidy space, as well
-                            as the luxury of spare time to residents all across Chicago.
-                        </p>
-                        <h4 class="text-capitalize wow animate__fadeInUp" data-wow-delay="0.25s">What the Benefits?</h4>
-                        <p class="blog-text mb-30 wow animate__fadeInUp" data-wow-delay="0.25s">
-                            Giving to your bed a new life to breathe by closed system where recircltng cleaning solution is
-                            applied (often with nozzles) cleans, rinses and sanitises equipment. The CIP system the help of
-                            nanles reoving unseen dust mites and bed bugs can cause harmful diseases because of dirters. usually
-                            automatically controlled and the closed system where recircltng cleaning given.
-                        </p>
-                        <div class="row gx-20">
-                            <div class="col-xl-6 col-md-6 mb-20 wow animate__fadeInUp" data-wow-delay="0.25s">
-                                <figure class="wp-block-image">
-                                    <img src="{{ asset('/frontend/assets/img/blog/blog-d-2.jpg') }}" alt="blog">
-                                </figure>
-                            </div>
-                            <div class="col-xl-6 col-md-6 mb-20 wow animate__fadeInUp" data-wow-delay="0.25s">
-                                <figure class="wp-block-image">
-                                    <img src="{{ asset('/frontend/assets/img/blog/blog-d-3.jpg') }}" alt="blog">
-                                </figure>
-                            </div>
+                        <h2 class="blog-title">{{ $blog->blog_title }}</h2>
+                        <div>
+                            {!! $blog->short_description !!}
                         </div>
-                        <p class="blog-text mb-80 mb-sm-40 wow animate__fadeInUp" data-wow-delay="0.25s">
-                            Rainbow’s high techngy system with the help of nanleees reoving unseen dusot mites and bed bugs can cause
-                            harmfully diseases because of dirters. This also includes changing home bes linens share providd reovinsg that
-                            specialized deep unseen unseen dust echngy mites client. We hand-deliver peace of mind and a tidy space, as well
-                            as the luxury of spare time to residents all across Chicago.
-                        </p>
+
+                        <div>{!! $blog->long_description !!}</div>
                     </div>
                     <div class="blog-links">
                         <div class="tagcloud2">
@@ -267,39 +227,22 @@
                     <div class="widget">
                         <h3 class="widget_title title-shep">Recent Posts</h3>
                         <div class="recent-post-wrap">
+                            @foreach ($recentBlogs as $recentBlog )
                             <div class="recent-post">
                                 <div class="media-img">
-                                    <a href="/blog_details"><img src="{{ asset('/frontend/assets/img/blog/recent-post-1-1.jpg') }}" alt="Blog Image"></a>
+                                    <a href="{{ route('blog_details',$recentBlog->blog_slug) }}">
+                                        <img src="{{$recentBlog->blog_image && Storage::disk('public')->exists($recentBlog->blog_image)? asset('storage/'.$recentBlog->blog_image ): asset('no-image.png') }}" alt="{{ $recentBlog->blog_title }}" style="height: 70px; width: 90px;">
+
+                                    </a>
                                 </div>
                                 <div class="media-body">
                                     <div class="recent-post-meta">
-                                        <a href="/blog"><i class="fa-regular fa-calendar-days"></i>Dec 13, 2024</a>
+                                        <a href="{{ route('blog_details',$recentBlog->blog_slug) }}"><i class="fa-regular fa-calendar-days"></i>{{ $recentBlog->created_at->format('d M Y') }}</a>
                                     </div>
-                                    <h4 class="post-title"><a class="text-inherit" href="/blog_details">dining & leving room cleaning</a></h4>
+                                    <h4 class="post-title"><a class="text-inherit" href="{{ route('blog_details',$recentBlog->blog_slug) }}">{{Str::words($recentBlog->blog_title ,3,'...') }}</a></h4>
                                 </div>
                             </div>
-                            <div class="recent-post">
-                                <div class="media-img">
-                                    <a href="/blog_details"><img src="{{ asset('/frontend/assets/img/blog/recent-post-1-2.jpg') }}" alt="Blog Image"></a>
-                                </div>
-                                <div class="media-body">
-                                    <div class="recent-post-meta">
-                                        <a href="/blog"><i class="fa-regular fa-calendar-days"></i>Jan 08, 2024</a>
-                                    </div>
-                                    <h4 class="post-title"><a class="text-inherit" href="/blog_details">Keeping the Hive Deep Clean plan</a></h4>
-                                </div>
-                            </div>
-                            <div class="recent-post">
-                                <div class="media-img">
-                                    <a href="/blog_details"><img src="{{ asset('/frontend/assets/img/blog/recent-post-1-3.jpg') }}" alt="Blog Image"></a>
-                                </div>
-                                <div class="media-body">
-                                    <div class="recent-post-meta">
-                                        <a href="/blog"><i class="fa-regular fa-calendar-days"></i>Nov 07, 2024</a>
-                                    </div>
-                                    <h4 class="post-title"><a class="text-inherit" href="/blog_details">Most Caring Cleaning Service?</a></h4>
-                                </div>
-                            </div>
+                            @endforeach
                         </div>
                     </div>
                     <div class="widget widget_tags wow animate__fadeInUp wow-animated">

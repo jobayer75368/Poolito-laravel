@@ -23,26 +23,28 @@
     <div class="container">
         <div class="row g-5">
             <div class="col-lg-9 pe-4">
+                @foreach ($blogs as $blog )
                 <div class="vs-blog blog-single wow animate__fadeInUp wow-animated">
                     <div class="blog-img">
-                        <a href="/blog_details"><img src="{{ asset('/frontend/assets/img/blog/blog-s-1-1.jpg') }}" alt="Blog Image"></a>
+                        <a href="{{ route('blogs',$blog->blog_slug) }}">
+                            <img src="{{$blog->blog_image && Storage::disk('public')->exists($blog->blog_image)? asset('storage/'.$blog->blog_image ): asset('no-image.png') }}" alt="{{ $blog->blog_title }}" style="height: 100%; width: 100%">
+                        </a>
                     </div>
                     <div class="blog-content">
                         <div class="blog-inner-author">
-                            <span>Written by:<a href="/blog">frenk</a></span>
-                            <a href="/blog" class="blog-date"><i class="fa-regular fa-calendar-days"></i>April 27, 2024</a>
+                            <span>Written by:<a href="{{route('blogs',$blog->blog_slug)}}">{{$blog->creator->name}}</a></span>
+                            <a href="{{ route('blogs',$blog->blog_slug) }}" class="blog-date"><i class="fa-regular fa-calendar-days"></i>{{ $blog->created_at->format('d M Y, h:i A') }}</a>
                         </div>
-                        <h2 class="blog-title"><a href="/blog_details">Dining & Living Room Cleaning</a></h2>
-                        <p class="blog-text">
-                            Rainbow’s high techngy system with the help of nanleees reoving unseen dusot mites and bed bugs can cause
-                            harmfully diseases because of dirters. This also includes changing home bes linens share providd reovinsg that
-                            specialized deep unseen unseen dust echngy mites client.
-                        </p>
+                        <h2 class="blog-title"><a href="{{ route('blog_details',$blog->blog_slug) }}">{{ $blog->blog_title }}</a></h2>
+                        <div>
+                            {{ Str::words(strip_tags($blog->short_description), 40, '...') }}
+                        </div>
                     </div>
                     <div class="blog-links">
-                        <a href="#" class="link-btn">read more<i class="fa-solid fa-chevrons-right"></i></a>
+                        <a href="{{ route('blogs',$blog->blog_slug) }}" class="link-btn">read more<i class="fa-solid fa-chevrons-right"></i></a>
                     </div>
                 </div>
+                @endforeach
                 <div class="vs-pagination">
                     <ul>
                         <li class="arrow"><a href="#"><i class="fal fa-long-arrow-left"></i></a></li>

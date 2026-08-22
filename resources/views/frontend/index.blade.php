@@ -337,96 +337,36 @@
             </div>
         </div>
         <div class="row vs-carousel" data-slide-show="4" data-ml-slide-show="3" data-lg-slide-show="3" data-md-slide-show="2" data-sm-slide-show="2" data-autoplay="true" data-arrows="true">
+            @foreach ( $members as $member )
             <div class="col-xl-3 wow animate__fadeInUp" data-wow-delay="0.25s">
                 <div class="vs-team__style1">
                     <div class="vs-team__img">
                         <a href="team.html">
-                            <img src="{{ asset('/frontend/assets/img/team/team-img-1-1.png') }}" alt="Team Image">
+                            <img src="{{$member->member_image && Storage::disk('public')->exists($member->member_image)? asset('storage/'.$member->member_image ): asset('no-image.png') }}" alt="{{ $member->name }}" style="height: 320px; width: 320px;">
                         </a>
+
                         <div class="vs-team__social--media">
-                            <a href="javascript:void(0)"><i class="fab fa-facebook-f"></i></a>
-                            <a href="javascript:void(0)"><i class="fa-brands fa-x-twitter"></i></a>
-                            <a href="javascript:void(0)"><i class="fab fa-instagram"></i></a>
+                            <a href="{{ $member->facebook }}">
+                                <i class="fab fa-facebook-f"></i>
+                            </a>
+                            <a href="{{ $member->linkedin }}">
+                                <i class="fa-brands fa-x-twitter"></i>
+                            </a>
+                            <a href="{{ $member->instagram }}">
+                                <i class="fab fa-instagram"></i>
+                            </a>
                         </div>
+
                     </div>
                     <div class="vs-team__content">
-                        <h2 class="vs-team__title"><a href="team.html">erica hanson</a></h2>
-                        <p class="vs-team__subtitle">Supervisor</p>
+                        <h2 class="vs-team__title">
+                            <a href="team.html">{{ $member->name }}</a>
+                        </h2>
+                        <p class="vs-team__subtitle">{{ $member->designation }}</p>
                     </div>
                 </div>
             </div>
-            <div class="col-xl-3 wow animate__fadeInUp" data-wow-delay="0.35s">
-                <div class="vs-team__style1">
-                    <div class="vs-team__img">
-                        <a href="team.html">
-                            <img src="{{ asset('/frontend/assets/img/team/team-img-1-2.png') }}" alt="Team Image">
-                        </a>
-                        <div class="vs-team__social--media">
-                            <a href="javascript:void(0)"><i class="fab fa-facebook-f"></i></a>
-                            <a href="javascript:void(0)"><i class="fa-brands fa-x-twitter"></i></a>
-                            <a href="javascript:void(0)"><i class="fab fa-instagram"></i></a>
-                        </div>
-                    </div>
-                    <div class="vs-team__content">
-                        <h2 class="vs-team__title"><a href="team.html">Alexandra Dario</a></h2>
-                        <p class="vs-team__subtitle">founder, CEO</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-xl-3 wow animate__fadeInUp" data-wow-delay="0.45s">
-                <div class="vs-team__style1">
-                    <div class="vs-team__img">
-                        <a href="team.html">
-                            <img src="{{ asset('/frontend/assets/img/team/team-img-1-3.png') }}" alt="Team Image">
-                        </a>
-                        <div class="vs-team__social--media">
-                            <a href="javascript:void(0)"><i class="fab fa-facebook-f"></i></a>
-                            <a href="javascript:void(0)"><i class="fa-brands fa-x-twitter"></i></a>
-                            <a href="javascript:void(0)"><i class="fab fa-instagram"></i></a>
-                        </div>
-                    </div>
-                    <div class="vs-team__content">
-                        <h2 class="vs-team__title"><a href="team.html">emely jonson</a></h2>
-                        <p class="vs-team__subtitle">office cleaner</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-xl-3 wow animate__fadeInUp" data-wow-delay="0.55s">
-                <div class="vs-team__style1">
-                    <div class="vs-team__img">
-                        <a href="team.html">
-                            <img src="{{ asset('/frontend/assets/img/team/team-img-1-4.png') }}" alt="Team Image">
-                        </a>
-                        <div class="vs-team__social--media">
-                            <a href="javascript:void(0)"><i class="fab fa-facebook-f"></i></a>
-                            <a href="javascript:void(0)"><i class="fa-brands fa-x-twitter"></i></a>
-                            <a href="javascript:void(0)"><i class="fab fa-instagram"></i></a>
-                        </div>
-                    </div>
-                    <div class="vs-team__content">
-                        <h2 class="vs-team__title"><a href="team.html">Tonoy Rahomon</a></h2>
-                        <p class="vs-team__subtitle">Supervisor</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-xl-3 wow animate__fadeInUp" data-wow-delay="0.65s">
-                <div class="vs-team__style1">
-                    <div class="vs-team__img">
-                        <a href="team.html">
-                            <img src="{{ asset('/frontend/assets/img/team/team-img-1-4.png') }}" alt="Team Image">
-                        </a>
-                        <div class="vs-team__social--media">
-                            <a href="javascript:void(0)"><i class="fab fa-facebook-f"></i></a>
-                            <a href="javascript:void(0)"><i class="fa-brands fa-x-twitter"></i></a>
-                            <a href="javascript:void(0)"><i class="fab fa-instagram"></i></a>
-                        </div>
-                    </div>
-                    <div class="vs-team__content">
-                        <h2 class="vs-team__title"><a href="team.html">Rivan islam</a></h2>
-                        <p class="vs-team__subtitle">Supervisor</p>
-                    </div>
-                </div>
-            </div>
+            @endforeach
         </div>
     </div>
     <span class="shape-mockup d-xl-block d-none" style="right: 0; top: 0px;"><img src="{{ asset('/frontend/assets/img/shapes/service-shape-1.png') }}" alt="team element"></span>
@@ -576,20 +516,26 @@
             @foreach ($blogs as $blog )
             <div class="col-xl-6 wow animate__fadeInUp" data-wow-delay="0.35s">
                 <div class="vs-blog__style1  mb-0">
-                    <div class="blog-img">
+                    <div class="blog-img" style="height: 380px;">
                         <a class="d-flex justify-content-center" href="{{ route('service_details',$blog->blog_slug) }}">
-                            <img src="{{$blog->blog_image && Storage::disk('public')->exists($blog->blog_image)? asset('storage/'.$blog->blog_image ): asset('no-image.png') }}" alt="{{ $blog->blog_title }}" alt="Serevice Image" style="height: 285px; width: 420px;">
+                            <img src="{{$blog->blog_image && Storage::disk('public')->exists($blog->blog_image)? asset('storage/'.$blog->blog_image ): asset('no-image.png') }}" alt="{{ $blog->blog_title }}" style="height: 100%; width: 100%">
                         </a>
-                        <a href="blog.html" class="blog-cate">{{ $blog->title }}</a>
+                        <a href="blog.html" class="blog-cate">{{ $blog->blog_title }}</a>
                     </div>
                     <div class="blog-content">
                         <div class="blog-inner-author">
-                            <a href="blog.html" class="blog-date"><i class="fa-regular fa-calendar-days"></i>{{ $blog->created_at }}</a>
-                            <a href="blog.html" class="blog-date"><i class="far fa-comments"></i>0 Comments</a>
+                            <a href="{{ route('blog_details',$blog->blog_slug) }}" class="blog-date"><i class="fa-regular fa-calendar-days"></i>{{ $blog->created_at->format('d M Y, h:i A') }}</a>
+                            <a href="{{ route('blog_details',$blog->blog_slug) }}" class="blog-date"><i class="far fa-comments"></i>0 Comments</a>
                         </div>
-                        <h2 class="blog-title"><a href="{{ route('blog_details',$blog->blog_slug) }}}">{{ Str::words(strip_tags($blog->short_description), 12, '...') }}</a></h2>
+                        <h2 class="blog-title">
+                            <a href="{{ route('blog_details',$blog->blog_slug) }}">{{ Str::words(strip_tags($blog->short_description), 12, '...') }}</a>
+                        </h2>
                         <div class="blog-btn">
-                            <a class="link-btn" href="blog-details.html"><span class="icon"><i class="fa-solid fa-arrow-right"></i></span>Read More</a>
+                            <a class="link-btn" href="{{ route('blog_details',$blog->blog_slug) }}">
+                                <span class="icon">
+                                    <i class="fa-solid fa-arrow-right"></i>
+                                </span>Read More
+                            </a>
                         </div>
                     </div>
                 </div>

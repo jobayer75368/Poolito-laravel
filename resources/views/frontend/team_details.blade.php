@@ -25,35 +25,34 @@
         <div class="row gy-5 gx-60 align-items-center space-mobile-bottom">
             <div class="col-xl-6">
                 <div class="team-img wow animate__fadeInUp animation-style2" data-wow-delay="0.25s">
-                    <img src="{{ asset('/frontend/assets/img/team/team-details-1-1.png') }}" alt="team-details">
+                    <img src="{{$member->member_image && Storage::disk('public')->exists($member->member_image)? asset('storage/'.$member->member_image ): asset('no-image.png') }}" alt="{{ $member->name }}" style="height: 100%; width: 100%;">
+
                 </div>
             </div>
             <div class="col-xl-6">
                 <div class="team-top wow animate__fadeInUp animation-style2" data-wow-delay="0.35s">
                     <div class="title-area">
-                        <h2 class="team-title">erica hanson</h2>
-                        <span class="team-degi">office cleaner</span>
+                        <h2 class="team-title">{{ $member->name }}</h2>
+                        <span class="team-degi">{{ $member->designation }}</span>
                     </div>
                     <div class="social-style1">
                         <div class="social-icon">
-                            <a href="#"><i class="fab fa-facebook-f"></i></a>
-                            <a href="#"><i class="fab fa-linkedin-in"></i></a>
-                            <a href="#"><i class="fab fa-instagram"></i></a>
+                            <a href="{{$member->facebook}}"><i class="fab fa-facebook-f"></i></a>
+                            <a href="{{$member->facebook}}"><i class="fab fa-linkedin-in"></i></a>
+                            <a href="{{$member->facebook}}"><i class="fab fa-instagram"></i></a>
                         </div>
                     </div>
                 </div>
-                <p class="team-text wow animate__fadeInUp animation-style2" data-wow-delay="0.45s">
-                    closed system where recircultng cleaning solution is applied (often with nozzles) cleans,
-                    rinses and sanitises equipment. The CIP system is usually automatically cleaning sequec.
-                </p>
+                <div>
+                    {!!$member->description !!}
+                </div>
                 <ul class="team-contact-list wow animate__fadeInUp animation-style2" data-wow-delay="0.55s">
-                    <li><sub>Age:</sub><span> 29</span></li>
-                    <li><sub>Phone Number:</sub><span> +92 7971 1145</span></li>
-                    <li><sub>Email Id:</sub><span> oliviathompson@exemple.com</span></li>
-                    <li><sub>Address:</sub><span> 1234 Oakwood Lane, IL 62704, United States</span></li>
-                    <li><sub>Experience:</sub><span> 12 Years Plus</span></li>
+                    <li><sub>Age:</sub><span>{{ $member->age }}</span></li>
+                    <li><sub>Phone Number:</sub><span> {{ $member->phone }}</span></li>
+                    <li><sub>Email Id:</sub><span> {{ $member->email }}</span></li>
+                    <li><sub>Address:</sub><span> {{ $member->address }}</span></li>
+                    <li><sub>Experience:</sub><span> {{ $member->experience }} Years</span></li>
                 </ul>
-                <a class="vs-btn2 wow animate__fadeInUp animation-style2" data-wow-delay="0.65s" href="#">download cv <i class="far fa-long-arrow-right"></i></a>
             </div>
         </div>
         <div class="row gy-5 gx-60">

@@ -4,6 +4,7 @@ namespace App\Http\Controllers\frontend;
 
 use App\Http\Controllers\Controller;
 use App\Models\Blog;
+use App\Models\Member;
 use Illuminate\Http\Request;
 use App\Models\Service;
 
@@ -14,7 +15,8 @@ class HomeController extends Controller
     {
         $services = Service::where('status', 'active')->get();
         $blogs = Blog::where('status', 'published')->get();
-        return view('frontend.index', compact('services', 'blogs'));
+        $members = Member::where('status', 'active')->get();
+        return view('frontend.index', compact('services', 'blogs', 'members'));
     }
     public function serviceIndex()
     {
@@ -34,8 +36,18 @@ class HomeController extends Controller
     }
     public function blogDetails(string $slug)
     {
-        $allBlogs = Blog::where('status', 'active')->get();
+        $recentBlogs = Blog::where('status', 'published')->latest()->get();
         $blog = Blog::where('blog_slug', $slug)->firstOrFail();
-        return view('frontend.blog_details', compact('blog', 'allBlogs'));
+        return view('frontend.blog_details', compact('blog', 'recentBlogs'));
+    }
+    public function teamIndex()
+    {
+        $members = Member::where('status', 'active')->get();
+        return view('frontend.team_members', compact('members'));
+    }
+    public function memberDetails(string $slug)
+    {
+        $member = Member::where('slug', $slug)->firstOrFail();
+        return view('frontend.team_details', compact('member'));
     }
 }

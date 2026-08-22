@@ -49,7 +49,7 @@
                 </div>
                 <div class="col-lg-8">
                     <div class="portfolio-img mb-40 wow animate__fadeInUp" data-wow-delay="0.20s">
-                        <img src="{{$service->service_image && Storage::disk('public')->exists($service->service_image)? asset('storage/'.$service->service_image ): asset('no-image.png') }}" alt="{{ $service->service_title }}" style="height: 415px; width: 100%;">
+                        <img src="{{$service->service_image && Storage::disk('public')->exists($service->service_image)? asset('storage/'.$service->service_image ): asset('no-image.png') }}" alt="{{ $service->service_title }}" style="height: 100%; width: 100%;">
                     </div>
                     <h2 class="portfolio-title h3 mb-20 wow animate__fadeInUp" data-wow-delay="0.25s">{{ $service->service_title }}</h2>
 

@@ -25,15 +25,13 @@ Route::get('/about', function () {
 // Blogs 
 Route::get('/blogs', [HomeController::class, 'blogIndex'])->name('blogs');
 
-Route::get('/blogs_details/{slug}', [HomeController::class, 'blogDetails'])->name('blog_details');
+Route::get('/blogs/{slug}', [HomeController::class, 'blogDetails'])->name('blog_details');
 
-Route::get('/team', function () {
-    return view('frontend.team');
-})->name('team');
+// Team 
+Route::get('/team_members', [HomeController::class, 'teamIndex'])->name('team_members');
 
-Route::get('/team_details', function () {
-    return view('frontend.team_details');
-})->name('team_details');
+Route::get('/team_members/{slug}', [HomeController::class, 'memberDetails'])->name('team_details');
+
 
 Route::get('/contact', function () {
     return view('frontend.contact');

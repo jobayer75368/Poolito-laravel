@@ -49,26 +49,16 @@
                                     </li>
                                     <li class="menu-item-has-children">
                                         <a href="{{ route('blogs') }}">Blog</a>
-                                        <ul class="sub-menu">
-                                            <li><a href="/blog">Blog</a></li>
-                                            <li><a href="/blog_details">Blog Details</a></li>
-                                        </ul>
                                     </li>
                                     <li class="menu-item-has-children mega-menu-wrap">
                                         <a href="#">Pages</a>
                                         <ul class="mega-menu">
 
-                                            <li><a href="#">Pagelist 3</a>
+                                            <li><a href="#">Pagelist</a>
                                                 <ul>
-                                                    <li><a href="/team">Team</a></li>
-                                                    <li><a href="/team_details">Team Details</a></li>
-                                                    <li><a href="/contact">Contact Us</a></li>
-                                                </ul>
-                                            </li>
-                                            <li><a href="#">Pagelist 4</a>
-                                                <ul>
+                                                    <li><a href="{{ route('team_members') }}">Team</a></li>
+                                                    <li><a href="{{ route('contact') }}">Contact Us</a></li>
                                                     <li><a href="/portfolio">portfolio</a></li>
-                                                    <li><a href="/portfolio_details">portfolio Details</a></li>
                                                     <li><a href="/404">Error Page</a></li>
                                                 </ul>
                                             </li>
