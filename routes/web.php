@@ -43,9 +43,10 @@ Route::post('/contact', [MessageController::class, 'store'])->name('message.stor
 Route::get('/404', function () {
     return view('frontend.404');
 });
-Route::get('/portfolio', function () {
-    return view('frontend.portfolio');
-})->name('portfolio');
+
+// Portfolio 
+Route::get('/portfolios', [HomeController::class, 'portfolioIndex'])->name('portfolio');
+Route::get('/portfolios/{slug}', [HomeController::class, 'portfolioDetails'])->name('portfolio_details');
 
 Route::get('/portfolio_details', function () {
     return view('frontend.portfolio_details');

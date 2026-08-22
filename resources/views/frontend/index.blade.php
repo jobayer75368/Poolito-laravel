@@ -517,10 +517,10 @@
             <div class="col-xl-6 wow animate__fadeInUp" data-wow-delay="0.35s">
                 <div class="vs-blog__style1  mb-0">
                     <div class="blog-img" style="height: 380px;">
-                        <a class="d-flex justify-content-center" href="{{ route('service_details',$blog->blog_slug) }}">
+                        <a class="d-flex justify-content-center" href="{{ route('blog_details',$blog->blog_slug) }}">
                             <img src="{{$blog->blog_image && Storage::disk('public')->exists($blog->blog_image)? asset('storage/'.$blog->blog_image ): asset('no-image.png') }}" alt="{{ $blog->blog_title }}" style="height: 100%; width: 100%">
                         </a>
-                        <a href="blog.html" class="blog-cate">{{ $blog->blog_title }}</a>
+                        <a href="{{ route('blog_details',$blog->blog_slug) }}" class="blog-cate">{{ $blog->blog_title }}</a>
                     </div>
                     <div class="blog-content">
                         <div class="blog-inner-author">

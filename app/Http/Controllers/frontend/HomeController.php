@@ -5,6 +5,7 @@ namespace App\Http\Controllers\frontend;
 use App\Http\Controllers\Controller;
 use App\Models\Blog;
 use App\Models\Member;
+use App\Models\Portfolio;
 use Illuminate\Http\Request;
 use App\Models\Service;
 
@@ -49,5 +50,17 @@ class HomeController extends Controller
     {
         $member = Member::where('slug', $slug)->firstOrFail();
         return view('frontend.team_details', compact('member'));
+    }
+
+    public function portfolioIndex()
+    {
+        $portfolios = Portfolio::where('status', 'active')->get();
+        return view('frontend.portfolio', compact('portfolios'));
+    }
+    public function portfolioDetails(string $slug)
+    {
+        $allPortfolios = Portfolio::where('status', 'active')->latest()->get();
+        $portfolio = Portfolio::where('portfolio_slug', $slug)->firstOrFail();
+        return view('frontend.portfolio_details', compact('portfolio', 'allPortfolios'));
     }
 }

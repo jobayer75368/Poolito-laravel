@@ -39,7 +39,7 @@
                             <nav class="main-menu menu-style1 d-none d-lg-block">
                                 <ul>
                                     <li class="menu-item-has-children">
-                                        <a href="/">Home</a>
+                                        <a href="{{ route('home') }}">Home</a>
                                     </li>
                                     <li>
                                         <a href="{{ route('about') }}">About Us</a>
@@ -57,7 +57,7 @@
                                             <ul>
                                                 <li><a href="{{ route('team_members') }}">Team</a></li>
                                                 <li><a href="{{ route('contact') }}">Contact Us</a></li>
-                                                <li><a href="/portfolio">portfolio</a></li>
+                                                <li><a href="{{ route('portfolio') }}">portfolio</a></li>
                                                 <li><a href="/404">Error Page</a></li>
                                             </ul>
 
