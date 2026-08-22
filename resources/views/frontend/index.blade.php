@@ -341,7 +341,7 @@
             <div class="col-xl-3 wow animate__fadeInUp" data-wow-delay="0.25s">
                 <div class="vs-team__style1">
                     <div class="vs-team__img">
-                        <a href="team.html">
+                        <a href="{{ route('team_details',$member->slug) }}">
                             <img src="{{$member->member_image && Storage::disk('public')->exists($member->member_image)? asset('storage/'.$member->member_image ): asset('no-image.png') }}" alt="{{ $member->name }}" style="height: 320px; width: 320px;">
                         </a>
 
@@ -360,7 +360,7 @@
                     </div>
                     <div class="vs-team__content">
                         <h2 class="vs-team__title">
-                            <a href="team.html">{{ $member->name }}</a>
+                            <a href="{{ route('team_details',$member->slug) }}">{{ $member->name }}</a>
                         </h2>
                         <p class="vs-team__subtitle">{{ $member->designation }}</p>
                     </div>

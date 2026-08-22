@@ -26,7 +26,7 @@
                 @foreach ($blogs as $blog )
                 <div class="vs-blog blog-single wow animate__fadeInUp wow-animated">
                     <div class="blog-img">
-                        <a href="{{ route('blogs',$blog->blog_slug) }}">
+                        <a href="{{ route('blog_details',$blog->blog_slug) }}">
                             <img src="{{$blog->blog_image && Storage::disk('public')->exists($blog->blog_image)? asset('storage/'.$blog->blog_image ): asset('no-image.png') }}" alt="{{ $blog->blog_title }}" style="height: 100%; width: 100%">
                         </a>
                     </div>

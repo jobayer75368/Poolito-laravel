@@ -54,18 +54,17 @@
                                         <a href="#">Pages</a>
                                         <ul class="mega-menu">
 
-                                            <li><a href="#">Pagelist</a>
-                                                <ul>
-                                                    <li><a href="{{ route('team_members') }}">Team</a></li>
-                                                    <li><a href="{{ route('contact') }}">Contact Us</a></li>
-                                                    <li><a href="/portfolio">portfolio</a></li>
-                                                    <li><a href="/404">Error Page</a></li>
-                                                </ul>
-                                            </li>
+                                            <ul>
+                                                <li><a href="{{ route('team_members') }}">Team</a></li>
+                                                <li><a href="{{ route('contact') }}">Contact Us</a></li>
+                                                <li><a href="/portfolio">portfolio</a></li>
+                                                <li><a href="/404">Error Page</a></li>
+                                            </ul>
+
                                         </ul>
                                     </li>
                                     <li>
-                                        <a href="/contact">Contact</a>
+                                        <a href="{{route('contact')}}">Contact</a>
                                     </li>
                                 </ul>
                             </nav>
