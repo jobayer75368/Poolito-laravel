@@ -39,33 +39,20 @@
                             <nav class="main-menu menu-style1 d-none d-lg-block">
                                 <ul>
                                     <li class="menu-item-has-children">
-                                        <a href="{{ route('home') }}">Home</a>
+                                        <a @class(['active_nav'=> request()->routeIs(['home'])]) href="{{ route('home') }}">Home</a>
                                     </li>
                                     <li>
-                                        <a href="{{ route('about') }}">About Us</a>
+                                        <a @class(['active_nav'=> request()->routeIs(['about'])]) href="{{ route('about') }}">About Us</a>
                                     </li>
                                     <li class="menu-item-has-children">
-                                        <a href="{{ route('services') }}">Service</a>
+                                        <a @class(['active_nav'=> request()->routeIs(['services','service_details'])]) href="{{ route('services') }}">Service</a>
                                     </li>
                                     <li class="menu-item-has-children">
-                                        <a href="{{ route('blogs') }}">Blog</a>
+                                        <a @class(['active_nav'=> request()->routeIs(['blogs','blog_details'])]) href="{{ route('blogs') }}">Blog</a>
                                     </li>
-                                    <li class="menu-item-has-children mega-menu-wrap">
-                                        <a href="#">Pages</a>
-                                        <ul class="mega-menu">
-
-                                            <ul>
-                                                <li><a href="{{ route('team_members') }}">Team</a></li>
-                                                <li><a href="{{ route('contact') }}">Contact Us</a></li>
-                                                <li><a href="{{ route('portfolio') }}">portfolio</a></li>
-                                                <li><a href="/404">Error Page</a></li>
-                                            </ul>
-
-                                        </ul>
-                                    </li>
-                                    <li>
-                                        <a href="{{route('contact')}}">Contact</a>
-                                    </li>
+                                    <li><a @class(['active_nav'=> request()->routeIs(['team_members','team_details'])]) href="{{ route('team_members') }}">Team</a></li>
+                                    <li><a @class(['active_nav'=> request()->routeIs(['portfolio','portfolio_details'])]) href="{{ route('portfolio') }}">portfolio</a></li>
+                                    <li><a @class(['active_nav'=> request()->routeIs(['contact'])]) href="{{ route('contact') }}">Contact</a></li>
                                 </ul>
                             </nav>
                         </div>

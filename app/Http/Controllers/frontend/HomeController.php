@@ -32,8 +32,9 @@ class HomeController extends Controller
     }
     public function blogIndex()
     {
+        $recentBlogs = Blog::where('status', 'published')->latest()->get();
         $blogs = Blog::where('status', 'published')->get();
-        return view('frontend.blogs', compact('blogs'));
+        return view('frontend.blogs', compact('blogs', 'recentBlogs'));
     }
     public function blogDetails(string $slug)
     {

@@ -28,7 +28,7 @@
                             <ul>
                                 @foreach ( $allServices as $allService )
                                 <li>
-                                    <a href="/blog_details">
+                                    <a href="{{ route('service_details',$allService->service_slug) }}">
                                         <i class="fa-solid fa-angles-right"></i>{{ $allService->service_title }}</a>
                                 </li>
                                 @endforeach

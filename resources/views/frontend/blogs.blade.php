@@ -93,9 +93,12 @@
                     <div class="widget">
                         <h3 class="widget_title title-shep">Recent Posts</h3>
                         <div class="recent-post-wrap">
+                            @foreach ( $recentBlogs as $recentBlog )
                             <div class="recent-post">
                                 <div class="media-img">
-                                    <a href="/blog_details"><img src="{{ asset('/frontend/assets/img/blog/recent-post-1-1.jpg') }}" alt="Blog Image"></a>
+                                    <a href="{{ route('blog_details',$recentBlog->blog_slug) }}">
+                                        <img src="{{ $recentBlog->blog_image && Storage::disk('public')->exists($recentBlog->blog_image)? asset('storage/'.$recentBlog->blog_image):asset('no-image.png') }}" alt="{{ $recentBlog->blog_title }}" style="height: 70px; width: 90px;">
+                                    </a>
                                 </div>
                                 <div class="media-body">
                                     <div class="recent-post-meta">
@@ -104,28 +107,8 @@
                                     <h4 class="post-title"><a class="text-inherit" href="/blog_details">dining & leving room cleaning</a></h4>
                                 </div>
                             </div>
-                            <div class="recent-post">
-                                <div class="media-img">
-                                    <a href="/blog_details"><img src="{{ asset('/frontend/assets/img/blog/recent-post-1-2.jpg') }}" alt="Blog Image"></a>
-                                </div>
-                                <div class="media-body">
-                                    <div class="recent-post-meta">
-                                        <a href="/blog"><i class="fa-regular fa-calendar-days"></i>Jan 08, 2024</a>
-                                    </div>
-                                    <h4 class="post-title"><a class="text-inherit" href="/blog_details">Keeping the Hive Deep Clean plan</a></h4>
-                                </div>
-                            </div>
-                            <div class="recent-post">
-                                <div class="media-img">
-                                    <a href="/blog_details"><img src="{{ asset('/frontend/assets/img/blog/recent-post-1-3.jpg') }}" alt="Blog Image"></a>
-                                </div>
-                                <div class="media-body">
-                                    <div class="recent-post-meta">
-                                        <a href="/blog"><i class="fa-regular fa-calendar-days"></i>Nov 07, 2024</a>
-                                    </div>
-                                    <h4 class="post-title"><a class="text-inherit" href="/blog_details">Most Caring Cleaning Service?</a></h4>
-                                </div>
-                            </div>
+                            @endforeach
+
                         </div>
                     </div>
                     <div class="widget widget_tags wow animate__fadeInUp wow-animated">

@@ -9282,3 +9282,7 @@ blockquote.vs-quote .quote-author {
 }
 
 /*# sourceMappingURL=style.css.map */
+
+.active_nav{
+  color: var(--theme-color)!important;
+}
