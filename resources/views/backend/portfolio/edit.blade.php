@@ -68,6 +68,12 @@
                             <label class="form-label" for="portfolioImg">Image</label>
                             <input class="form-control" id="portfolioImg" type="file" name="portfolio_image" value="{{ $portfolio->portfolio_image }}">
                             <div class="invalid-feedback">Portfolio Image is required.</div>
+                            <div class="mt-2">
+                                <img id="portfolioImagePreview"
+                                    src="{{ $portfolio->portfolio_image ? asset('storage/'.$portfolio->portfolio_image) : '' }}"
+                                    alt=""
+                                    style="height:200px; {{ $portfolio->portfolio_image ? '' : 'display:none;' }}">
+                            </div>
                         </div>
 
                     </div>

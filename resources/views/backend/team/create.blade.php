@@ -116,8 +116,11 @@
                         </div>
 
                         <div class="col-12">
-                            <label class="form-label" for="serviceImg">Image</label>
-                            <input class="form-control" id="serviceImg" type="file" name="member_image">
+                            <label class="form-label" for="memberImg">Image</label>
+                            <input class="form-control" id="memberImg" type="file" name="member_image">
+                            <div class="mt-2">
+                                <img id="memberImagePreview" src="" alt="" style="height:200px; display:none;">
+                            </div>
                         </div>
 
                     </div>

@@ -79,6 +79,12 @@
                             <label class="form-label" for="blogImg">Image</label>
                             <input class="form-control" id="blogImg" type="file" name="blog_image" value="{{ $blog->blog_image }}">
                             <div class="invalid-feedback">Blog Image is required.</div>
+                            <div class="mt-2">
+                                <img id="blogImagePreview"
+                                    src="{{ $blog->blog_image ? asset('storage/'.$blog->blog_image) : '' }}"
+                                    alt=""
+                                    style="height:200px; {{ $blog->blog_image ? '' : 'display:none;'}}">
+                            </div>
                         </div>
 
                     </div>
@@ -88,14 +94,8 @@
                 </form>
             </div>
 
-            <!-- <div class="col-12 col-xl-5">
-        <div class="panel h-100">
-          <h2 class="h5 mb-3 section-title"><i class="bi bi-input-cursor-text" aria-hidden="true"></i><span>Input States</span></h2><input class="form-control mb-3" value="Default input"><input class="form-control is-valid mb-3" value="Valid input"><input class="form-control is-invalid mb-3" value="Invalid input">
-          <div class="form-check"><input class="form-check-input" type="checkbox" id="sampleCheck" checked><label class="form-check-label" for="sampleCheck">Sample checkbox</label></div>
-        </div>
-      </div> -->
-
         </section>
     </div>
 </main>
+
 @endsection

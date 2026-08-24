@@ -63,8 +63,6 @@
 
     </div>
 
-
-
     @include('backend.layouts.script')
 </body>
 

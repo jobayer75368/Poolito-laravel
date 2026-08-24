@@ -52,7 +52,7 @@
 
                         <div class="col-md-12">
                             <label class="form-label" for="serviceIcon">Service Icon</label>
-                            <input class="form-control" id="formService" name="service_icon" type="file">
+                            <input class="form-control" id="serviceIcon" name="service_icon" type="file">
                             <div class="mt-2">
                                 <img id="serviceIconPreview"
                                     src="{{ $service->service_icon ? asset('storage/'.$service->service_icon) : '' }}"
@@ -105,31 +105,5 @@
     </div>
 </main>
 
-<!-- Image preview  -->
-
-<script>
-    function previewImage(inputId, previewId) {
-        const input = document.getElementById(inputId);
-        const preview = document.getElementById(previewId);
-
-        input.addEventListener('change', function() {
-            const file = this.files[0];
-
-            if (file) {
-                const reader = new FileReader();
-                reader.onload = function(e) {
-                    preview.src = e.target.result;
-                    preview.style.display = 'block';
-                };
-                reader.readAsDataURL(file);
-            } else {
-                preview.src = '';
-                preview.style.display = 'none';
-            }
-        });
-    }
-
-    previewImage('formService', 'serviceIconPreview');
-    previewImage('serviceImg', 'serviceImagePreview');
 </script>
 @endsection
