@@ -1,52 +1,72 @@
-<x-guest-layout>
-    <form method="POST" action="{{ route('register') }}">
-        @csrf
+<!DOCTYPE html>
+<html lang="en">
 
-        <!-- Name -->
-        <div>
-            <x-input-label for="name" :value="__('Name')" />
-            <x-text-input id="name" class="block mt-1 w-full" type="text" name="name" :value="old('name')" required autofocus autocomplete="name" />
-            <x-input-error :messages="$errors->get('name')" class="mt-2" />
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="adminHMD authentication page">
+  <title>Register | Admin</title>
+
+  <link rel="stylesheet" href="{{ asset('backend/assets/css/bootstrap.min.css') }}">
+  <link rel="stylesheet" href="{{ asset('backend/assets/vendors/bootstrap-icons/bootstrap-icons.css') }}">
+  <link rel="stylesheet" href="{{ asset('backend/assets/css/style.css') }}">
+</head>
+
+<body class="auth-body">
+  <button class="icon-button theme-toggle auth-theme-toggle" type="button" data-theme-toggle aria-label="Switch color theme" title="Switch color theme">
+    <i class="bi bi-moon-stars" data-theme-icon aria-hidden="true"></i>
+  </button>
+  <main class="auth-page">
+    <section class="auth-card">
+      <a class="auth-brand" href="index.html">
+        <span class="brand-icon">
+          <i class="bi bi-grid-1x2-fill" aria-hidden="true"></i>
+        </span>
+        <span><strong>Admin</strong><small>Create Your Editor Account</small></span>
+      </a>
+      <div class="auth-visual">
+        <img src="{{ asset('backend/assets/images/png/dasher-ui-bootstrap-5.jpg') }}" alt="adminHMD dashboard interface">
+      </div>
+
+      <form class="needs-validation" method="POST" action="{{ route('admin.register') }}" novalidate>
+
+        <div class="mb-4">
+          <p class="eyebrow mb-1">Secure Access</p>
+          <h1 class="h3 mb-1">Register</h1>
+        </div>
+        <div class="mb-3">
+          <label class="form-label" for="registerName">Full name</label>
+          <input class="form-control" id="registerName" type="text" required>
+          <div class="invalid-feedback">Full name is required.</div>
+        </div>
+        <div class="mb-3">
+          <label class="form-label" for="registerEmail">Email address</label>
+          <input class="form-control" id="registerEmail" type="email" required>
+          <div class="invalid-feedback">Enter a valid email.</div>
+        </div>
+        <div class="mb-3">
+          <label class="form-label" for="registerPassword">Password</label>
+          <input class="form-control" id="registerPassword" type="password" minlength="6" required>
+          <div class="invalid-feedback">Password must be at least 6 characters.</div>
+        </div>
+        <div class="form-check mb-4">
+          <input class="form-check-input" type="checkbox" id="terms" required>
+          <label class="form-check-label" for="terms">I agree to the terms</label>
+          <div class="invalid-feedback">You must agree before continuing.</div>
         </div>
 
-        <!-- Email Address -->
-        <div class="mt-4">
-            <x-input-label for="email" :value="__('Email')" />
-            <x-text-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required autocomplete="username" />
-            <x-input-error :messages="$errors->get('email')" class="mt-2" />
-        </div>
+        <button class="btn btn-primary w-100" type="submit">
+          <i class="bi bi-person-plus" aria-hidden="true"></i> Create Account
+        </button>
 
-        <!-- Password -->
-        <div class="mt-4">
-            <x-input-label for="password" :value="__('Password')" />
+      </form>
 
-            <x-text-input id="password" class="block mt-1 w-full"
-                            type="password"
-                            name="password"
-                            required autocomplete="new-password" />
+      <div class="auth-footer">Already have an account? <a href="login.html">Sign in</a></div>
+    </section>
+  </main>
 
-            <x-input-error :messages="$errors->get('password')" class="mt-2" />
-        </div>
+  <script src="{{ asset('backend/assets/js/bootstrap.bundle.min.js')}}"></script>
+  <script src="{{ asset('backend/assets/js/main.js')}}"></script>
+</body>
 
-        <!-- Confirm Password -->
-        <div class="mt-4">
-            <x-input-label for="password_confirmation" :value="__('Confirm Password')" />
-
-            <x-text-input id="password_confirmation" class="block mt-1 w-full"
-                            type="password"
-                            name="password_confirmation" required autocomplete="new-password" />
-
-            <x-input-error :messages="$errors->get('password_confirmation')" class="mt-2" />
-        </div>
-
-        <div class="flex items-center justify-end mt-4">
-            <a class="underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" href="{{ route('login') }}">
-                {{ __('Already registered?') }}
-            </a>
-
-            <x-primary-button class="ms-4">
-                {{ __('Register') }}
-            </x-primary-button>
-        </div>
-    </form>
-</x-guest-layout>
+</html>

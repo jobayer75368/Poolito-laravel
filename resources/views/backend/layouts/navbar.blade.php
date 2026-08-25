@@ -43,7 +43,7 @@
                     <li>
                         <hr class="dropdown-divider">
                     </li>
-                    <li data-bs-toggle="modal" data-bs-target="#confirmModal">
+                    <li data-bs-toggle="modal">
                         <button
                             type="button"
                             class="dropdown-item"
@@ -67,7 +67,7 @@
             </div>
             <div class="modal-body">Are you sure you want to logout?</div>
 
-            <form method="POST" action="{{ route('logout') }}" class="dropdown-item modal-footer">
+            <form method="POST" action="{{ route('admin.logout') }}" class="dropdown-item modal-footer">
                 @csrf
                 <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Cancel</button>
                 <input type="submit" value="Confirm" class="btn btn-primary">

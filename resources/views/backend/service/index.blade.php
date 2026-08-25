@@ -71,7 +71,9 @@
                 <span class="badge bg-{{ $service->status=='active'?'success':'danger' }}">{{ ucwords($service->status) }}</span>
               </td>
 
-              <td>{{ $service->created_at->format('d M Y, h:i A') }}</td>
+              <td class="small">
+                {{ $service->created_at->format('d M Y') }}
+              </td>
 
               <td>
                 <div class="text-end d-flex justify-content-center align-items-center gap-2">

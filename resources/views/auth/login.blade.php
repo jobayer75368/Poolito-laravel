@@ -18,9 +18,9 @@
     </button>
     <main class="auth-page">
         <section class="auth-card">
-            <a class="auth-brand" href="index.html"><span class="brand-icon"><i class="bi bi-grid-1x2-fill" aria-hidden="true"></i></span><span><strong>adminHMD</strong><small>Sign in to your admin workspace.</small></span></a>
+            <a class="auth-brand" href="index.html"><span class="brand-icon"><i class="bi bi-grid-1x2-fill" aria-hidden="true"></i></span><span><strong>Admin</strong><small>Sign in to your admin workspace.</small></span></a>
             <div class="auth-visual"><img src="{{ asset('backend/assets/images/png/dasher-ui-bootstrap-5.jpg') }}" alt="adminHMD dashboard interface"></div>
-            <form class="needs-validation" novalidate method="POST" action="{{ route('login') }}">
+            <form class="needs-validation" novalidate method="POST" action="{{ route('admin.login') }}">
                 @csrf
                 <div class="mb-4">
                     <p class="eyebrow mb-1">Secure Access</p>
@@ -79,7 +79,7 @@
             </form>
 
             <div class="auth-footer">New here?
-                <a href="/register">Create an account
+                <a href="{{ route('admin.register') }}">Create an account
 
                 </a>
             </div>

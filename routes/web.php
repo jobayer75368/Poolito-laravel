@@ -58,6 +58,8 @@ Route::get('/shop', function () {
 
 // / ******Frontend ends here *******///
 
+
+
 // / ******Backend starts here *******///
 
 Route::prefix('admin')->middleware('auth')->name('admin.')->group(function () {
