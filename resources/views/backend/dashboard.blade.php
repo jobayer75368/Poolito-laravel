@@ -61,7 +61,7 @@
                     <h2 class="h5 mb-1 section-title"><i class="bi bi-people" aria-hidden="true"></i><span>Recent Users</span></h2>
                     <p class="text-muted mb-0">Latest account activity across the workspace.</p>
                 </div>
-                <a class="btn btn-outline-secondary btn-sm" href="{{ route('admin.users') }}">Manage Users</a>
+                <a class="btn btn-outline-secondary btn-sm" href="{{ route('admin.user.index') }}">Manage Users</a>
             </div>
             <div class="table-responsive">
                 <table class="table align-middle mb-0" id="usersTable" data-searchable-table>
@@ -76,13 +76,15 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach ($users as $user )
+                        @foreach ($users as $key=> $user )
                         <tr class="fw-semibold mb-0">
-                            <td>{{ $user->id }}</td>
+                            <td>{{ $key+1 }}</td>
                             <td>{{ $user->name }}</td>
                             <td>{{ $user->email }}</td>
-                            <td><span class="badge text-bg-success">Active</span></td>
-                            <td>{{ $user->created_at }}</td>
+                            <td>
+                                <span class="badge bg-{{ ($user->status=='pending')?'warning': (($user->status=='active')?'success':'danger') }}">{{ucwords($user->status)}}</span>
+                            </td>
+                            <td>{{ $user->created_at->format('d M Y') }}</td>
                             <td class="text-end"><a class="btn btn-light btn-sm" href="{{ route('admin.user_details') }}">View</a></td>
                         </tr>
                         @endforeach

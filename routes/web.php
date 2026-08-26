@@ -67,10 +67,11 @@ Route::prefix('admin')->middleware('auth')->name('admin.')->group(function () {
     // Dashboard 
     Route::get('/dashboard', [UserController::class, 'dashboardIndex'])->name('dashboard');
 
-    Route::get(
-        '/users',
-        [UserController::class, 'index']
-    )->name('users');
+    // User manage 
+    Route::get('/users', [UserController::class, 'index'])->name('user.index');
+    Route::post('/users/{id}', [UserController::class, 'approve'])->name('user.approve');
+    Route::post('/users/delete/{id}', [UserController::class, 'destroy'])->name('user.destroy');
+    Route::get('/users/delete/{id}', [UserController::class, 'destroy'])->name('user.destroy');
 
     Route::get('/profile', function () {
         return view('backend.profile');

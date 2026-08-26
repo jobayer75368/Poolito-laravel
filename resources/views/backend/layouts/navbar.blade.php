@@ -21,7 +21,7 @@
                 </button>
                 <div class="dropdown-menu dropdown-menu-end notification-menu">
                     <div class="dropdown-header fw-bold text-body">Notifications</div>
-                    <a class="dropdown-item" href="{{ route('admin.users') }}">
+                    <a class="dropdown-item" href="{{ route('admin.user.index') }}">
                         <span class="notification-title">New user registered</span>
                         <span class="notification-time">4 minutes ago</span>
                     </a>

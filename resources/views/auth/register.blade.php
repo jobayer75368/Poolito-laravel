@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="adminHMD authentication page">
+  <meta name="description" content="admin authentication page">
   <title>Register | Admin</title>
 
   <link rel="stylesheet" href="{{ asset('backend/assets/css/bootstrap.min.css') }}">
@@ -28,31 +28,43 @@
         <img src="{{ asset('backend/assets/images/png/dasher-ui-bootstrap-5.jpg') }}" alt="adminHMD dashboard interface">
       </div>
 
-      <form class="needs-validation" method="POST" action="{{ route('admin.register') }}" novalidate>
-
+      <form class="needs-validation" method="POST" action="{{ route('admin.register.store') }}" novalidate>
+        @csrf
         <div class="mb-4">
           <p class="eyebrow mb-1">Secure Access</p>
           <h1 class="h3 mb-1">Register</h1>
         </div>
+
+        <!-- Name  -->
         <div class="mb-3">
-          <label class="form-label" for="registerName">Full name</label>
-          <input class="form-control" id="registerName" type="text" required>
-          <div class="invalid-feedback">Full name is required.</div>
+          <label class="form-label" for="name">Full Name</label>
+          <input class="form-control" id="name" type="text" name="name" value="{{ old('name') }}" required>
+          <!-- <div class="invalid-feedback">Name is required.</div> -->
+          <x-input-error :messages="$errors->get('name')" class="mt-2" />
         </div>
+
+        <!-- Email  -->
         <div class="mb-3">
-          <label class="form-label" for="registerEmail">Email address</label>
-          <input class="form-control" id="registerEmail" type="email" required>
-          <div class="invalid-feedback">Enter a valid email.</div>
+          <label class="form-label" for="email">Email address</label>
+          <input class="form-control" id="email" type="email" name="email" value="{{ old('email') }}" required>
+          <!-- <div class="invalid-feedback">Enter a valid email.</div> -->
+          <x-input-error :messages="$errors->get('email')" class="mt-2" />
         </div>
+
+        <!-- Create Password  -->
         <div class="mb-3">
-          <label class="form-label" for="registerPassword">Password</label>
-          <input class="form-control" id="registerPassword" type="password" minlength="6" required>
-          <div class="invalid-feedback">Password must be at least 6 characters.</div>
+          <label class="form-label" for="password">Create Password</label>
+          <input class="form-control" id="password" type="password" minlength="6" name="password" value="{{ old('password') }}" required>
+          <!-- <div class="invalid-feedback">Password must be at least 6 characters.</div> -->
+          <x-input-error :messages="$errors->get('password')" class="mt-2" />
         </div>
-        <div class="form-check mb-4">
-          <input class="form-check-input" type="checkbox" id="terms" required>
-          <label class="form-check-label" for="terms">I agree to the terms</label>
-          <div class="invalid-feedback">You must agree before continuing.</div>
+
+        <!-- Confirm Password  -->
+        <div class="mb-3">
+          <label class="form-label" for="confirmPassword">Confirm Password</label>
+          <input class="form-control" id="confirmPassword" type="password" minlength="6" name="password_confirmation" required>
+          <!-- <div class="invalid-feedback">Password must be at least 6 characters.</div> -->
+          <x-input-error :messages="$errors->get('password_confirmation')" class="mt-2" />
         </div>
 
         <button class="btn btn-primary w-100" type="submit">
@@ -61,7 +73,7 @@
 
       </form>
 
-      <div class="auth-footer">Already have an account? <a href="login.html">Sign in</a></div>
+      <div class="auth-footer">Already have an account? <a href="{{route('admin.login')}}">Sign in</a></div>
     </section>
   </main>
 
