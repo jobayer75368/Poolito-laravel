@@ -8,6 +8,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Storage;
+use App\Models\Service;
+use App\Models\Member;
 use Throwable;
 
 class UserController extends Controller
@@ -16,12 +18,39 @@ class UserController extends Controller
     {
         $users = User::all();
         $totalUsers = count($users);
-        return view('backend.user.index', compact('users', 'totalUsers'));
+        $activeUsers = count(User::where('status', 'active')->get());
+        $pendingUsers = count(User::where('status', 'pending')->get());
+        $inactiveUsers = count(User::where('status', 'inactive')->get());
+        return view('backend.user.index', compact('users', 'totalUsers', 'activeUsers', 'pendingUsers', 'inactiveUsers'));
     }
     public function dashboardIndex()
     {
         $users = User::latest()->get();
-        return view('backend.dashboard', compact('users'));
+        $totalUsers = count($users);
+        $totalServices = count(Service::where('status', 'active')->get());
+        $totalMembers = count(Member::where('status', 'active')->get());
+        return view('backend.dashboard', compact('users', 'totalUsers', 'totalServices', 'totalMembers'));
+    }
+    public function show(int $id)
+    {
+        $user = User::findOrFail($id);
+        return view('backend.user.show', compact('user'));
+    }
+
+    public function edit(int $id)
+    {
+        $user = User::findOrFail($id);
+        return view('backend.user.edit', compact('user'));
+    }
+    public function update(Request $request, int $id)
+    {
+        $user = User::findOrFail($id);
+
+        $user->update([
+            'status' => $request->status,
+            'role' => $request->role,
+        ]);
+        return redirect()->route('admin.user.index')->with('success', 'User Updated successfully!');
     }
 
     public function approve(int $id)

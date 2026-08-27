@@ -69,9 +69,11 @@ Route::prefix('admin')->middleware('auth')->name('admin.')->group(function () {
 
     // User manage 
     Route::get('/users', [UserController::class, 'index'])->name('user.index');
+    Route::get('/users/show/{id}', [UserController::class, 'show'])->name('user.show');
+    Route::get('/users/edit/{id}', [UserController::class, 'edit'])->name('user.edit');
+    Route::post('/users/update/{id}', [UserController::class, 'update'])->name('user.update');
     Route::post('/users/{id}', [UserController::class, 'approve'])->name('user.approve');
     Route::post('/users/delete/{id}', [UserController::class, 'destroy'])->name('user.destroy');
-    Route::get('/users/delete/{id}', [UserController::class, 'destroy'])->name('user.destroy');
 
     Route::get('/profile', function () {
         return view('backend.profile');

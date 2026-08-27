@@ -21,7 +21,7 @@
                         <span class="metric-label">Services</span>
                         <span class="metric-icon"><i class="bi bi-currency-dollar" aria-hidden="true"></i></span>
                     </div>
-                    <div class="metric-value"></div>
+                    <div class="metric-value">{{ $totalServices }}</div>
                 </article>
             </div>
 
@@ -31,7 +31,7 @@
                         <span class="metric-label">Users</span>
                         <span class="metric-icon"><i class="bi bi-bag-check" aria-hidden="true"></i></span>
                     </div>
-                    <div class="metric-value"></div>
+                    <div class="metric-value">{{ $totalUsers }}</div>
                 </article>
             </div>
 
@@ -41,7 +41,7 @@
                         <span class="metric-label">Members</span>
                         <span class="metric-icon"><i class="bi bi-people" aria-hidden="true"></i></span>
                     </div>
-                    <div class="metric-value"></div>
+                    <div class="metric-value">{{ $totalMembers }}</div>
                 </article>
             </div>
 
