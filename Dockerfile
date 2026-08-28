@@ -15,3 +15,4 @@ ENV LOG_CHANNEL stderr
 ENV COMPOSER_ALLOW_SUPERUSER 1
 
 CMD ["/start.sh"]
+COPY ca.pem /etc/ssl/certs/aiven-ca.pem
