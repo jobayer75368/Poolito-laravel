@@ -86,9 +86,4 @@ class UserController extends Controller
             return redirect()->route('admin.user.index')->with('success', 'Something went Wrong!');
         }
     }
-
-    public function inaccessible()
-    {
-        return view('backend.user.inaccessible');
-    }
 }

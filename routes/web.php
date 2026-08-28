@@ -68,14 +68,18 @@ Route::prefix('admin')->middleware('auth')->name('admin.')->group(function () {
     Route::get('/dashboard', [UserController::class, 'dashboardIndex'])->name('dashboard');
 
     // User manage 
-    Route::get('/users', [UserController::class, 'index'])->name('user.index');
-    Route::get('/users/show/{id}', [UserController::class, 'show'])->name('user.show');
-    Route::get('/users/edit/{id}', [UserController::class, 'edit'])->name('user.edit');
-    Route::post('/users/update/{id}', [UserController::class, 'update'])->name('user.update');
-    Route::post('/users/{id}', [UserController::class, 'approve'])->name('user.approve');
-    Route::post('/users/delete/{id}', [UserController::class, 'destroy'])->name('user.destroy');
+    Route::middleware('admin')->group(function () {
+        Route::get('/users', [UserController::class, 'index'])->name('user.index');
+        Route::get('/users/show/{id}', [UserController::class, 'show'])->name('user.show');
+        Route::get('/users/edit/{id}', [UserController::class, 'edit'])->name('user.edit');
+        Route::post('/users/update/{id}', [UserController::class, 'update'])->name('user.update');
+        Route::post('/users/{id}', [UserController::class, 'approve'])->name('user.approve');
+        Route::post('/users/delete/{id}', [UserController::class, 'destroy'])->name('user.destroy');
+    });
 
-    Route::get('/users/inaccessible', [UserController::class, 'inaccessible'])->name('user.inaccessible');
+    Route::get('/users/inaccessible', function () {
+        return view('backend.user.inaccessible');
+    })->name('user.inaccessible');
 
 
     // Profile manage 
