@@ -8,7 +8,9 @@
                     <i class="bi bi-tools"></i>
                 </span>
                 <div>
-                    <h1 class="h3 mb-1">User Management</h1>
+                    <p class="eyebrow mb-1">Management</p>
+                    <h1 class="h3 mb-1">Users</h1>
+                    <p class="text-muted mb-0">Review accounts, roles, account status, and team ownership.</p>
                 </div>
             </div>
             <div>
@@ -18,7 +20,7 @@
                     </li>/
                     <li><a class="link-opacity-25-hover" href="{{ route('admin.user.index') }}">User List </a></li>/
                     <li>
-                        Edit User Status & Role
+                        {{ $user->name }}
                     </li>
                 </ul>
             </div>
@@ -50,12 +52,11 @@
                         <div class="col-12">
                             <label class="form-label" for="role">Role</label>
                             <select class="form-control" name="role" id="role">
-                                <option value="editor" @selected($user->status=='editor')>Editor</option>
+                                <option value="editor" @selected($user->role=='editor')>Editor</option>
 
-                                <option value="Admin" @selected($user->status=='admin')>Admin</option>
+                                <option value="Admin" @selected($user->role=='admin')>Admin</option>
                             </select>
                         </div>
-
 
 
                     </div>

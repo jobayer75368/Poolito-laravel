@@ -52,4 +52,5 @@
     previewImage('blogImg', 'blogImagePreview');
     previewImage('memberImg', 'memberImagePreview');
     previewImage('portfolioImg', 'portfolioImagePreview');
+    previewImage('profileImg', 'prfoileImagePreview');
 </script>

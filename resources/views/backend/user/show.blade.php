@@ -42,7 +42,7 @@
                             <p class="text-muted mb-0">Permissions, plan, and current access details.</p>
                         </div>
                         <div class="d-flex gap-2">
-                            <a href="{{ route('admin.team.edit', $user->id) }}" class="btn btn-outline-primary btn-sm">
+                            <a href="{{ route('admin.user.edit', $user->id) }}" class="btn btn-outline-primary btn-sm">
                                 <i class="bi bi-pencil-square me-1"></i> Edit
                             </a>
 

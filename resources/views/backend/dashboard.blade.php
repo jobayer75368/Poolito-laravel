@@ -45,6 +45,16 @@
                 </article>
             </div>
 
+            <div class="col-12 col-sm-6 col-xl-3">
+                <article class="metric-card metric-danger">
+                    <div class="metric-top">
+                        <span class="metric-label">Blogs</span>
+                        <span class="metric-icon"><i class="bi bi-journal-text" aria-hidden="true"></i></span>
+                    </div>
+                    <div class="metric-value">{{ $totalBlogs }}</div>
+                </article>
+            </div>
+
         </section>
 
         <section class="row g-3 mt-1">
@@ -54,6 +64,8 @@
 
             </div>
         </section>
+
+        @if (Auth::user()->role =='admin')
 
         <section class="panel mt-3">
             <div class="panel-header">
@@ -70,6 +82,7 @@
                             <th scope="col">Sl</th>
                             <th scope="col">Name</th>
                             <th scope="col">Email</th>
+                            <th scope="col">Role</th>
                             <th scope="col">Status</th>
                             <th scope="col">Joined</th>
                             <th scope="col" class="text-end">Action</th>
@@ -81,11 +94,12 @@
                             <td>{{ $key+1 }}</td>
                             <td>{{ $user->name }}</td>
                             <td>{{ $user->email }}</td>
+                            <td>{{ ucwords($user->role) }}</td>
                             <td>
                                 <span class="badge bg-{{ ($user->status=='pending')?'warning': (($user->status=='active')?'success':'danger') }}">{{ucwords($user->status)}}</span>
                             </td>
                             <td>{{ $user->created_at->format('d M Y') }}</td>
-                            <td class="text-end"><a class="btn btn-light btn-sm" href="{{ route('admin.user_details') }}">View</a></td>
+                            <td class="text-end"><a class="btn btn-light btn-sm" href="{{ route('admin.user.show',$user->id) }}">View</a></td>
                         </tr>
                         @endforeach
 
@@ -94,6 +108,7 @@
                 </table>
             </div>
         </section>
+        @endif
     </div>
 </main>
 @endsection

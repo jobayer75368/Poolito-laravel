@@ -33,10 +33,9 @@
             <div class="table-responsive">
                 <div>
                     @if (session('success'))
-                    <h3 class="badge bg-success">
+                    <div class="alert alert-success" role="alert"><strong>Success:</strong>
                         {{ session('success') }}
-                    </h3>
-
+                    </div>
                     @endif
                 </div>
                 <table class="table align-middle mb-0" id="usersTable" data-searchable-table>

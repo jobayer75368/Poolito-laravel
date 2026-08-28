@@ -3,7 +3,7 @@
 use App\Http\Controllers\backend\BlogController;
 use App\Http\Controllers\backend\MessageController;
 use App\Http\Controllers\backend\ServiceController;
-use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\backend\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Backend\UserController;
 use App\Http\Controllers\backend\MemberController;
@@ -75,13 +75,15 @@ Route::prefix('admin')->middleware('auth')->name('admin.')->group(function () {
     Route::post('/users/{id}', [UserController::class, 'approve'])->name('user.approve');
     Route::post('/users/delete/{id}', [UserController::class, 'destroy'])->name('user.destroy');
 
-    Route::get('/profile', function () {
-        return view('backend.profile');
-    })->name('profile');
+    Route::get('/users/inaccessible', [UserController::class, 'inaccessible'])->name('user.inaccessible');
 
-    Route::get('/user_details', function () {
-        return view('backend.user_details');
-    })->name('user_details');
+
+    // Profile manage 
+    Route::get('/profile', [ProfileController::class, 'show'])->name('profile.show');
+    Route::get('/profile/edit', [ProfileController::class, 'edit'])->name('profile.edit');
+    Route::post('/profile/update', [ProfileController::class, 'update'])->name('profile.update');
+
+
 
     // service management 
     Route::get('/services', [ServiceController::class, 'index'])->name('service.index');
@@ -167,11 +169,5 @@ Route::prefix('admin')->middleware('auth')->name('admin.')->group(function () {
     })->name('settings');
 });
 
-
-Route::middleware('auth')->group(function () {
-    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
-    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
-    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
-});
 
 require __DIR__ . '/auth.php';

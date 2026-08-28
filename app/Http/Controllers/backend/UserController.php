@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Backend;
 
+use App\Models\Blog;
 use Illuminate\Routing\Controller;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -10,6 +11,7 @@ use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Storage;
 use App\Models\Service;
 use App\Models\Member;
+use Illuminate\Support\Facades\Auth;
 use Throwable;
 
 class UserController extends Controller
@@ -29,12 +31,13 @@ class UserController extends Controller
         $totalUsers = count($users);
         $totalServices = count(Service::where('status', 'active')->get());
         $totalMembers = count(Member::where('status', 'active')->get());
-        return view('backend.dashboard', compact('users', 'totalUsers', 'totalServices', 'totalMembers'));
+        $totalBlogs = count(Blog::where('status', 'published')->get());
+        return view('backend.dashboard', compact('users', 'totalUsers', 'totalServices', 'totalMembers', 'totalBlogs'));
     }
     public function show(int $id)
     {
         $user = User::findOrFail($id);
-        return view('backend.user.show', compact('user'));
+        return view(Auth::user()->role == 'editor' ? 'backend.user.inaccessible' : 'backend.user.show', compact('user'));
     }
 
     public function edit(int $id)
@@ -50,7 +53,7 @@ class UserController extends Controller
             'status' => $request->status,
             'role' => $request->role,
         ]);
-        return redirect()->route('admin.user.index')->with('success', 'User Updated successfully!');
+        return redirect()->route('admin.user.index')->with('success', 'User permissions were updated successfully!');
     }
 
     public function approve(int $id)
@@ -82,5 +85,10 @@ class UserController extends Controller
             Log::error('Error deleting User', [$th->getMessage() . '-' . $th->getLine()]);
             return redirect()->route('admin.user.index')->with('success', 'Something went Wrong!');
         }
+    }
+
+    public function inaccessible()
+    {
+        return view('backend.user.inaccessible');
     }
 }

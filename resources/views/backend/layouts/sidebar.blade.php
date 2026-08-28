@@ -17,12 +17,12 @@
             <span class="nav-text">Dashboard</span>
         </a>
 
-        <a class="nav-link {{ request()->routeIs('admin.user.index') ? 'active' :''}}" href="{{ route('admin.user.index') }}">
+        <a class="nav-link {{ request()->routeIs('admin.user.index','admin.user.show','admin.user.edit','admin.user.inaccessible') ? 'active' :''}}" href="{{Auth::user()->role=='admin'? route('admin.user.index'):route('admin.user.inaccessible') }}">
             <span class="nav-icon"><i class="bi bi-people" aria-hidden="true"></i></span>
             <span class="nav-text">Users</span>
         </a>
 
-        <a class="nav-link {{ request()->routeIs('admin.profile') ? 'active' :''}}" href="{{ route('admin.profile') }}">
+        <a class="nav-link {{ request()->routeIs('admin.profile.show','admin.profile.edit') ? 'active' :''}}" href="{{ route('admin.profile.show') }}">
             <span class="nav-icon"><i class="bi bi-person-badge" aria-hidden="true"></i></span>
             <span class="nav-text">Profile</span>
         </a>

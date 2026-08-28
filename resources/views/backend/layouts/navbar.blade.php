@@ -34,11 +34,13 @@
 
             <div class="dropdown">
                 <button class="profile-button dropdown-toggle" data-bs-toggle="dropdown" type="button" aria-expanded="false">
-                    <img class="avatar-img avatar-sm" src="{{ asset('backend/assets/images/avatar/avatar.jpg') }}" alt="Admin Profile">
-                    <span class=" d-none d-sm-inline">Admin</span>
+                    <img class="avatar-img avatar-sm"
+                        src="{{ Auth::user()->user_image ? asset('storage/' . Auth::user()->user_image) : asset('backend/assets/images/avatar/avatar.jpg') }}"
+                        alt="{{ Auth::user()->name }}">
+                    <span class=" d-none d-sm-inline">{{ Auth::user()->name }}</span>
                 </button>
                 <ul class="dropdown-menu dropdown-menu-end">
-                    <li><a class="dropdown-item" href="{{ route('admin.profile') }}">Profile</a></li>
+                    <li><a class="dropdown-item" href="{{ route('admin.profile.show') }}">Profile</a></li>
                     <li><a class="dropdown-item" href="{{route('admin.settings')}}">Account settings</a></li>
                     <li>
                         <hr class="dropdown-divider">

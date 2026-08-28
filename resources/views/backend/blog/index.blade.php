@@ -39,10 +39,9 @@
             <div class="table-responsive">
                 <div>
                     @if (session('success'))
-                    <h3 class="badge bg-success">
+                    <div class="alert alert-success" role="alert"><strong>Success:</strong>
                         {{ session('success') }}
-                    </h3>
-
+                    </div>
                     @endif
                 </div>
                 <table class="table align-middle mb-0" id="usersTable" data-searchable-table>
@@ -68,7 +67,7 @@
                             </td>
 
                             <td>
-                                <span class="badge bg-{{ $blog->status=='active'?'success':'danger' }}">{{ ucwords($blog->status) }}</span>
+                                <span class="badge bg-{{ $blog->status=='published'?'success':(($blog->status=='pending')?'warning':'dark')}}">{{ ucwords($blog->status) }}</span>
                             </td>
 
                             <td>{{ $blog->created_at->format('d M Y, h:i A') }}</td>

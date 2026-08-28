@@ -35,22 +35,22 @@
             </div>
 
             <div class="col-12 col-sm-6 col-xl-3">
-                <article class="metric-card metric-warning">
-                    <div class="metric-top">
-                        <span class="metric-label">Pending</span>
-                        <span class="metric-icon"><i class="bi bi-hourglass-split" aria-hidden="true"></i></span>
-                    </div>
-                    <div class="metric-value">{{ $pendingUsers }}</div>
-                </article>
-            </div>
-
-            <div class="col-12 col-sm-6 col-xl-3">
                 <article class="metric-card metric-danger">
                     <div class="metric-top">
                         <span class="metric-label">Inactive</span>
                         <span class="metric-icon"><i class="bi bi-slash-circle" aria-hidden="true"></i></span>
                     </div>
                     <div class="metric-value">{{ $inactiveUsers}}</div>
+                </article>
+            </div>
+
+            <div class="col-12 col-sm-6 col-xl-3">
+                <article class="metric-card metric-warning">
+                    <div class="metric-top">
+                        <span class="metric-label">Pending</span>
+                        <span class="metric-icon"><i class="bi bi-hourglass-split" aria-hidden="true"></i></span>
+                    </div>
+                    <div class="metric-value">{{ $pendingUsers }}</div>
                 </article>
             </div>
         </section>
@@ -63,16 +63,14 @@
                 </div>
                 <div class="d-flex flex-wrap gap-2">
                     <input class="form-control form-control-sm table-search" type="search" placeholder="Search users" data-table-search="usersTable" aria-label="Search users">
-                    <a class="btn btn-primary btn-sm" href="add-user.html"><i class="bi bi-person-plus" aria-hidden="true"></i> Add User</a>
                 </div>
             </div>
             <div class="table-responsive">
                 <div>
                     @if (session('success'))
-                    <h1 class="badge bg-success">
+                    <div class="alert alert-success" role="alert"><strong>Success:</strong>
                         {{ session('success') }}
-                    </h1>
-
+                    </div>
                     @endif
                 </div>
                 <table class="table align-middle mb-0" id="usersTable" data-searchable-table>
@@ -140,9 +138,6 @@
                                 </div>
 
                                 @endif
-
-
-                                <!-- <a class="btn btn-light btn-sm" href="{{ route('admin.user_details') }}">View</a> -->
                             </td>
                         </tr>
                         @endforeach
