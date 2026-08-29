@@ -31,4 +31,4 @@ RUN composer install --no-dev --no-interaction --prefer-dist --optimize-autoload
 
 EXPOSE 10000
 
-CMD ["sh", "-c", "php artisan config:clear && php artisan migrate --force && php artisan config:cache && php artisan serve --host=0.0.0.0 --port=${PORT:-10000}"]
+CMD ["sh", "-c", "echo \"HOST=[$DB_HOST]\" && echo -n \"$DB_HOST\" | wc -c && php -r 'var_dump(gethostbyname(getenv(\"DB_HOST\")));' && php -r 'var_dump(gethostbyname(\"google.com\"));' && php artisan migrate --force && php artisan serve --host=0.0.0.0 --port=${PORT:-10000}"]
