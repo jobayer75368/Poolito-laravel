@@ -32,7 +32,7 @@ COPY ca.pem /etc/ssl/certs/aiven-ca.pem
 
 RUN composer install --no-dev --no-interaction --prefer-dist --optimize-autoloader
 
-RUN npm install && npm run build
+RUN npm install --include=dev && npm run build
 
 EXPOSE 10000
 
