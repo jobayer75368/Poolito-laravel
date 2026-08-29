@@ -111,12 +111,12 @@
                             <td class="text-end">
                                 @if ($user->status=='pending')
 
-                                <div>
+                                <div class="d-flex gap-2">
 
                                     <a class="btn btn-sm btn-outline-primary" data-bs-toggle="modal"
                                         data-bs-target="#userApproveModal{{ $user->id }}">Approve</a>
                                     <a class="btn btn-sm btn-outline-danger" data-bs-toggle="modal"
-                                        data-bs-target="#userDeleteModal{{ $user->id }}">Reject</a>
+                                        data-bs-target=".userDeleteModal{{ $user->id }}">Reject</a>
 
                                 </div>
 
@@ -132,7 +132,7 @@
                                     </a>
 
                                     <a class="btn btn-sm btn-outline-danger" data-bs-toggle="modal"
-                                        data-bs-target="#userDeleteModal">
+                                        data-bs-target=".userDeleteModal{{ $user->id }}">
                                         <i class="bi bi-trash me-1"></i>
                                     </a>
                                 </div>
@@ -184,7 +184,7 @@
 
 <!-- Delete modal  -->
 
-<div class="modal fade" id="userDeleteModal{{ $user->id }}" tabindex="-1" aria-labelledby="confirmModalLabel" aria-hidden="true">
+<div class="modal fade userDeleteModal{{ $user->id }}" id="" tabindex="-1" aria-labelledby="confirmModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
             <div class="modal-header">
