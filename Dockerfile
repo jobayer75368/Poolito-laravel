@@ -10,6 +10,9 @@ RUN apt-get update && apt-get install -y \
     libonig-dev \
     libxml2-dev \
     libcurl4-openssl-dev \
+    curl \
+    && curl -fsSL https://deb.nodesource.com/setup_20.x | bash - \
+    && apt-get install -y nodejs \
     && docker-php-ext-install \
     pdo_mysql \
     mbstring \
@@ -29,6 +32,8 @@ COPY ca.pem /etc/ssl/certs/aiven-ca.pem
 
 RUN composer install --no-dev --no-interaction --prefer-dist --optimize-autoloader
 
+RUN npm install && npm run build
+
 EXPOSE 10000
 
-CMD ["sh", "-c", "echo \"HOST=[$DB_HOST]\" && echo -n \"$DB_HOST\" | wc -c && php -r 'var_dump(gethostbyname(getenv(\"DB_HOST\")));' && php -r 'var_dump(gethostbyname(\"google.com\"));' && php artisan migrate --force && php artisan serve --host=0.0.0.0 --port=${PORT:-10000}"]
+CMD ["sh", "-c", "php artisan migrate --force && php artisan serve --host=0.0.0.0 --port=${PORT:-10000}"]
