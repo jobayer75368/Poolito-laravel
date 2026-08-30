@@ -5,6 +5,7 @@ WORKDIR /var/www/html
 RUN apt-get update && apt-get install -y \
     git \
     unzip \
+    ca-certificates \
     libzip-dev \
     libpng-dev \
     libonig-dev \
@@ -27,8 +28,6 @@ RUN apt-get update && apt-get install -y \
 COPY --from=composer:2 /usr/bin/composer /usr/bin/composer
 
 COPY . .
-
-COPY ca.pem /etc/ssl/certs/aiven-ca.pem
 
 RUN composer install --no-dev --no-interaction --prefer-dist --optimize-autoloader
 
