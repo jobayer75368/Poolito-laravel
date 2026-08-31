@@ -1,13 +1,13 @@
 <?php
 
-use App\Http\Controllers\backend\BlogController;
-use App\Http\Controllers\backend\MessageController;
-use App\Http\Controllers\backend\ServiceController;
-use App\Http\Controllers\backend\ProfileController;
+use App\Http\Controllers\Backend\BlogController;
+use App\Http\Controllers\Backend\MessageController;
+use App\Http\Controllers\Backend\ServiceController;
+use App\Http\Controllers\Backend\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Backend\UserController;
-use App\Http\Controllers\backend\MemberController;
-use App\Http\Controllers\backend\PortfolioController;
+use App\Http\Controllers\Backend\MemberController;
+use App\Http\Controllers\Backend\PortfolioController;
 use App\Http\Controllers\frontend\HomeController;
 
 // / ******Frontend starts here *******///
