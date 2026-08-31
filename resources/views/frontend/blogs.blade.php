@@ -32,7 +32,7 @@
                     </div>
                     <div class="blog-content">
                         <div class="blog-inner-author">
-                            <span>Written by:<a href="{{route('blogs',$blog->blog_slug)}}">{{$blog->creator->name}}</a></span>
+                            <span>Written by:<a href="{{route('blogs',$blog->blog_slug)}}">{{$blog->creator->name??'Admin'}}</a></span>
                             <a href="{{ route('blogs',$blog->blog_slug) }}" class="blog-date"><i class="fa-regular fa-calendar-days"></i>{{ $blog->created_at->format('d M Y, h:i A') }}</a>
                         </div>
                         <h2 class="blog-title"><a href="{{ route('blog_details',$blog->blog_slug) }}">{{ $blog->blog_title }}</a></h2>
