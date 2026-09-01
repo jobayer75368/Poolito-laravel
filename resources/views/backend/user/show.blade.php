@@ -20,9 +20,9 @@
         <section class="row g-3">
             <div class="col-12 col-xl-4">
                 <div class="panel h-100 text-center profile-card">
-                    <div class="profile-cover"><img src="../assets/images/png/dasher-ui-bootstrap-5.jpg" alt="User workspace preview"></div>
+                    <div class="profile-cover"><img src="{{ asset('backend/assets/images/png/dasher-ui-bootstrap-5.jpg') }}" alt="User workspace preview"></div>
                     <div class="profile-hero">
-                        <img class="avatar-img avatar-xl profile-photo" src="../assets/images/avatar/avatar-1.jpg" alt="{{ $user->name }}">
+                        <img class="avatar-img avatar-xl profile-photo" src="{{ $user->user_image && Storage::disk('public')->exists($user->user_image)?asset('storage/'.$user->user_image):asset('no-user.jpg') }}" alt="{{ $user->name }}">
                         <h2 class="h5 mb-1">{{$user->name}}</h2>
                         <p class="text-muted mb-3">{{ ucwords($user->role) }}</p>
                         <span class="badge text-bg-success">Active Account</span>

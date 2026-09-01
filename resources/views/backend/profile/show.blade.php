@@ -32,7 +32,7 @@
                         <img src="{{ asset('backend/assets/images/png/dasher-ui-bootstrap-5.jpg') }}" alt="{{$user->name}} dashboard preview">
                     </div>
                     <img class="avatar-img avatar-xl profile-photo"
-                        src="{{ $user->user_image ? asset('storage/' . $user->user_image) : asset('backend/assets/images/avatar/avatar.jpg') }}"
+                        src="{{ $user->user_image && Storage::disk('public')->exists($user->user_image) ? asset('storage/' . $user->user_image) : asset('backend/assets/images/avatar/avatar.jpg') }}"
                         alt="{{ $user->name }}">
                     <h2 class="h5 mt-3 mb-1">{{ucwords($user->name)}}</h2>
                     <p class="text-muted mb-3">{{ ucwords($user->role) }}</p>

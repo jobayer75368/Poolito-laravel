@@ -6,7 +6,7 @@
             </span>
             <span class="brand-copy">
                 <span class="brand-title">Poolito Admin</span>
-                <span class="brand-subtitle">Admin Template</span>
+                <span class="brand-subtitle">Admin Panel</span>
             </span>
         </a>
     </div>
@@ -63,29 +63,9 @@
             <span class="nav-text">Message</span>
         </a>
 
-        <a class="nav-link {{ request()->routeIs('admin.components') ? 'active' :''}}" href="{{ route('admin.components') }}">
-            <span class="nav-icon"><i class="bi bi-grid-3x3-gap" aria-hidden="true"></i></span>
-            <span class="nav-text">Components</span>
-        </a>
-
-        <a class="nav-link {{ request()->routeIs('admin.alerts') ? 'active' :''}}" href="{{ route('admin.alerts') }}">
-            <span class=" nav-icon"><i class="bi bi-exclamation-triangle" aria-hidden="true"></i></span>
-            <span class="nav-text">Alerts</span>
-        </a>
-
-        <a class="nav-link {{ request()->routeIs('admin.modals') ? 'active' :''}}" href="{{ route('admin.modals') }}">
-            <span class="nav-icon"><i class="bi bi-window-stack" aria-hidden="true"></i></span>
-            <span class="nav-text">Modals</span>
-        </a>
-
         <a class="nav-link {{ request()->routeIs('admin.settings') ? 'active' :''}}" href="{{ route('admin.settings') }}">
             <span class="nav-icon"><i class="bi bi-gear" aria-hidden="true"></i></span>
             <span class="nav-text">Settings</span>
-        </a>
-
-        <a class="nav-link" href="/admin/blank">
-            <span class="nav-icon"><i class="bi bi-file-earmark" aria-hidden="true"></i></span>
-            <span class="nav-text">Blank Page</span>
         </a>
     </nav>
 

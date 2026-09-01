@@ -155,19 +155,6 @@ Route::prefix('admin')->middleware('auth')->name('admin.')->group(function () {
     Route::post('/messages/{id}', [MessageController::class, 'destroy'])->name('message.destroy');
 
 
-
-    Route::get('/components', function () {
-        return view('backend.components');
-    })->name('components');
-
-    Route::get('/alerts', function () {
-        return view('backend.alerts');
-    })->name('alerts');
-
-    Route::get('/modals', function () {
-        return view('backend.modals');
-    })->name('modals');
-
     Route::get('/settings', function () {
         return view('backend.settings');
     })->name('settings');
