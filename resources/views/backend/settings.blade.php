@@ -8,46 +8,73 @@
         <div>
           <p class="eyebrow mb-1">Workspace</p>
           <h1 class="h3 mb-1">Settings</h1>
-          <p class="text-muted mb-0">Customize workspace defaults, security options, and notification preferences.</p>
+          <p class="text-muted mb-0">Customize Website & Contact details</p>
         </div>
       </div>
 
     </div>
 
     <section class="row g-3">
-      <div class="col-12 col-xl-6">
-        <form class="panel needs-validation" novalidate>
+      <div class="col-12">
+        <form class="panel needs-validation" method="POST" action="{{ route('admin.setting.general.store') }}" enctype="multipart/form-data" novalidate>
+          @csrf
           <div class="panel-header">
             <div>
               <h2 class="h5 mb-1 section-title"><i class="bi bi-sliders" aria-hidden="true"></i><span>General Settings</span></h2>
-              <p class="text-muted mb-0">Configure workspace identity and defaults.</p>
             </div>
           </div>
-          <div class="mb-3"><label class="form-label" for="workspaceName">Workspace name</label><input class="form-control" id="workspaceName" type="text" value="adminHMD Workspace" required>
-            <div class="invalid-feedback">Workspace name is required.</div>
+          <div class="row g-3">
+
+            <div class=" col-md-6">
+              <label class="form-label" for="workspaceName">Website Name</label>
+              <input class="form-control" id="workspaceName" type="text" value="adminHMD Workspace" required>
+              <div class="invalid-feedback">Website name is required.</div>
+            </div>
+
+            <div class="col-md-6">
+              <label class="form-label" for="workspaceName">Hero Title</label>
+              <input class="form-control" id="workspaceName" type="text" value="adminHMD Workspace" required>
+              <div class="invalid-feedback">Website name is required.</div>
+            </div>
+
+            <div class="mb-3 col-12">
+              <label class="form-label" for="workspaceName">Footer Details</label>
+              <textarea class="form-control" id="workspaceName" required>
+
+            </textarea>
+              <div class="invalid-feedback">Website name is required.</div>
+            </div>
+
+            <div class="col-md-6">
+              <label class="form-label" for="headerLogo">Header Logo</label>
+              <input class="form-control" id="headerLogo" type="file">
+              <div class="invalid-feedback">Header Logo is required.</div>
+              <div class="mt-2">
+                <img id="headerLogoPreview" src="" alt="" style="height:200px; display:none;">
+              </div>
+            </div>
+
+            <div class=" col-md-6">
+              <label class="form-label" for="footerLogo">Footer Logo</label>
+              <input class="form-control" id="footerLogo" type="file">
+              <div class="invalid-feedback">Footer Logo is required.</div>
+              <div class="mt-2">
+                <img id="footerLogoPreview" src="" alt="" style="height:200px; display:none;">
+              </div>
+            </div>
+
+            <div class="mb-3 col-12">
+              <label class="form-label" for="pageBanner">Page Banner</label>
+              <input class="form-control" id="pageBanner" type="file">
+              <div class="invalid-feedback">Page Banner is required.</div>
+              <div class="mt-2">
+                <img id="pageBannerPreview" src="" alt="" style="height:200px; display:none;">
+              </div>
+            </div>
+
           </div>
-          <div class="mb-3"><label class="form-label" for="defaultLanguage">Default language</label><select class="form-select" id="defaultLanguage">
-              <option selected>English</option>
-              <option>Bangla</option>
-              <option>Spanish</option>
-            </select></div>
           <button class="btn btn-primary" type="submit"><i class="bi bi-check2-circle" aria-hidden="true"></i> Save Settings</button>
         </form>
-      </div>
-      <div class="col-12 col-xl-6">
-        <div class="panel h-100">
-          <div class="panel-header">
-            <div>
-              <h2 class="h5 mb-1 section-title"><i class="bi bi-toggles2" aria-hidden="true"></i><span>Preferences</span></h2>
-              <p class="text-muted mb-0">Control notifications and security options.</p>
-            </div>
-          </div>
-          <div class="settings-list">
-            <label class="settings-row"><span><strong>Email alerts</strong><small>Receive important account updates.</small></span><input class="form-check-input" type="checkbox" checked></label>
-            <label class="settings-row"><span><strong>Weekly reports</strong><small>Send summary reports every Monday.</small></span><input class="form-check-input" type="checkbox" checked></label>
-            <label class="settings-row"><span><strong>Two-factor authentication</strong><small>Require extra verification for admins.</small></span><input class="form-check-input" type="checkbox"></label>
-          </div>
-        </div>
       </div>
     </section>
   </div>

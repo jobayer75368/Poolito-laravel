@@ -53,4 +53,7 @@
     previewImage('memberImg', 'memberImagePreview');
     previewImage('portfolioImg', 'portfolioImagePreview');
     previewImage('profileImg', 'prfoileImagePreview');
+    previewImage('headerLogo', 'headerLogoPreview');
+    previewImage('footerLogo', 'footerLogoPreview');
+    previewImage('pageBanner', 'pageBannerPreview');
 </script>

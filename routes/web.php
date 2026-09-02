@@ -155,7 +155,7 @@ Route::prefix('admin')->middleware('auth')->name('admin.')->group(function () {
     Route::post('/messages/{id}', [MessageController::class, 'destroy'])->name('message.destroy');
 
 
-    Route::get('/settings', function () {
+    Route::get('/settings/general', function () {
         return view('backend.settings');
     })->name('settings');
 });
