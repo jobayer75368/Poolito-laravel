@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Backend\UserController;
 use App\Http\Controllers\Backend\MemberController;
 use App\Http\Controllers\Backend\PortfolioController;
+use App\Http\Controllers\Backend\SettingController;
 use App\Http\Controllers\frontend\HomeController;
 
 // / ******Frontend starts here *******///
@@ -155,9 +156,11 @@ Route::prefix('admin')->middleware('auth')->name('admin.')->group(function () {
     Route::post('/messages/{id}', [MessageController::class, 'destroy'])->name('message.destroy');
 
 
-    Route::get('/settings/general', function () {
-        return view('backend.settings');
-    })->name('settings');
+    Route::get('/settings/general', [SettingController::class, 'generalEdit'])->name('setting.general');
+    Route::post('/settings/general', [SettingController::class, 'generalUpdate'])->name('setting.general.update');
+
+    // Route::get('/settings/contact', [SettingsController::class, 'contactEdit'])->name('setting.contact.edit');
+    // Route::get('/settings/contact', [SettingsController::class, 'contactUpdate'])->name('setting.contact.update');
 });
 
 

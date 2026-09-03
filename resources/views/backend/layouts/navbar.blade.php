@@ -25,7 +25,7 @@
                         <span class="notification-title">New user registered</span>
                         <span class="notification-time">4 minutes ago</span>
                     </a>
-                    <a class="dropdown-item" href="{{ route('admin.settings') }}>
+                    <a class="dropdown-item" href="{{ route('admin.setting.general') }}>
                         <span class=" notification-title">Security review completed</span>
                         <span class="notification-time">1 hour ago</span>
                     </a>
@@ -41,7 +41,7 @@
                 </button>
                 <ul class="dropdown-menu dropdown-menu-end">
                     <li><a class="dropdown-item" href="{{ route('admin.profile.show') }}">Profile</a></li>
-                    <li><a class="dropdown-item" href="{{route('admin.settings')}}">Account settings</a></li>
+                    <li><a class="dropdown-item" href="{{route('admin.setting.general')}}">Account settings</a></li>
                     <li>
                         <hr class="dropdown-divider">
                     </li>

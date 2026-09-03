@@ -63,7 +63,7 @@
             <span class="nav-text">Message</span>
         </a>
 
-        <a class="nav-link {{ request()->routeIs('admin.settings') ? 'active' :''}}" href="{{ route('admin.settings') }}">
+        <a class="nav-link {{ request()->routeIs('admin.setting.general') ? 'active' :''}}" href="{{ route('admin.setting.general') }}">
             <span class="nav-icon"><i class="bi bi-gear" aria-hidden="true"></i></span>
             <span class="nav-text">Settings</span>
         </a>
