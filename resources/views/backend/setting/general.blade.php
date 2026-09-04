@@ -75,9 +75,9 @@
                             <label class="form-label" for="workspaceName">Opening Time</label>
 
                             <div class="d-flex gap-2">
-                                <input type="time" class="form-control" name="opening_time_from" id="opening_time_from" value="{{ $settings->opening_time_from }}" required>
+                                <input type="time" class="form-control" name="opening_time_from" id="opening_time_from" value="{{ $settings->opening_time_from->format('H:i')}}" required>
                                 <p class="mb-0 d-flex align-items-center">To</p>
-                                <input type="time" class="form-control" name="opening_time_to" id="opening_time_to" value="{{ $settings->opening_time_to }}" required>
+                                <input type="time" class="form-control" name="opening_time_to" id="opening_time_to" value="{{ $settings->opening_time_to->format('H:i') }}" required>
                             </div>
                             <div class="invalid-feedback">Opening Hours is required.</div>
                         </div>
