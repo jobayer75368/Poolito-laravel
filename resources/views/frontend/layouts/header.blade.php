@@ -6,7 +6,7 @@
                     <div class="header-links">
                         <ul>
                             <li><i class="far fa-envelope"></i><a href="mailto:info@example.com">info@example.com</a></li>
-                            <li class="d-lg-inline d-none"><i class="far fa-clock"></i>Tuesday - Saturday 8:00 Am - 5:00 Pm</li>
+                            <li class="d-lg-inline d-none text-uppercase"><i class="far fa-clock"></i>{{ $settings->opening_day_from }} - {{ $settings->opening_day_to }} &emsp;{{ $settings->opening_time_from->format('h:i A') }} - {{ $settings->opening_time_to->format('h:i A') }}</li>
                         </ul>
                     </div>
                 </div>
@@ -31,7 +31,7 @@
                         <div class="col-auto">
                             <div class="header-logo">
                                 <a href="/">
-                                    <img src="{{ asset('/frontend/assets/img/logo-white.svg') }}" alt="logo">
+                                    <img src="{{ $settings->header_logo? asset('storage/'.$settings->header_logo) :'';}}" alt="header logo">
                                 </a>
                             </div>
                         </div>

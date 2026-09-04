@@ -5,7 +5,7 @@
                 <img class="" src="{{ asset('favicon.ico') }}" alt="Poolito icon">
             </span>
             <span class="brand-copy">
-                <span class="brand-title">Poolito Admin</span>
+                <span class="brand-title">{{ $settings->site_name }} Admin</span>
                 <span class="brand-subtitle">Admin Panel</span>
             </span>
         </a>

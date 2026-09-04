@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Storage;
 use App\Models\Service;
 use App\Models\Member;
+use App\Models\Setting;
 use Illuminate\Support\Facades\Auth;
 use Throwable;
 
@@ -32,7 +33,8 @@ class UserController extends Controller
         $totalServices = count(Service::where('status', 'active')->get());
         $totalMembers = count(Member::where('status', 'active')->get());
         $totalBlogs = count(Blog::where('status', 'published')->get());
-        return view('backend.dashboard', compact('users', 'totalUsers', 'totalServices', 'totalMembers', 'totalBlogs'));
+        $settings = Setting::find(1);
+        return view('backend.dashboard', compact('users', 'totalUsers', 'totalServices', 'totalMembers', 'totalBlogs', 'settings'));
     }
     public function show(int $id)
     {

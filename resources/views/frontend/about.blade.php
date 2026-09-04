@@ -3,7 +3,8 @@
 <!--==============================
         Breadcumb
         ============================== -->
-<div class="breadcumb-wrapper " data-bg-src="{{ asset('/frontend/assets/img/breadcumb/breadcumb-bg.png') }}">
+<div class="breadcumb-wrapper " data-bg-src="{{ $settings->page_banner? asset('storage/'.$settings->page_banner) :'';}}">
+
     <div class="container z-index-common">
         <div class="breadcumb-content">
             <h1 class="breadcumb-title">About <span>Us</span></h1>

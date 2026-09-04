@@ -864,10 +864,12 @@ textarea.is-invalid {
 }
 .vs-menu-wrapper .mobile-logo {
   padding-bottom: 0;
-  padding-top: 40px;
-  display: block;
+  padding: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   text-align: center;
-  background-color: var(--white-color);
+  background-color: var(--theme-color);
 }
 .vs-menu-wrapper .mobile-logo svg {
   max-width: 185px;
