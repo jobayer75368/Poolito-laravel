@@ -16,17 +16,17 @@
 
         <section class="row g-3">
             <div class="col-12">
-                <form class="panel needs-validation" method="POST" action="{{ route('admin.setting.general.update') }}" enctype="multipart/form-data" novalidate>
+                <form class="panel needs-validation" method="POST" action="{{ route('admin.setting.about.update') }}" enctype="multipart/form-data" novalidate>
                     @csrf
                     <div class="pb-0 fw-bold d-flex">
-                        <a class="py-2 px-4 rounded {{ request()->routeIs('admin.setting.general') ? 'active_setting' :''}}" href="{{ route('admin.setting.general') }}">General Settings</a>
+                        <a class="py-2 px-4 rounded {{ request()->routeIs('admin.setting.about') ? 'active_setting' :''}}" href="{{ route('admin.setting.about') }}">About Settings</a>
                         <a class="py-2 px-4 rounded" href="">About Settings</a>
                         <a class="py-2 px-4 rounded" href="">Contact Settings</a>
                     </div>
                     <hr class="mb-4 mt-0">
                     <div class="panel-header">
                         <div>
-                            <h2 class="h5 mb-1 section-title"><i class="bi bi-sliders" aria-hidden="true"></i><span>General Settings</span></h2>
+                            <h2 class="h5 mb-1 section-title"><i class="bi bi-sliders" aria-hidden="true"></i><span>About Settings</span></h2>
                         </div>
                     </div>
                     <div class="row g-3">

@@ -71,31 +71,56 @@ class SettingController extends Controller
 
         return redirect()
             ->route('admin.setting.general')
-            ->with('success', 'Settings Updated Successfully');
+            ->with('success', 'General Settings Updated Successfully');
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function aboutEdit()
     {
-        //
+        $settings = Setting::find(1);
+        return view('backend.setting.general', compact('settings'));
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(Setting $setting)
+    public function aboutUpdate(Request $request)
     {
-        //
-    }
+        $settings = Setting::find(1);
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(Setting $setting)
-    {
-        //
+        $about_image1_path = $settings->about_image1;
+        $about_image2_path = $settings->about_image1;
+
+        if ($request->hasFile('about_image1')) {
+
+            if ($about_image1_path && Storage::disk(config('filesystems.default'))->exists($about_image1_path)) {
+                Storage::disk(config('filesystems.default'))->delete($about_image1_path);
+            }
+
+            $about_image1_path = $request->file('about_image1')->store('settings_images', 'public');
+        }
+        if ($request->hasFile('about_image2')) {
+
+            if ($about_image2_path && Storage::disk(config('filesystems.default'))->exists($about_image2_path)) {
+                Storage::disk(config('filesystems.default'))->delete($about_image2_path);
+            }
+
+            $about_image2_path = $request->file('about_image2')->store('settings_images', 'public');
+        }
+
+
+
+        $settings->update([
+            'about_description' => $request->about_desciption,
+            'header_logo' => $about_image1_path,
+            'footer_logo' => $about_image2_path,
+        ]);
+
+        return redirect()
+            ->route('admin.setting.about')
+            ->with('success', 'About Settings Updated Successfully');
     }
 
     /**
