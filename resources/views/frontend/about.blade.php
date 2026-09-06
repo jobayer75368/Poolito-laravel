@@ -30,10 +30,10 @@
                         </span>
                     </div>
                     <div class="img1">
-                        <a href="about.html"><img src="{{ asset('/frontend/assets/img/about/about-img-1-1.jpg') }}" alt="About Image"></a>
+                        <a href="about.html"><img src="{{ $settings->about_image1 && Storage::disk('public')->exists($settings->about_image1) ? asset('storage/'.$settings->about_image1) : '' }}" alt="About Image 2"></a>
                     </div>
                     <div class="img2">
-                        <a href="about.html"><img src="{{ asset('/frontend/assets/img/about/about-img-1-2.jpg') }}" alt="About Image"></a>
+                        <a href="about.html"><img src="{{$settings->about_image2 && Storage::disk('public')->exists($settings->about_image2) ? asset('storage/'.$settings->about_image2):''; }}" alt="About Image 2"></a>
                     </div>
                 </div>
             </div>
@@ -42,11 +42,8 @@
                     <div class="wow animate__fadeInUp" data-wow-delay="0.25s">
                         <div class="title-area title-anime animation-style2">
                             <span class="sec-subtitle left-shape justify-content-center title-anime__title">ABOUT CLEANING</span>
-                            <h2 class="sec-title title-anime__title">Our Cleaning <span class="title-highlight">Agency</span> For Your City</h2>
+                            <div>{!! $settings->about_description !!}</div>
                         </div>
-                        <p class="about-text">
-                            When you work Angeles House Cleaners Referal Agency cleaning breathe easy because your home will soon
-                        </p>
                     </div>
                     <div class="about-box1 wow animate__fadeInUp" data-wow-delay="0.25s">
                         <div class="about-item">

@@ -56,4 +56,6 @@
     previewImage('headerLogo', 'headerLogoPreview');
     previewImage('footerLogo', 'footerLogoPreview');
     previewImage('pageBanner', 'pageBannerPreview');
+    previewImage('aboutImage1', 'aboutImage1Preview');
+    previewImage('aboutImage2', 'aboutImage2Preview');
 </script>

@@ -162,6 +162,9 @@ Route::prefix('admin')->middleware('auth')->name('admin.')->group(function () {
     Route::get('/settings/about', [SettingController::class, 'aboutEdit'])->name('setting.about');
     Route::post('/settings/about', [SettingController::class, 'aboutUpdate'])->name('setting.about.update');
 
+    Route::get('/settings/contact', [SettingController::class, 'contactEdit'])->name('setting.contact');
+    Route::post('/settings/contact', [SettingController::class, 'contactUpdate'])->name('setting.contact.update');
+
     // Route::get('/settings/contact', [SettingsController::class, 'contactEdit'])->name('setting.contact.edit');
     // Route::get('/settings/contact', [SettingsController::class, 'contactUpdate'])->name('setting.contact.update');
 });

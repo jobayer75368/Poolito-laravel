@@ -20,8 +20,10 @@
                     @csrf
                     <div class="pb-0 fw-bold d-flex">
                         <a class="py-2 px-4 rounded {{ request()->routeIs('admin.setting.general') ? 'active_setting' :''}}" href="{{ route('admin.setting.general') }}">General Settings</a>
-                        <a class="py-2 px-4 rounded" href="">About Settings</a>
-                        <a class="py-2 px-4 rounded" href="">Contact Settings</a>
+
+                        <a class="py-2 px-4 rounded {{ request()->routeIs('admin.setting.about') ? 'active_setting' :''}}" href="{{ route('admin.setting.about') }}">About Settings</a>
+
+                        <a class="py-2 px-4 rounded {{ request()->routeIs('admin.setting.contact') ? 'active_setting' :''}}" href="{{ route('admin.setting.contact') }}">Contact Settings</a>
                     </div>
                     <hr class="mb-4 mt-0">
                     <div class="panel-header">

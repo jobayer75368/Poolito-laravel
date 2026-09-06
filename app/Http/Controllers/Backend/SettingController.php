@@ -80,7 +80,7 @@ class SettingController extends Controller
     public function aboutEdit()
     {
         $settings = Setting::find(1);
-        return view('backend.setting.general', compact('settings'));
+        return view('backend.setting.about', compact('settings'));
     }
 
     /**
@@ -91,7 +91,7 @@ class SettingController extends Controller
         $settings = Setting::find(1);
 
         $about_image1_path = $settings->about_image1;
-        $about_image2_path = $settings->about_image1;
+        $about_image2_path = $settings->about_image2;
 
         if ($request->hasFile('about_image1')) {
 
@@ -101,6 +101,7 @@ class SettingController extends Controller
 
             $about_image1_path = $request->file('about_image1')->store('settings_images', 'public');
         }
+
         if ($request->hasFile('about_image2')) {
 
             if ($about_image2_path && Storage::disk(config('filesystems.default'))->exists($about_image2_path)) {
@@ -113,9 +114,9 @@ class SettingController extends Controller
 
 
         $settings->update([
-            'about_description' => $request->about_desciption,
-            'header_logo' => $about_image1_path,
-            'footer_logo' => $about_image2_path,
+            'about_description' => $request->about_description,
+            'about_image1' => $about_image1_path,
+            'about_image2' => $about_image2_path,
         ]);
 
         return redirect()
@@ -123,14 +124,11 @@ class SettingController extends Controller
             ->with('success', 'About Settings Updated Successfully');
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, Setting $setting) {}
-
-    /**
-     * Remove the specified resource from storage.
-     */
+    public function contactEdit()
+    {
+        $settings = Setting::find(1);
+        return view('backend.setting.contact', compact('settings'));
+    }
     public function destroy(Setting $setting)
     {
         //
