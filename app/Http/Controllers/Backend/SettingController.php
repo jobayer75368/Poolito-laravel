@@ -129,8 +129,22 @@ class SettingController extends Controller
         $settings = Setting::find(1);
         return view('backend.setting.contact', compact('settings'));
     }
-    public function destroy(Setting $setting)
+    public function contactUpdate(Request $request)
     {
-        //
+        $settings = Setting::find(1);
+
+        $settings->update([
+            'phone' => $request->phone,
+            'email' => $request->email,
+            'address' => $request->address,
+            'facebook' => $request->facebook,
+            'linkedin' => $request->linkedin,
+            'instagram' => $request->instagram,
+            'location' => $request->location,
+        ]);
+
+        return redirect()
+            ->route('admin.setting.contact')
+            ->with('success', 'Contact Settings Updated Successfully');
     }
 }

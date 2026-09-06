@@ -66,7 +66,7 @@
                         </div>
 
                     </div>
-                    <button class="btn btn-primary mt-2" type="submit"><i class="bi bi-check2-circle" aria-hidden="true"></i> Save Settings</button>
+                    <button class="btn btn-primary mt-4" type="submit"><i class="bi bi-check2-circle" aria-hidden="true"></i> Save Settings</button>
                 </form>
             </div>
         </section>

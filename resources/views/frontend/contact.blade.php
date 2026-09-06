@@ -3,10 +3,10 @@
 <!--==============================
     Breadcumb
     ============================== -->
-<div class="breadcumb-wrapper " data-bg-src="{{ $settings->header_logo? asset('storage/'.$settings->header_logo) :'';}}">
+<div class="breadcumb-wrapper " data-bg-src="{{ $settings->header_logo? asset('storage/'.$settings->page_banner) :'';}}">
     <div class="container z-index-common">
         <div class="breadcumb-content">
-            <h1 class="breadcumb-title">contace <span>us</span></h1>
+            <h1 class="breadcumb-title">contact <span>us</span></h1>
         </div>
         <div class="breadcumb-menu-wrap">
             <ul class="breadcumb-menu">
@@ -31,7 +31,7 @@
                     <div class="contact-inner wow animate__fadeInUp" data-wow-delay="0.35s">
                         <div class="contact-address">
                             <span>Address:</span>
-                            <a href="#" class="address">roda wQ 966 munich Express 70Germany, park lan, TX 7859</a>
+                            <a href="#" class="address">{{$settings->address}}</a>
                         </div>
                         <div class="contact-box">
                             <span class="contact-icon">
@@ -39,7 +39,7 @@
                             </span>
                             <div class="contact-content">
                                 <h6 class="contact-title">Customer Service :</h6>
-                                <p class="contact-text">+9-555-888-679, +9-666-888-679</p>
+                                <p class="contact-text">{{$settings->phone}}</p>
                             </div>
                         </div>
                         <div class="contact-box">
@@ -48,7 +48,7 @@
                             </span>
                             <div class="contact-content">
                                 <h6 class="contact-title">careers :</h6>
-                                <p class="contact-text">exemple@info.com</p>
+                                <p class="contact-text">{{$settings->email}}</p>
                             </div>
                         </div>
                     </div>
@@ -56,10 +56,9 @@
                     <div class="social-style2 wow animate__fadeInUp" data-wow-delay="0.45s">
                         <span class="social-title">Follow Us :</span>
                         <div class="social-icon">
-                            <a href="#"><i class="fa-brands fa-x-twitter"></i></a>
-                            <a href="#"><i class="fab fa-linkedin-in"></i></a>
-                            <a href="#"><i class="fab fa-instagram"></i></a>
-                            <a href="#"><i class="fa-brands fa-vimeo-v"></i></a>
+                            <a href="{{$settings->facebook}}"><i class="fa-brands fa-facebook"></i></a>
+                            <a href="{{$settings->linkedin}}"><i class="fab fa-linkedin-in"> </i></a>
+                            <a href="{{$settings->instagram}}"><i class="fab fa-instagram"></i></a>
                         </div>
                     </div>
                 </div>
@@ -112,7 +111,7 @@
     ==============================-->
 <div class="map-layout1">
     <div class="ratio ratio-21x9" style="height:550px">
-        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d163720.11965853968!2d8.496481908353967!3d50.121347879150306!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47bd096f477096c5%3A0x422435029b0c600!2sFrankfurt%2C%20Germany!5e0!3m2!1sen!2sbd!4v1665403058628!5m2!1sen!2sbd" width="800" height="720" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        {{$settings->location}}
     </div>
 </div>
 @endsection
