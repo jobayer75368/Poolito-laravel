@@ -15,7 +15,7 @@
                                 <span class="icon"><img src="{{ asset('/frontend/assets/img/icon/call-icon.svg') }}" alt="icon"></span>
                                 <div class="contact-content">
 
-                                    <h6 class="contact-title"><a href="#">+1 999 888 666</a></h6>
+                                    <h6 class="contact-title"><a href="#">{{ $settings->phone }}</a></h6>
                                     <p class="contact-text">call 24/7</p>
                                 </div>
                             </div>
@@ -23,9 +23,9 @@
                             <div class="social-style1">
                                 <span class="social-title">Follow On :</span>
                                 <div class="social-icon">
-                                    <a href="#"><i class="fab fa-facebook-f"></i></a>
-                                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
-                                    <a href="#"><i class="fab fa-instagram"></i></a>
+                                    <a href="{{ $settings->facebook }}"><i class="fab fa-facebook-f"></i></a>
+                                    <a href="{{ $settings->linkedin }}"><i class="fab fa-linkedin-in"></i></a>
+                                    <a href="{{ $settings->instagram }}"><i class="fab fa-instagram"></i></a>
                                 </div>
                             </div>
                         </div>
@@ -88,7 +88,7 @@
         <div class="container">
             <div class="row justify-content-xl-between justify-content-center align-items-center">
                 <div class="col-auto">
-                    <p class="copyright-text"><i class="fal fa-copyright"></i> Copyright 2025 - <a href="/">Poolito</a> All rights reserved.<a href="https://themeforest.net/user/vecuro_themes">Vecuro</a></p>
+                    <p class="copyright-text"><i class="fal fa-copyright"></i> Copyright 2025 - <a href="/">{{$settings->site_name}}</a> All rights reserved.<a href="https://themeforest.net/user/vecuro_themes">Vecuro</a></p>
                 </div>
                 <div class="col-auto">
                     <div class="copyright-img">

@@ -5,7 +5,7 @@
                 <div class="col-auto d-md-block d-none">
                     <div class="header-links">
                         <ul>
-                            <li><i class="far fa-envelope"></i><a href="mailto:info@example.com">info@example.com</a></li>
+                            <li><i class="far fa-envelope"></i><a href="mailto:info@example.com">{{ $settings->email }}</a></li>
                             <li class="d-lg-inline d-none text-uppercase"><i class="far fa-clock"></i>{{ $settings->opening_day_from }} - {{ $settings->opening_day_to }} &emsp;{{ $settings->opening_time_from->format('h:i A') }} - {{ $settings->opening_time_to->format('h:i A') }}</li>
                         </ul>
                     </div>
@@ -14,9 +14,9 @@
                     <div class="social-style1">
                         <span class="social-title">Follow Us On :</span>
                         <div class="social-icon">
-                            <a href="#"><i class="fab fa-facebook-f"></i></a>
-                            <a href="#"><i class="fab fa-linkedin-in"></i></a>
-                            <a href="#"><i class="fab fa-instagram"></i></a>
+                            <a href="{{ $settings->facebook }}"><i class="fab fa-facebook-f"></i></a>
+                            <a href="{{ $settings->linkedin }}"><i class="fab fa-linkedin-in"></i></a>
+                            <a href="{{ $settings->instagram }}"><i class="fab fa-instagram"></i></a>
                         </div>
                     </div>
                 </div>
@@ -69,7 +69,7 @@
                                 </div>
                                 <div class="contact-content">
                                     <p class="contact-text">Call Helpline</p>
-                                    <h6 class="contact-title"><a href="tel:+012325621563">+88(0) 1237 6421</a></h6>
+                                    <h6 class="contact-title"><a href="tel:+012325621563">{{ $settings->phone }}</a></h6>
                                 </div>
                             </div>
                         </div>

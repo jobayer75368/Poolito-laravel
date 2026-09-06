@@ -81,7 +81,7 @@
 
                         <div class="col-md-12">
                             <label class="form-label" for="location">Location Map <i class="bi bi-geo-alt-fill"></i></label>
-                            <input class="form-control" id="location" type="text" name="location" placeholder="Paste Iframe from Google Map..." value="{{ $settings->location }}">
+                            <textarea class="form-control text-break" style="height: 200px;" id="location" name="location" value="Paste Iframe from Google Map...">{{ $settings->location }}</textarea>
                         </div>
 
                     </div>

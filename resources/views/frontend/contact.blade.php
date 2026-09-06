@@ -111,7 +111,7 @@
     ==============================-->
 <div class="map-layout1">
     <div class="ratio ratio-21x9" style="height:550px">
-        {{$settings->location}}
+        {!! $settings->location !!}
     </div>
 </div>
 @endsection

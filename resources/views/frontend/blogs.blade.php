@@ -6,7 +6,7 @@
 <div class="breadcumb-wrapper " data-bg-src="{{ $settings->page_banner? asset('storage/'.$settings->page_banner) :'';}}">
     <div class="container z-index-common">
         <div class="breadcumb-content">
-            <h1 class="breadcumb-title">blog <span>sidebar</span></h1>
+            <h1 class="breadcumb-title">Our <span>Blog</span></h1>
         </div>
         <div class="breadcumb-menu-wrap">
             <ul class="breadcumb-menu">
