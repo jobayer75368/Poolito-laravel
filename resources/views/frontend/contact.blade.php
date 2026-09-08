@@ -94,11 +94,13 @@
                                 </div>
                             </form>
 
-                            @if(session('success'))
-                            <p class="btn btn-success mb-0 mt-3">
-                                {{ session('success') }}
-                            </p>
-                            @endif
+                            <div>
+                                @if (session('success'))
+                                <div class="alert alert-success" role="alert"><strong></strong>
+                                    {{ session('success') }}
+                                </div>
+                                @endif
+                            </div>
                         </div>
                     </div>
                 </div>

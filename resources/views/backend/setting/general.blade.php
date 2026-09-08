@@ -31,6 +31,13 @@
                             <h2 class="h5 mb-1 section-title"><i class="bi bi-sliders" aria-hidden="true"></i><span>General Settings</span></h2>
                         </div>
                     </div>
+                    <div>
+                        @if (session('success'))
+                        <div class="alert alert-success" role="alert"><strong>Success:</strong>
+                            {{ session('success') }}
+                        </div>
+                        @endif
+                    </div>
                     <div class="row g-3">
 
                         <div class=" col-md-6">
