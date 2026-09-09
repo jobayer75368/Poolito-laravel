@@ -102,7 +102,7 @@
                             <input class="form-control" name="header_logo" id="headerLogo" type="file">
                             <div class="invalid-feedback">Header Logo is required.</div>
                             <div class="mt-2">
-                                <img id="headerLogoPreview" src="{{ $settings->header_logo && Storage::disk('public')->exists($settings->header_logo) ? asset('storage/'.$settings->header_logo) : '' }}" alt="" style="height:200px;width:300px;">
+                                <img id="headerLogoPreview" src="{{ $settings->header_logo ? (filter_var($settings->header_logo ,FILTER_VALIDATE_URL)?$settings->header_logo : asset('storage/'.$settings->header_logo)) : '' }}" alt="" style="height:200px;width:300px;">
                             </div>
                         </div>
 
@@ -111,7 +111,7 @@
                             <input class="form-control" name="footer_logo" id="footerLogo" type="file">
                             <div class="invalid-feedback">Footer Logo is required.</div>
                             <div class="mt-2">
-                                <img id="footerLogoPreview" src="{{ $settings->footer_logo &&Storage::disk('public')->exists($settings->footer_logo) ? asset('storage/'.$settings->footer_logo) : '' }}" alt="" style="height:200px;width:300px;">
+                                <img id="footerLogoPreview" src="{{ $settings->footer_logo ? (filter_var($settings->footer_logo ,FILTER_VALIDATE_URL)?$settings->footer_logo : asset('storage/'.$settings->footer_logo)) : '' }}" alt="" style="height:200px;width:300px;">
                             </div>
                         </div>
 
@@ -120,7 +120,7 @@
                             <input class="form-control" name="page_banner" id="pageBanner" type="file">
                             <div class="invalid-feedback">Page Banner is required.</div>
                             <div class="mt-2">
-                                <img id="pageBannerPreview" src="{{ $settings->page_banner && Storage::disk('public')->exists($settings->page_banner) ? asset('storage/'.$settings->page_banner) : '' }}" alt="" style="height:200px;">
+                                <img id="pageBannerPreview" src="{{ $settings->page_banner ? (filter_var($settings->page_banner ,FILTER_VALIDATE_URL)?$settings->page_banner : asset('storage/'.$settings->page_banner)) : '' }}" alt="" style="height:200px;">
                             </div>
                         </div>
 

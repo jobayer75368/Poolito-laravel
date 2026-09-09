@@ -3,7 +3,7 @@
 <!--==============================
         Breadcumb
         ============================== -->
-<div class="breadcumb-wrapper " data-bg-src="{{ $settings->page_banner? asset('storage/'.$settings->page_banner) :'';}}">
+<div class="breadcumb-wrapper " data-bg-src="{{ $settings->page_banner? (filter_var($settings->page_banner, FILTER_VALIDATE_URL)?$settings->page_banner: asset('storage/'.$settings->page_banner)) :'';}}">
     <div class="container z-index-common">
         <div class="breadcumb-content">
             <h1 class="breadcumb-title">portfolio <span>Details </span></h1>
@@ -25,7 +25,7 @@
 <section class="portfolio-Details space">
     <div class="container">
         <div class="portfolio-img wow animate__fadeInUp" data-wow-delay="0.20s">
-            <img src="{{$portfolio->portfolio_image && Storage::disk('public')->exists($portfolio->portfolio_image) ? asset('storage/'.$portfolio->portfolio_image):asset('no-image.png')}}" alt="{{ $portfolio->portfolio_title }}">
+            <img src="{{ $portfolio->portfolio_image ? (filter_var($portfolio->portfolio_image, FILTER_VALIDATE_URL)?$portfolio->portfolio_image : asset('storage/'.$portfolio->portfolio_image)) :asset('no-image.png')}}" alt="{{ $portfolio->portfolio_title }}" alt="{{ $portfolio->portfolio_title }}">
         </div>
         <div class="portfolio-content">
             <div class="row gx-60 g-2">

@@ -32,7 +32,7 @@ class MemberController extends Controller
         // ]);
         $image_path = null;
         if ($request->hasFile('member_image')) {
-            $image_path = $request->file('member_image')->store('member_images', 'public');
+            $image_path = $this->uploadImage($request->file('member_image'), 'member_images');
         }
 
         Member::create([
@@ -79,10 +79,8 @@ class MemberController extends Controller
         $image_path = $member->member_image;
         if ($request->hasFile('member_image')) {
 
-            if ($image_path && Storage::disk('public')->exists($image_path)) {
-                Storage::disk('public')->delete($image_path);
-            }
-            $image_path = $request->file('member_image')->store('member_images', 'public');
+            $this->deleteImage($image_path);
+            $image_path = $this->uploadImage($request->file('member_image'), 'member_images');
         }
 
         $member->update([
@@ -112,9 +110,8 @@ class MemberController extends Controller
         try {
             $member = Member::findOrFail($id);
             $image_path = $member->member_image;
-            if ($image_path && Storage::disk('public')->exists($image_path)) {
-                Storage::disk('public')->delete($image_path);
-            }
+
+            $this->deleteImage($image_path);
 
             $member->delete();
             DB::commit();

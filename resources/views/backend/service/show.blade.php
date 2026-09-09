@@ -39,7 +39,7 @@
             <div class="col-lg-4">
                 <section class="panel h-100">
                     <div class="p-3">
-                        <img src="{{$service->service_image && Storage::disk('public')->exists($service->service_image)? asset('storage/'.$service->service_image ): asset('no-image.png') }}" alt="{{ $service->service_title }}"
+                        <img src="{{$service->service_image ? (filter_var($service->service_image, FILTER_VALIDATE_URL)? $service->service_image : asset('storage/'.$service->service_image )): asset('no-image.png') }}" alt="{{ $service->service_title }}"
                             class="rounded-3 w-100 mb-3"
                             style="height: 200px; object-fit: cover;">
                         <hr class="text-secondary-subtle">

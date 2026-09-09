@@ -31,7 +31,7 @@ class BlogController extends Controller
         ]);
         $image_path = null;
         if ($request->hasFile('blog_image')) {
-            $image_path = $request->file('blog_image')->store('blog_images', 'public');
+            $image_path = $this->uploadImage($request->file('blog_image'), 'blog_images');
         }
 
         Blog::create([
@@ -69,7 +69,8 @@ class BlogController extends Controller
         $image_path = $blog->blog_image;
 
         if ($request->hasFile('blog_image')) {
-            $image_path = $request->file('blog_image')->store('blog_images', 'public');
+            $this->deleteImage($image_path);
+            $image_path = $this->uploadImage($request->file('blog_image'), 'blog_images');
         }
 
         $blog->update([
@@ -92,9 +93,7 @@ class BlogController extends Controller
         try {
             $blog = Blog::findOrFail($id);
             $image_path = $blog->blog_image;
-            if ($image_path && Storage::disk('public')->exists($image_path)) {
-                Storage::disk('public')->delete($image_path);
-            }
+            $this->deleteImage($image_path);
 
             $blog->delete();
             DB::commit();

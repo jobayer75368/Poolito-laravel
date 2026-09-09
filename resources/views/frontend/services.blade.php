@@ -3,7 +3,7 @@
 <!--==============================
         Breadcumb
         ============================== -->
-<div class="breadcumb-wrapper " data-bg-src="{{ $settings->page_banner? asset('storage/'.$settings->page_banner) :'';}}">
+<div class="breadcumb-wrapper " data-bg-src="{{ $settings->page_banner? (filter_var($settings->page_banner, FILTER_VALIDATE_URL)?$settings->page_banner: asset('storage/'.$settings->page_banner)) :'';}}">
     <div class="container z-index-common">
         <div class="breadcumb-content">
             <h1 class="breadcumb-title">our <span>service</span></h1>
@@ -34,7 +34,7 @@
                 <div class="vs-service__style1">
                     <div class="vs-service__img">
                         <a class="d-flex justify-content-center" href="{{ route('service_details',$service->service_slug) }}">
-                            <img src="{{$service->service_image && Storage::disk('public')->exists($service->service_image)? asset('storage/'.$service->service_image ): asset('no-image.png') }}" alt="{{ $service->service_title }}" alt="Serevice Image" style="height: 285px; width: 420px;">
+                            <img src="{{$service->service_image ? (filter_var($service->service_image, FILTER_VALIDATE_URL)? $service->service_image:  asset('storage/'.$service->service_image )): asset('no-image.png') }}" alt="{{ $service->service_title }}" alt="{{ $service->service_title }}" style="height: 285px; width: 420px;">
                         </a>
                     </div>
                     <div class="vs-service__body">
@@ -46,7 +46,7 @@
                                 </h2>
                             </div>
                             <div class="vs-service__icon">
-                                <img src="{{$service->service_icon && Storage::disk('public')->exists($service->service_icon)? asset('storage/'.$service->service_icon ): asset('no-image.png') }}" alt="{{ $service->service_title }}" style="height: 50px;">
+                                <img src="{{$service->service_icon ? (filter_var($service->service_icon, FILTER_VALIDATE_URL)? $service->service_icon:  asset('storage/'.$service->service_icon )): '' }}" alt="{{ $service->service_title }}" style="height: 50px;">
                             </div>
                         </div>
                         <p class="vs-service__text">

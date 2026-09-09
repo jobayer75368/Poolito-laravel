@@ -92,7 +92,7 @@
                             @enderror
 
                             <div class="mt-2">
-                                <img id="prfoileImagePreview" src="{{ $user->user_image ? asset('storage/' . $user->user_image) : '' }}" alt="Profile Image" style="height: 200px; {{ $user->user_image ? '' : 'display:none;' }}">
+                                <img id="prfoileImagePreview" src="{{$user->user_image ?(filter_var($user->user_image,FILTER_VALIDATE_URL) ? $user->user_image : asset('storage/'.$user->user_image )) : ''}}" alt="" style="height: 200px; {{ $user->user_image ? '' : 'display:none;' }}">
                             </div>
 
                         </div>

@@ -3,7 +3,7 @@
 <!--==============================
         Breadcumb
         ============================== -->
-<div class="breadcumb-wrapper " data-bg-src="{{ $settings->page_banner? asset('storage/'.$settings->page_banner) :'';}}">
+<div class="breadcumb-wrapper " data-bg-src="{{ $settings->page_banner? (filter_var($settings->page_banner, FILTER_VALIDATE_URL)?$settings->page_banner: asset('storage/'.$settings->page_banner)) :'';}}">
 
     <div class="container z-index-common">
         <div class="breadcumb-content">
@@ -30,10 +30,10 @@
                         </span>
                     </div>
                     <div class="img1">
-                        <a href="about.html"><img src="{{ $settings->about_image1 && Storage::disk('public')->exists($settings->about_image1) ? asset('storage/'.$settings->about_image1) : '' }}" alt="About Image 2"></a>
+                        <a href="about.html"><img src="{{ $settings->about_image1 ? (filter_var($settings->about_image1, FILTER_VALIDATE_URL)?$settings->about_image1: asset('storage/'.$settings->about_image1)) : '' }}" alt="About Image 1"></a>
                     </div>
                     <div class="img2">
-                        <a href="about.html"><img src="{{$settings->about_image2 && Storage::disk('public')->exists($settings->about_image2) ? asset('storage/'.$settings->about_image2):''; }}" alt="About Image 2"></a>
+                        <a href="about.html"><img src="{{ $settings->about_image2 ? (filter_var($settings->about_image2, FILTER_VALIDATE_URL)?$settings->about_image2: asset('storage/'.$settings->about_image2)) : '' }}" alt="About Image 2"></a>
                     </div>
                 </div>
             </div>

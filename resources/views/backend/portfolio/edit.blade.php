@@ -70,7 +70,7 @@
                             <div class="invalid-feedback">Portfolio Image is required.</div>
                             <div class="mt-2">
                                 <img id="portfolioImagePreview"
-                                    src="{{ $portfolio->portfolio_image ? asset('storage/'.$portfolio->portfolio_image) : '' }}"
+                                    src="{{ $portfolio->portfolio_image ? (filter_var($portfolio->portfolio_image, FILTER_VALIDATE_URL) ? $portfolio->portfolio_image : asset('storage/'.$portfolio->portfolio_image)) : '' }}"
                                     alt=""
                                     style="height:200px; {{ $portfolio->portfolio_image ? '' : 'display:none;' }}">
                             </div>

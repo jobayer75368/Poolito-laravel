@@ -3,7 +3,7 @@
 <!--==============================
         Breadcumb
         ============================== -->
-<div class="breadcumb-wrapper " data-bg-src="{{ $settings->page_banner? asset('storage/'.$settings->page_banner) :'';}}">
+<div class="breadcumb-wrapper " data-bg-src="{{ $settings->page_banner? (filter_var($settings->page_banner, FILTER_VALIDATE_URL)?$settings->page_banner: asset('storage/'.$settings->page_banner)) :'';}}">
     <div class="container z-index-common">
         <div class="breadcumb-content">
             <h1 class="breadcumb-title">Team <span>Details</span></h1>
@@ -25,7 +25,7 @@
         <div class="row gy-5 gx-60 align-items-center space-mobile-bottom">
             <div class="col-xl-6">
                 <div class="team-img wow animate__fadeInUp animation-style2" data-wow-delay="0.25s">
-                    <img src="{{$member->member_image && Storage::disk('public')->exists($member->member_image)? asset('storage/'.$member->member_image ): asset('no-image.png') }}" alt="{{ $member->name }}" style="height: 100%; width: 100%;">
+                    <img src="{{$member->member_image ? (filter_var($member->member_image, FILTER_VALIDATE_URL) ?$member->member_image : asset('storage/'.$member->member_image )) : asset('no-image.png') }}" alt="{{ $member->name }}" style="height: 100%; width: 100%;">
 
                 </div>
             </div>

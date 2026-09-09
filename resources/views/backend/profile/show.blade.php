@@ -32,8 +32,8 @@
                         <img src="{{ asset('backend/assets/images/png/dasher-ui-bootstrap-5.jpg') }}" alt="{{$user->name}} dashboard preview">
                     </div>
                     <img class="avatar-img avatar-xl profile-photo"
-                        src="{{ $user->user_image && Storage::disk('public')->exists($user->user_image) ? asset('storage/' . $user->user_image) : asset('backend/assets/images/avatar/avatar.jpg') }}"
-                        alt="{{ $user->name }}">
+                        src="{{$user->user_image ?(filter_var($user->user_image,FILTER_VALIDATE_URL) ? $user->user_image : asset('storage/'.$user->user_image )) : asset('no-user.jpg')}}" alt="{{ $user->name }}">
+
                     <h2 class="h5 mt-3 mb-1">{{ucwords($user->name)}}</h2>
                     <p class="text-muted mb-3">{{ ucwords($user->role) }}</p>
                     <div class="d-flex justify-content-center gap-2"><span class="badge text-bg-{{ $user->role=='admin'?'danger':'primary' }}">{{ ucwords($user->role) }}</span><span class="badge text-bg-{{ $user->status=='active'?'success':(($user->status=='pending')?'warning':'danger') }}">{{ ucwords($user->status) }}</span></div>

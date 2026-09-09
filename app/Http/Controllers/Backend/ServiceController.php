@@ -35,13 +35,13 @@ class ServiceController extends Controller
         $image_path1 = null;
 
         if ($request->hasFile('service_icon')) {
-            $image_path1 = $request->file('service_icon')->store('service_icons', 'public');
+            $image_path1 = $this->uploadImage($request->file('service_icon'), 'service_icons');
         }
 
         $image_path2 = null;
 
         if ($request->hasFile('service_image')) {
-            $image_path2 = $request->file('service_image')->store('service_images', 'public');
+            $image_path2 = $this->uploadImage($request->file('service_image'), 'service_images');
         }
 
         Service::create([
@@ -81,20 +81,16 @@ class ServiceController extends Controller
 
         if ($request->hasFile('service_icon')) {
 
-            if ($image_path1 && Storage::disk(config('filesystems.default'))->exists($image_path1)) {
-                Storage::disk(config('filesystems.default'))->delete($image_path1);
-            }
+            $this->deleteImage($image_path1);
 
-            $image_path1 = $request->file('service_icon')->store('service_icons', 'public');
+            $image_path1 = $this->uploadImage($request->file('service_icon'), 'service_icons');
         }
 
         if ($request->hasFile('service_image')) {
 
-            if ($image_path2 && Storage::disk(config('filesystems.default'))->exists($image_path2)) {
-                Storage::disk(config('filesystems.default'))->delete($image_path2);
-            }
+            $this->deleteImage($image_path2);
 
-            $image_path2 = $request->file('service_image')->store('service_images', 'public');
+            $image_path2 = $this->uploadImage($request->file('service_image'), 'service_images');
         }
 
         $service->update([
@@ -123,13 +119,8 @@ class ServiceController extends Controller
             $image_path1 = $service->service_icon;
             $image_path2 = $service->service_image;
 
-            if ($image_path1 && Storage::disk(config('filesystems.default'))->exists($image_path1)) {
-                Storage::disk(config('filesystems.default'))->delete($image_path1);
-            }
-
-            if ($image_path2 && Storage::disk(config('filesystems.default'))->exists($image_path2)) {
-                Storage::disk(config('filesystems.default'))->delete($image_path2);
-            }
+            $this->deleteImage($image_path1);
+            $this->deleteImage($image_path2);
 
             $service->delete();
 

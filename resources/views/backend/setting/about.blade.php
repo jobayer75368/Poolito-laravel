@@ -56,7 +56,7 @@
                             <div class="invalid-feedback">About Image is required.</div>
 
                             <div class="mt-2">
-                                <img id="aboutImage1Preview" src="{{ $settings->about_image1 && Storage::disk('public')->exists($settings->about_image1) ? asset('storage/'.$settings->about_image1) : '' }}" alt="" style="{{ $settings->about_image1 ?'height:200px;width:300px':'';}}">
+                                <img id="aboutImage1Preview" src="{{ $settings->about_image1 ? (filter_var($settings->about_image1 ,FILTER_VALIDATE_URL)?$settings->about_image1 : asset('storage/'.$settings->about_image1)) : '' }}" alt="" style="{{ $settings->about_image1 ?'height:200px;width:300px':'';}}">
                             </div>
                         </div>
 
@@ -68,7 +68,7 @@
                             <div class="invalid-feedback">About Image is required.</div>
 
                             <div class="mt-2">
-                                <img id="aboutImage2Preview" src="{{ $settings->about_image2 && Storage::disk('public')->exists($settings->about_image2) ? asset('storage/'.$settings->about_image2) : '' }}" alt="" style="{{ $settings->about_image2 ?'height:200px;width:300px':'';}}">
+                                <img id="aboutImage2Preview" src="{{ $settings->about_image2 ? (filter_var($settings->about_image2 ,FILTER_VALIDATE_URL)?$settings->about_image2 : asset('storage/'.$settings->about_image2)) : '' }}" alt="" style="{{ $settings->about_image2 ?'height:200px;width:300px':'';}}">
                             </div>
                         </div>
 

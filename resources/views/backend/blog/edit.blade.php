@@ -77,11 +77,11 @@
 
                         <div class="col-12">
                             <label class="form-label" for="blogImg">Image</label>
-                            <input class="form-control" id="blogImg" type="file" name="blog_image" value="{{ $blog->blog_image }}">
+                            <input class="form-control" id="blogImg" type="file" name="blog_image">
                             <div class="invalid-feedback">Blog Image is required.</div>
                             <div class="mt-2">
                                 <img id="blogImagePreview"
-                                    src="{{ $blog->blog_image ? asset('storage/'.$blog->blog_image) : '' }}"
+                                    src="{{ $blog->blog_image ? (filter_var($blog->blog_image, FILTER_VALIDATE_URL) ? $blog->blog_image : asset('storage/'.$blog->blog_image)) : '' }}"
                                     alt=""
                                     style="height:200px; {{ $blog->blog_image ? '' : 'display:none;'}}">
                             </div>

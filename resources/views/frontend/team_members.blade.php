@@ -3,7 +3,7 @@
 <!--==============================
         Breadcumb
         ============================== -->
-<div class="breadcumb-wrapper " data-bg-src="{{ $settings->page_banner? asset('storage/'.$settings->page_banner) :'';}}">
+<div class="breadcumb-wrapper " data-bg-src="{{ $settings->page_banner? (filter_var($settings->page_banner, FILTER_VALIDATE_URL)?$settings->page_banner: asset('storage/'.$settings->page_banner)) :'';}}">
     <div class="container z-index-common">
         <div class="breadcumb-content">
             <h1 class="breadcumb-title">meet our <span>team</span></h1>
@@ -25,7 +25,7 @@
                 <div class="vs-team__style1">
                     <div class="vs-team__img">
                         <a href="{{ route('team_details',$member->slug) }}">
-                            <img src="{{$member->member_image && Storage::disk('public')->exists($member->member_image)? asset('storage/'.$member->member_image ): asset('no-image.png') }}" alt="{{ $member->name }}" style="height: 310px; width: 320px;">
+                            <img src="{{$member->member_image ? (filter_var($member->member_image, FILTER_VALIDATE_URL) ?$member->member_image : asset('storage/'.$member->member_image )) : asset('no-image.png') }}" alt="{{ $member->name }}" style="height: 310px; width: 320px;">
                         </a>
                         <div class="vs-team__social--media">
                             <a href="{{ $member->facebook }}"><i class="fab fa-facebook-f"></i></a>

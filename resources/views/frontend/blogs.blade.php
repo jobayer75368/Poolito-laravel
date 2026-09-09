@@ -3,7 +3,7 @@
 <!--==============================
     Breadcumb
     ============================== -->
-<div class="breadcumb-wrapper " data-bg-src="{{ $settings->page_banner? asset('storage/'.$settings->page_banner) :'';}}">
+<div class="breadcumb-wrapper " data-bg-src="{{ $settings->page_banner? (filter_var($settings->page_banner, FILTER_VALIDATE_URL)?$settings->page_banner: asset('storage/'.$settings->page_banner)) :'';}}">
     <div class="container z-index-common">
         <div class="breadcumb-content">
             <h1 class="breadcumb-title">Our <span>Blog</span></h1>
@@ -27,7 +27,7 @@
                 <div class="vs-blog blog-single wow animate__fadeInUp wow-animated">
                     <div class="blog-img">
                         <a href="{{ route('blog_details',$blog->blog_slug) }}">
-                            <img src="{{$blog->blog_image && Storage::disk('public')->exists($blog->blog_image)? asset('storage/'.$blog->blog_image ): asset('no-image.png') }}" alt="{{ $blog->blog_title }}" style="height: 100%; width: 100%">
+                            <img src="{{ $blog->blog_image ? (filter_var($blog->blog_image, FILTER_VALIDATE_URL) ? $blog->blog_image : asset('storage/'.$blog->blog_image)) : asset('no-image.png') }}" alt="{{ $blog->blog_title }}" style="height: 100%; width: 100%">
                         </a>
                     </div>
                     <div class="blog-content">

@@ -39,7 +39,7 @@
             <div class="col-lg-4">
                 <section class="panel h-100">
                     <div class="p-3">
-                        <img src="{{$member->member_image && Storage::disk('public')->exists($member->member_image)? asset('storage/'.$member->member_image ): asset('no-image.png') }}" alt="{{ $member->name }}"
+                        <img src="{{ $member->member_image ? (filter_var($member->member_image, FILTER_VALIDATE_URL)?$member->member_image : asset('storage/'.$member->member_image)) : asset('no-image.png') }}" alt="{{ $member->name }}"
                             class="rounded-3 w-100 mb-3"
                             style="height: 200px; object-fit: cover;">
 

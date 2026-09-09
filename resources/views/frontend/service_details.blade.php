@@ -3,7 +3,7 @@
 <!--==============================
         Breadcumb
         ============================== -->
-<div class="breadcumb-wrapper " data-bg-src="{{ $settings->page_banner? asset('storage/'.$settings->page_banner) :'';}}">
+<div class="breadcumb-wrapper " data-bg-src="{{ $settings->page_banner? (filter_var($settings->page_banner, FILTER_VALIDATE_URL)?$settings->page_banner: asset('storage/'.$settings->page_banner)) :'';}}">
     <div class="container z-index-common">
         <div class="breadcumb-content">
             <h1 class="breadcumb-title">Service <span>Details </span></h1>
@@ -49,7 +49,7 @@
                 </div>
                 <div class="col-lg-8">
                     <div class="portfolio-img mb-40 wow animate__fadeInUp" data-wow-delay="0.20s">
-                        <img src="{{$service->service_image && Storage::disk('public')->exists($service->service_image)? asset('storage/'.$service->service_image ): asset('no-image.png') }}" alt="{{ $service->service_title }}" style="height: 100%; width: 100%;">
+                        <img src="{{$service->service_image ? (filter_var($service->service_image, FILTER_VALIDATE_URL)? $service->service_image:  asset('storage/'.$service->service_image )): asset('no-image.png') }}" alt="{{ $service->service_title }}" alt="{{ $service->service_title }}" style="height: 100%; width: 100%;">
                     </div>
                     <h2 class="portfolio-title h3 mb-20 wow animate__fadeInUp" data-wow-delay="0.25s">{{ $service->service_title }}</h2>
 

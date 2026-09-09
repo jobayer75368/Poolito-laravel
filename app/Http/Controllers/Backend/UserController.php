@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Backend;
 
 use App\Models\Blog;
-use Illuminate\Routing\Controller;
+use App\Http\Controllers\Controller;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -75,9 +75,7 @@ class UserController extends Controller
         try {
             $user = User::findOrFail($id);
             $image_path = $user->user_image;
-            if ($image_path && Storage::disk('public')->exists($image_path)) {
-                Storage::disk('public')->delete($image_path);
-            }
+            $this->deleteImage($image_path);
 
             $user->delete();
             DB::commit();

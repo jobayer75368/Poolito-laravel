@@ -66,7 +66,7 @@
               <td>{{ $member->designation }}</td>
               <td>{{ $member->email }}</td>
               <td>
-                <img style="width: 120px;" src="{{$member->member_image && Storage::disk('public')->exists($member->member_image)? asset('storage/'.$member->member_image ): asset('no-image.png') }}" alt="{{ $member->name }}">
+                <img style="width: 120px;" src="{{ $member->member_image ? (filter_var($member->member_image, FILTER_VALIDATE_URL)?$member->member_image : asset('storage/'.$member->member_image)) : asset('no-image.png') }}" alt="{{ $member->name }}">
               </td>
               <td>
                 <span class="badge bg-{{ $member->status=='active'?'success':'danger' }}">{{ ucwords($member->status) }}</span>

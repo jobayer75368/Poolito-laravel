@@ -64,7 +64,7 @@
                             <td>{{ $key+1 }}</td>
                             <td>{{ $portfolio->portfolio_title }}</td>
                             <td>
-                                <img style="width: 120px;" src="{{$portfolio->portfolio_image && Storage::disk('public')->exists($portfolio->portfolio_image)? asset('storage/'.$portfolio->portfolio_image ): asset('no-image.png') }}" alt="{{ $portfolio->portfolio_title }}">
+                                <img style="width: 120px;" src="{{$portfolio->portfolio_image ?(filter_var($portfolio->portfolio_image,FILTER_VALIDATE_URL) ? $portfolio->portfolio_image : asset('storage/'.$portfolio->portfolio_image )) : asset('no-image.png')}}" alt="{{ $portfolio->portfolio_title }}">
                             </td>
                             <td>
                                 <span class="badge bg-{{ $portfolio->status=='active'?'success':'danger' }}">{{ ucwords($portfolio->status) }}</span>

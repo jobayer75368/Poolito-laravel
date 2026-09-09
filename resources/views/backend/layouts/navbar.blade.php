@@ -35,7 +35,7 @@
             <div class="dropdown">
                 <button class="profile-button dropdown-toggle" data-bs-toggle="dropdown" type="button" aria-expanded="false">
                     <img class="avatar-img avatar-sm"
-                        src="{{ Auth::user()->user_image ? asset('storage/' . Auth::user()->user_image) : asset('backend/assets/images/avatar/avatar.jpg') }}"
+                        src="{{ Auth::user()->user_image ? (filter_var(Auth::user()->user_image, FILTER_VALIDATE_URL)? Auth::user()->user_image : asset('storage/' . Auth::user()->user_image)) : asset('no-user.jpg') }}"
                         alt="{{ Auth::user()->name }}">
                     <span class=" d-none d-sm-inline">{{ Auth::user()->name }}</span>
                 </button>

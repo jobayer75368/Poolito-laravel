@@ -39,7 +39,8 @@
             <div class="col-lg-4">
                 <section class="panel h-100">
                     <div class="p-3">
-                        <img src="{{$blog->blog_image && Storage::disk('public')->exists($blog->blog_image)? asset('storage/'.$blog->blog_image ): asset('no-image.png') }}" alt="{{ $blog->blog_title }}"
+
+                        <img src="{{$blog->blog_image ?(filter_var($blog->blog_image,FILTER_VALIDATE_URL) ? $blog->blog_image : asset('storage/'.$blog->blog_image )) : asset('no-image.png')}}" alt="{{ $blog->blog_title }}"
                             class="rounded-3 w-100 mb-3"
                             style="height: 200px; object-fit: cover;">
 

@@ -63,7 +63,7 @@
                             <td>{{ $blog->blog_title }}</td>
 
                             <td>
-                                <img style="width: 120px;" src="{{$blog->blog_image && Storage::disk('public')->exists($blog->blog_image)? asset('storage/'.$blog->blog_image ): asset('no-image.png') }}" alt="{{ $blog->blog_title }}">
+                                <img style="width: 120px;" src="{{$blog->blog_image ?(filter_var($blog->blog_image,FILTER_VALIDATE_URL) ? $blog->blog_image : asset('storage/'.$blog->blog_image )) : asset('no-image.png')}}" alt="{{ $blog->blog_title }}">
                             </td>
 
                             <td>

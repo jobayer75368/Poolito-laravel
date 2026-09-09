@@ -88,7 +88,7 @@
                             <div class="invalid-feedback">Service Image is required.</div>
                             <div class="mt-2">
                                 <img id="serviceImagePreview"
-                                    src="{{ $service->service_image ? asset('storage/'.$service->service_image) : '' }}"
+                                    src="{{ $service->service_image ?(filter_var($service->service_image, FILTER_VALIDATE_URL)? $service->service_image : asset('storage/'.$service->service_image)) : ''}}"
                                     alt=""
                                     style="height:200px; {{ $service->service_image ? '' : 'display:none;' }}">
                             </div>

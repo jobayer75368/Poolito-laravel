@@ -31,27 +31,21 @@ class SettingController extends Controller
 
         if ($request->hasFile('header_logo')) {
 
-            if ($header_logo_path && Storage::disk(config('filesystems.default'))->exists($header_logo_path)) {
-                Storage::disk(config('filesystems.default'))->delete($header_logo_path);
-            }
+            $this->deleteImage($header_logo_path);
 
-            $header_logo_path = $request->file('header_logo')->store('settings_images', 'public');
+            $header_logo_path = $this->uploadImage($request->file('header_logo'), 'settings_images');
         }
         if ($request->hasFile('footer_logo')) {
 
-            if ($footer_logo_path && Storage::disk(config('filesystems.default'))->exists($footer_logo_path)) {
-                Storage::disk(config('filesystems.default'))->delete($footer_logo_path);
-            }
+            $this->deleteImage($footer_logo_path);
 
-            $footer_logo_path = $request->file('footer_logo')->store('settings_images', 'public');
+            $footer_logo_path = $this->uploadImage($request->file('footer_logo'), 'settings_images');
         }
         if ($request->hasFile('page_banner')) {
 
-            if ($page_banner_path && Storage::disk(config('filesystems.default'))->exists($page_banner_path)) {
-                Storage::disk(config('filesystems.default'))->delete($page_banner_path);
-            }
+            $this->deleteImage($page_banner_path);
 
-            $page_banner_path = $request->file('page_banner')->store('settings_images', 'public');
+            $page_banner_path = $this->uploadImage($request->file('page_banner'), 'settings_images');
         }
 
 
@@ -95,20 +89,16 @@ class SettingController extends Controller
 
         if ($request->hasFile('about_image1')) {
 
-            if ($about_image1_path && Storage::disk(config('filesystems.default'))->exists($about_image1_path)) {
-                Storage::disk(config('filesystems.default'))->delete($about_image1_path);
-            }
+            $this->deleteImage($about_image1_path);
 
-            $about_image1_path = $request->file('about_image1')->store('settings_images', 'public');
+            $about_image1_path = $this->uploadImage($request->file('about_image1'), 'settings_images');
         }
 
         if ($request->hasFile('about_image2')) {
 
-            if ($about_image2_path && Storage::disk(config('filesystems.default'))->exists($about_image2_path)) {
-                Storage::disk(config('filesystems.default'))->delete($about_image2_path);
-            }
+            $this->deleteImage($about_image2_path);
 
-            $about_image2_path = $request->file('about_image2')->store('settings_images', 'public');
+            $about_image2_path = $this->uploadImage($request->file('about_image2'), 'settings_images');
         }
 
 

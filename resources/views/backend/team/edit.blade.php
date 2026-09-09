@@ -124,7 +124,7 @@
                             <input class="form-control" id="memberImg" type="file" name="member_image" value="{{ $member->member_image }}">
                             <div class="mt-2">
                                 <img id="memberImagePreview"
-                                    src="{{ $member->member_image ? asset('storage/'.$member->member_image) : '' }}"
+                                    src="{{ $member->member_image ? (filter_var($member->member_image, FILTER_VALIDATE_URL)?$member->member_image : asset('storage/'.$member->member_image)) : '' }}"
                                     alt=""
                                     style="height:200px; {{ $member->member_image ? '' : 'display:none;' }}">
                             </div>

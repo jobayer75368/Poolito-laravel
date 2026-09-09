@@ -29,9 +29,7 @@ class PortfolioController extends Controller
         //     'portfolio_image' => 'required|image',
         // ]);
         $image_path = null;
-        if ($request->hasFile('portfolio_image')) {
-            $image_path = $request->file('portfolio_image')->store('portfolio_images', 'public');
-        }
+        $image_path = $this->uploadImage($request->file('portfolio_image'), 'portfolio_images');
 
         Portfolio::create([
 
@@ -66,7 +64,9 @@ class PortfolioController extends Controller
         $image_path = $portfolio->portfolio_image;
 
         if ($request->hasFile('portfolio_image')) {
-            $image_path = $request->file('portfolio_image')->store('portfolio_images', 'public');
+
+            $this->deleteImage($image_path);
+            $image_path = $this->uploadImage($request->file('portfolio_image'), 'portfolio_images');
         }
 
         $portfolio->update([
@@ -87,9 +87,7 @@ class PortfolioController extends Controller
         try {
             $portfolio = Portfolio::findOrFail($id);
             $image_path = $portfolio->portfolio_image;
-            if ($image_path && Storage::disk('public')->exists($image_path)) {
-                Storage::disk('public')->delete($image_path);
-            }
+            $this->deleteImage($image_path);
 
             $portfolio->delete();
             DB::commit();

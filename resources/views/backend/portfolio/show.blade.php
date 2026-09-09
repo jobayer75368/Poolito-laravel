@@ -39,7 +39,7 @@
             <div class="col-lg-4">
                 <section class="panel h-100">
                     <div class="p-3">
-                        <img src="{{$portfolio->portfolio_image && Storage::disk('public')->exists($portfolio->portfolio_image)? asset('storage/'.$portfolio->portfolio_image ): asset('no-image.png') }}" alt="{{ $portfolio->portfolio_title }}"
+                        <img src="{{$portfolio->portfolio_image ?(filter_var($portfolio->portfolio_image,FILTER_VALIDATE_URL) ? $portfolio->portfolio_image : asset('storage/'.$portfolio->portfolio_image )) : asset('no-image.jpg')}}" alt="{{ $portfolio->portfolio_title }}"
                             class="rounded-3 w-100 mb-3"
                             style="height: 200px; object-fit: cover;">
 

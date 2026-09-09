@@ -145,10 +145,10 @@
                         </span>
                     </div>
                     <div class="img1">
-                        <a href="/about"><img src="{{ asset('/frontend/assets/img/about/about-img-1-1.jpg') }}" alt="About Image"></a>
+                        <a href="/about"><img src="{{ $settings->about_image1 ? (filter_var($settings->about_image1 , FILTER_VALIDATE_URL) ? $settings->about_image1 : asset('storage/'.$settings->about_image1)):'' }}" alt="About Image 1"></a>
                     </div>
                     <div class="img2">
-                        <a href="/about"><img src="{{ asset('/frontend/assets/img/about/about-img-1-2.jpg') }}" alt="About Image"></a>
+                        <a href="/about"><img src="{{ $settings->about_image2 ? (filter_var($settings->about_image2 , FILTER_VALIDATE_URL) ? $settings->about_image2 : asset('storage/'.$settings->about_image2)):'' }}" alt="About Image 2"></a>
                     </div>
                 </div>
             </div>
@@ -157,48 +157,30 @@
                     <div class="wow animate__fadeInUp" data-wow-delay="0.25s">
                         <div class="title-area title-anime animation-style2">
                             <span class="sec-subtitle left-shape justify-content-center title-anime__title">ABOUT CLEANING</span>
-                            <h2 class="sec-title title-anime__title">Our Cleaning <span class="title-highlight">Agency</span> For Your City</h2>
                         </div>
-                        <p class="about-text">
-                            When you work Angeles House Cleaners Referal Agency cleaning breathe easy because your home will soon
-                        </p>
-                    </div>
-                    <div class="about-box1 wow animate__fadeInUp" data-wow-delay="0.25s">
-                        <div class="about-item">
-                            <span class="item-icon">
-                                <img src="{{ asset('/frontend/assets/img/icon/about-icon2.svg') }}" alt="icon">
-                            </span>
-                            <h2 class="item-title h6">House Cleaning</h2>
-                            <p class="item-text">leaning machine your Ultrasonic parts cleaning dioxide</p>
+                        <div>
+                            {!!$settings->about_description !!}
                         </div>
-                        <div class="about-item">
-                            <span class="item-icon">
-                                <img src="{{ asset('/frontend/assets/img/icon/about-icon3.svg') }}" alt="icon">
-                            </span>
-                            <h2 class="item-title h6">Living Room Cleaning</h2>
-                            <p class="item-text">leaning machine your Ultrasonic parts cleaning dioxide</p>
-                        </div>
-                    </div>
-                    <div class="about-inner wow animate__fadeInUp" data-wow-delay="0.25s">
-                        <a class="vs-btn2" href="/about">read more <i class="far fa-long-arrow-right"></i></a>
-                        <div class="author-box">
-                            <img src="{{ asset('/frontend/assets/img/about/author-img.jpg" alt="author image') }}">
-                            <div class="author-content">
-                                <h2 class="title h5">D.markwin</h2>
-                                <p class="desi">Co-founder</p>
+                        <div class="about-inner wow animate__fadeInUp" data-wow-delay="0.25s">
+                            <a class="vs-btn2" href="/about">read more <i class="far fa-long-arrow-right"></i></a>
+                            <div class="author-box">
+                                <img src="{{ asset('/frontend/assets/img/about/author-img.jpg" alt="author image') }}">
+                                <div class="author-content">
+                                    <h2 class="title h5">D.markwin</h2>
+                                    <p class="desi">Co-founder</p>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="about-notice wow animate__fadeInUp" data-wow-delay="0.30s">
-                        <span class="notice-icon"><img src="{{ asset('/frontend/assets/img/icon/about-icon4.svg') }}" alt="icon"></span>
-                        <p class="notice-text">Give Your Home A Deep Clean for aesthetic.</p>
+                        <div class="about-notice wow animate__fadeInUp" data-wow-delay="0.30s">
+                            <span class="notice-icon"><img src="{{ asset('/frontend/assets/img/icon/about-icon4.svg') }}" alt="icon"></span>
+                            <p class="notice-text">Give Your Home A Deep Clean for aesthetic.</p>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-    <span class="shape-mockup z-index-n1 d-lg-block d-none" style="left: 52px; top: 0px;"><img src="{{ asset('/frontend/assets/img/shapes/about-shape-1-1.png') }}" alt="counter element"></span>
-    <span class="shape-mockup z-index-n1 d-xl-block d-none" style="right: 0; top: 0px;"><img src="{{ asset('/frontend/assets/img/shapes/about-shape-1-2.png') }}" alt="counter element"></span>
+        <span class="shape-mockup z-index-n1 d-lg-block d-none" style="left: 52px; top: 0px;"><img src="{{ asset('/frontend/assets/img/shapes/about-shape-1-1.png') }}" alt="counter element"></span>
+        <span class="shape-mockup z-index-n1 d-xl-block d-none" style="right: 0; top: 0px;"><img src="{{ asset('/frontend/assets/img/shapes/about-shape-1-2.png') }}" alt="counter element"></span>
 </section>
 <!-- About Area End -->
 <!-- Service Area  -->
@@ -218,7 +200,7 @@
                 <div class="vs-service__style1">
                     <div class="vs-service__img">
                         <a class="d-flex justify-content-center" href="{{ route('service_details',$service->service_slug) }}">
-                            <img src="{{$service->service_image && Storage::disk('public')->exists($service->service_image)? asset('storage/'.$service->service_image ): asset('no-image.png') }}" alt="{{ $service->service_title }}" alt="Serevice Image" style="height: 285px; width: 420px;">
+                            <img src="{{ $service->service_image ? (filter_var($service->service_image , FILTER_VALIDATE_URL) ? $service->service_image : asset('storage/'.$service->service_image)):'' }}" alt="{{ $service->service_title }}" alt="Serevice Image" style="height: 285px; width: 420px;">
                         </a>
                     </div>
                     <div class="vs-service__body">
@@ -342,7 +324,7 @@
                 <div class="vs-team__style1">
                     <div class="vs-team__img">
                         <a href="{{ route('team_details',$member->slug) }}">
-                            <img src="{{$member->member_image && Storage::disk('public')->exists($member->member_image)? asset('storage/'.$member->member_image ): asset('no-image.png') }}" alt="{{ $member->name }}" style="height: 320px; width: 320px;">
+                            <img src="{{ $member->member_image ? (filter_var($member->member_image , FILTER_VALIDATE_URL) ? $member->member_image : asset('storage/'.$member->member_image)):'' }}" alt="{{ $member->name }}" style="height: 320px; width: 320px;">
                         </a>
 
                         <div class="vs-team__social--media">
@@ -518,7 +500,7 @@
                 <div class="vs-blog__style1  mb-0">
                     <div class="blog-img" style="height: 380px;">
                         <a class="d-flex justify-content-center" href="{{ route('blog_details',$blog->blog_slug) }}">
-                            <img src="{{$blog->blog_image && Storage::disk('public')->exists($blog->blog_image)? asset('storage/'.$blog->blog_image ): asset('no-image.png') }}" alt="{{ $blog->blog_title }}" style="height: 100%; width: 100%">
+                            <img src="{{ $blog->blog_image ? (filter_var($blog->blog_image , FILTER_VALIDATE_URL) ? $blog->blog_image : asset('storage/'.$blog->blog_image)):'' }}" style="height: 100%; width: 100%">
                         </a>
                         <a href="{{ route('blog_details',$blog->blog_slug) }}" class="blog-cate">{{ $blog->blog_title }}</a>
                     </div>

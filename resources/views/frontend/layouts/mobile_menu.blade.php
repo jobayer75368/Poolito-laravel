@@ -2,7 +2,7 @@
     <div class="vs-menu-area text-center">
         <button class="vs-menu-toggle"><i class="fal fa-times"></i></button>
         <div class="mobile-logo">
-            <a href="index.html"><img src="{{ $settings->header_logo? asset('storage/'.$settings->header_logo) :'';}}" alt="cleaning"></a>
+            <a href="index.html"><img src="{{ $settings->header_logo?(filter_var($settings->header_logo, FILTER_VALIDATE_URL)?$settings->header_logo: asset('storage/'.$settings->header_logo)) :'';}}" alt="Header Logo"></a>
         </div>
         <div class="vs-mobile-menu">
             <ul>

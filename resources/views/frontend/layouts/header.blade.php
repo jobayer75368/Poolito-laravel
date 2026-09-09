@@ -31,7 +31,7 @@
                         <div class="col-auto">
                             <div class="header-logo">
                                 <a href="/">
-                                    <img src="{{ $settings->header_logo? asset('storage/'.$settings->header_logo) :'';}}" alt="header logo">
+                                    <img src="{{ $settings->header_logo? (filter_var($settings->header_logo, FILTER_VALIDATE_URL)?$settings->header_logo : asset('storage/'.$settings->header_logo)) :'';}}" alt="header logo">
                                 </a>
                             </div>
                         </div>

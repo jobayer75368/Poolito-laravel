@@ -63,7 +63,7 @@
               <td>{{ $service->service_title }}</td>
 
               <td>
-                <img style="width: 120px;" src="{{$service->service_image && Storage::disk('public')->exists($service->service_image)? asset('storage/'.$service->service_image ): asset('no-image.png') }}" alt="{{ $service->service_title }}">
+                <img style="width: 120px;" src="{{ $service->service_image ? (filter_var($service->service_image, FILTER_VALIDATE_URL) ? $service->service_image : asset('storage/'.$service->service_image)) : asset('no-image.png') }}" alt="{{ $service->service_title }}">
               </td>
 
               <td>

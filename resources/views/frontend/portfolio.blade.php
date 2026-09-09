@@ -3,7 +3,7 @@
 <!--==============================
         Breadcumb
         ============================== -->
-<div class="breadcumb-wrapper " data-bg-src="{{ $settings->page_banner? asset('storage/'.$settings->page_banner) :'';}}">
+<div class="breadcumb-wrapper " data-bg-src="{{ $settings->page_banner? (filter_var($settings->page_banner, FILTER_VALIDATE_URL)?$settings->page_banner: asset('storage/'.$settings->page_banner)) :'';}}">
     <div class="container z-index-common">
         <div class="breadcumb-content">
             <h1 class="breadcumb-title">our <span>portfolio</span></h1>
@@ -25,7 +25,7 @@
                 <div class="col-lg-4">
                     <div class="portfolio-style1">
                         <div class="portfolio-img">
-                            <img src="{{ $portfolio->portfolio_image && Storage::disk('public')->exists($portfolio->portfolio_image)? asset('storage/'.$portfolio->portfolio_image):asset('no-image.png')}}" alt="{{ $portfolio->portfolio_title }}" style="height:350px">
+                            <img src="{{ $portfolio->portfolio_image ? (filter_var($portfolio->portfolio_image, FILTER_VALIDATE_URL)?$portfolio->portfolio_image : asset('storage/'.$portfolio->portfolio_image)) :asset('no-image.png')}}" alt="{{ $portfolio->portfolio_title }}" alt="{{ $portfolio->portfolio_title }}" style="height:350px">
                             <span class="icon icon-btn"><a href="{{ route('portfolio_details',$portfolio->portfolio_slug) }}"><i class="fa-solid fa-arrow-up"></i></a></span>
                         </div>
                         <div class="portfolio-content">

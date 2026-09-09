@@ -6,7 +6,7 @@
                     <div class="widget footer-widget">
                         <div class="vs-widget-about">
                             <div class="footer-logo">
-                                <a href="/"><img src="{{$settings->footer_logo ? asset('storage/'.$settings->footer_logo):'' ;}}" alt="logo"></a>
+                                <a href="/"><img src="{{$settings->footer_logo ? (filter_var($settings->footer_logo, FILTER_VALIDATE_URL) ? $settings->footer_logo : asset('storage/'.$settings->footer_logo)):'' ;}}" alt="Footer logo"></a>
                             </div>
                             <p class="footer-text">
                                 {{$settings->footer_details}}
