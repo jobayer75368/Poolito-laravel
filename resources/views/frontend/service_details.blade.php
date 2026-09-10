@@ -42,7 +42,7 @@
                         </span>
                         <div class="contact-content">
                             <h6 class="contact-title">Need help? Talk to expert</h6>
-                            <p class="contact-text"><a href="tel:+9-666-888-679">+9 112 - 8899</a></p>
+                            <p class="contact-text"><a href="tel:{{ $settings->phone }}">{{ $settings->phone ? $settings->phone: ''}}</a></p>
                         </div>
                         <span class="shape-mockup" style="left: 0; bottom: 0px;"><img src="{{ asset('/frontend/assets/img/shapes/contact-sheap1.png') }}" alt="team element"></span>
                     </div>

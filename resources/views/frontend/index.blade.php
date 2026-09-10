@@ -212,7 +212,7 @@
                                 </h2>
                             </div>
                             <div class="vs-service__icon">
-                                <img src="{{$service->service_icon && Storage::disk('public')->exists($service->service_icon)? asset('storage/'.$service->service_icon ): asset('no-image.png') }}" alt="{{ $service->service_title }}" style="height: 50px;">
+                                <img src="{{$service->service_icon ? (filter_var($service->service_icon, FILTER_VALIDATE_URL)?  $service->service_icon: asset('storage/'.$service->service_icon )) : asset('no-image.png') }}" alt="{{ $service->service_title }}" style="height: 50px;">
                             </div>
                         </div>
                         <p class="vs-service__text">

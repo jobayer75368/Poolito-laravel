@@ -46,7 +46,7 @@
                         <div class="d-flex align-items-center justify-content-between gap-2 mb-3">
                             <span class="text-muted small">Service Icon</span>
                             <span class="fs-3 text-primary">
-                                <img class="rounded-3 w-100 mb-3" src="{{$service->service_icon && Storage::disk('public')->exists($service->service_icon)? asset('storage/'.$service->service_icon ): asset('no-image.png') }}" alt="{{ $service->service_title }}" style="height: 50px; object-fit: cover;">
+                                <img class="rounded-3 w-100 mb-3" src="{{$service->service_icon ? (filter_var($service->service_icon, FILTER_VALIDATE_URL)? $service_service_icon : asset('storage/'.$service->service_icon )) : asset('no-image.png') }}" alt="{{ $service->service_title }}" style="height: 50px; object-fit: cover;">
                             </span>
                         </div>
 
