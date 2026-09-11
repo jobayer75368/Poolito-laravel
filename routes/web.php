@@ -9,6 +9,7 @@ use App\Http\Controllers\Backend\UserController;
 use App\Http\Controllers\Backend\MemberController;
 use App\Http\Controllers\Backend\PortfolioController;
 use App\Http\Controllers\Backend\SettingController;
+use App\Http\Controllers\Backend\SliderController;
 use App\Http\Controllers\frontend\HomeController;
 
 // / ******Frontend starts here *******///
@@ -146,7 +147,11 @@ Route::prefix('admin')->middleware('auth')->name('admin.')->group(function () {
         Route::post('/portfolios/delete/{id}', 'destroy')->name('portfolio.destroy');
     });
 
+    // SLider Management
 
+    Route::controller(SliderController::class)->group(function () {
+        Route::get('/slider', 'index')->name('slider.create');
+    });
 
     // Message management 
     Route::get('/messages', [MessageController::class, 'index'])->name('message.index');

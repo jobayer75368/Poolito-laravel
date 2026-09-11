@@ -56,6 +56,13 @@
             <span class="nav-text">Portfolio</span>
         </a>
 
+        <a @class(['nav-link', 'active'=> request()->routeIs(['admin.sliders.index', 'admin.portfolio.create','admin.portfolio.show','admin.portfolio.edit'])]) href="{{ route('admin.portfolio.index') }}">
+            <span class="nav-icon">
+                <i class="bi bi-briefcase"></i>
+            </span>
+            <span class="nav-text">Sliders</span>
+        </a>
+
         <a @class(['nav-link', 'active'=> request()->routeIs(['admin.message.index','admin.message.show'])]) href="{{ route('admin.message.index') }}">
             <span class="nav-icon">
                 <i class="bi bi-chat-text"></i>
