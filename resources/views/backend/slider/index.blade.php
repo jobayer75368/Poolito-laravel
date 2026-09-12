@@ -8,18 +8,18 @@
                     <i class="bi bi-tools"></i>
                 </span>
                 <div>
-                    <h1 class="h3 mb-1">Service Management</h1>
+                    <h1 class="h3 mb-1">Slide Management</h1>
                 </div>
             </div>
             <div>
                 <ul class="list-unstyled d-flex gap-1">
                     <li>
-                        <a class="link-opacity-25-hover" href="{{ route('admin.dashboard') }}">Dashboard </a>
+                        <a class="link-opacity-25-hover" href=" route('admin.dashboard') ">Dashboard </a>
                     </li>/
                     <li>
-                        Service List
+                        Slide List
                     </li>/
-                    <li><a class="link-opacity-25-hover" href="{{ route('admin.service.create') }}"> Add Service</a></li>
+                    <li><a class="link-opacity-25-hover" href="{{  route('admin.slider.create') }} "> Add Service</a></li>
                 </ul>
             </div>
 
@@ -28,11 +28,11 @@
         <section class="panel mt-3">
             <div class="panel-header">
                 <div>
-                    <h2 class="h5 mb-1 section-title"><i class="bi bi-table" aria-hidden="true"></i><span>Service List</span></h2>
+                    <h2 class="h5 mb-1 section-title"><i class="bi bi-table" aria-hidden="true"></i><span>Slide List</span></h2>
                 </div>
                 <div class="d-flex gap-2 justify-content-right">
-                    <a class="d-flex justify-content-center align-items-center btn btn-sm btn-info" href="{{ route('admin.service.create') }}">
-                        <i class="bi bi-plus-square-fill fs-4"></i>Add Service
+                    <a class="d-flex justify-content-center align-items-center btn btn-sm btn-info" href=" {{ route('admin.service.create') }} ">
+                        <i class="bi bi-plus-square-fill fs-4"></i>Add Slide
                     </a>
                 </div>
             </div>
@@ -40,7 +40,7 @@
                 <div>
                     @if (session('success'))
                     <div class="alert alert-success" role="alert"><strong>Success:</strong>
-                        {{ session('success') }}
+                        session('success')
                     </div>
                     @endif
                 </div>
@@ -56,43 +56,40 @@
                         </tr>
                     </thead>
                     <tbody>
-
-                        @foreach ($services as $key=>$service)
                         <tr class="fw-semibold mb-0">
-                            <td>{{ $key+1 }}</td>
-                            <td>{{ $service->service_title }}</td>
+                            <td> $key+1 </td>
+                            <td> </td>
 
                             <td>
-                                <img style="width: 120px;" src="{{ $service->service_image ? (filter_var($service->service_image, FILTER_VALIDATE_URL) ? $service->service_image : asset('storage/'.$service->service_image)) : asset('no-image.png') }}" alt="{{ $service->service_title }}">
+                                <img style="width: 120px;" src="" alt=" ->service_title ">
                             </td>
 
                             <td>
-                                <span class="badge bg-{{ $service->status=='active'?'success':'danger' }}">{{ ucwords($service->status) }}</span>
+                                <span class="badge bg- ->status=='active'?'success':'danger' "> </span>
                             </td>
 
                             <td class="small">
-                                {{ $service->created_at->format('d M Y') }}
+                                ->created_at->format('d M Y')
                             </td>
 
                             <td>
                                 <div class="text-end d-flex justify-content-center align-items-center gap-2">
 
-                                    <a class="btn btn-light btn-sm" href="{{ route('admin.service.show',$service->id) }}">
+                                    <a class="btn btn-light btn-sm" href=" route('admin.service.show',->id) ">
                                         <i class="bi bi-eye"></i>
                                     </a>
 
-                                    <a class="btn btn-sm btn-outline-primary" href="{{ route('admin.service.edit',$service->id) }}">
+                                    <a class="btn btn-sm btn-outline-primary" href=" route('admin.service.edit',->id) ">
                                         <i class="bi bi-pencil-square"></i>
                                     </a>
 
                                     <a class="btn btn-sm btn-outline-danger" data-bs-toggle="modal"
-                                        data-bs-target="#serviceDeleteModal{{ $service->id }}">
+                                        data-bs-target="#serviceDeleteModal ->id ">
                                         <i class="bi bi-trash me-1"></i>
                                     </a>
                                 </div>
                             </td>
                         </tr>
-                        @endforeach
 
 
                     </tbody>
@@ -105,9 +102,9 @@
 </main>
 
 <!-- Delete modal  -->
-@foreach ($services as $service )
 
-<div class="modal fade" id="serviceDeleteModal{{ $service->id }}" tabindex="-1" aria-labelledby="confirmModalLabel" aria-hidden="true">
+
+<div class="modal fade" id="serviceDeleteModal ->id " tabindex="-1" aria-labelledby="confirmModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
             <div class="modal-header">
@@ -115,7 +112,7 @@
             </div>
             <div class="modal-body">Are you sure you want to Delete this service?</div>
 
-            <form method="POST" action="{{ route('admin.service.destroy',$service->id) }}" class="modal-footer">
+            <form method="POST" action=" route('admin.service.destroy',->id) " class="modal-footer">
                 @csrf
                 <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Cancel</button>
                 <input type="submit" value="Confirm" class="btn btn-primary">
@@ -123,6 +120,5 @@
         </div>
     </div>
 </div>
-@endforeach
 
 @endsection

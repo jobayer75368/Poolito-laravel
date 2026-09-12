@@ -150,7 +150,10 @@ Route::prefix('admin')->middleware('auth')->name('admin.')->group(function () {
     // SLider Management
 
     Route::controller(SliderController::class)->group(function () {
-        Route::get('/slider', 'index')->name('slider.create');
+        Route::get('/slider', 'index')->name('slider.index');
+        Route::get('/slider/create', 'create')->name('slider.create');
+        Route::post('/slider', 'store')->name('slider.store');
+        Route::post('/slider', 'destroy')->name('slider.destroy');
     });
 
     // Message management 
