@@ -38,49 +38,9 @@
                         </div>
                     </div>
                     <div class="row g-3">
-                        <div class="col-md-12">
-                            <label class="form-label" for="serviceTitle">Service Title</label>
-                            <input class="form-control" id="serviceTitle" name="service_title" required>
-                            <div class="invalid-feedback">Full name is required.</div>
-                        </div>
-
-                        <div class="col-md-12">
-                            <label class="form-label" for="serviceSlug">Service Slug</label>
-                            <input class="form-control" id="serviceSlug" name="service_slug" required>
-                            <div class="invalid-feedback">Slug is required.</div>
-                        </div>
-
-
-                        <div class="col-md-12">
-                            <label class="form-label" for="serviceIcon">Service Icon</label>
-                            <input class="form-control" id="serviceIcon" name="service_icon" type="file">
-                            <div class="mt-2">
-                                <img id="serviceIconPreview" src="" alt="" style="height:50px; display:none;">
-                            </div>
-                        </div>
 
                         <div class="col-12">
-                            <label class="form-label" for="shortDescription">Short Description</label>
-                            <textarea class="form-control summernote" id="shortDescription" rows="5" name="short_description"></textarea>
-                            <!-- <div class="invalid-feedback">Message is required.</div> -->
-                        </div>
-
-                        <div class="col-12">
-                            <label class="form-label" for="longDescription">Long Description</label>
-                            <textarea class="form-control summernote" id="longDescription" name="long_description" rows="5"></textarea>
-                        </div>
-
-                        <div class="col-12">
-                            <label class="form-label" for="status">Status</label>
-                            <select class="form-control" name="status" id="status">
-                                <option value="active">Active</option>
-                                <option value="inactive">Inactive</option>
-                            </select>
-
-                        </div>
-
-                        <div class="col-12">
-                            <label class="form-label" for="serviceImg">Service Image</label>
+                            <label class="form-label" for="serviceImg">Slide Image</label>
                             <input class="form-control" id="serviceImg" name="service_image" type="file">
                             <div class="invalid-feedback">Service Image is required.</div>
                             <div class="mt-2">

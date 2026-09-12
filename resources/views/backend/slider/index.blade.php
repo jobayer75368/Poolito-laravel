@@ -19,7 +19,7 @@
                     <li>
                         Slide List
                     </li>/
-                    <li><a class="link-opacity-25-hover" href="{{  route('admin.slider.create') }} "> Add Service</a></li>
+                    <li><a class="link-opacity-25-hover" href="{{  route('admin.slider.create') }} "> Add Slide</a></li>
                 </ul>
             </div>
 
@@ -31,7 +31,7 @@
                     <h2 class="h5 mb-1 section-title"><i class="bi bi-table" aria-hidden="true"></i><span>Slide List</span></h2>
                 </div>
                 <div class="d-flex gap-2 justify-content-right">
-                    <a class="d-flex justify-content-center align-items-center btn btn-sm btn-info" href=" {{ route('admin.service.create') }} ">
+                    <a class="d-flex justify-content-center align-items-center btn btn-sm btn-info" href=" {{ route('admin.slider.create') }} ">
                         <i class="bi bi-plus-square-fill fs-4"></i>Add Slide
                     </a>
                 </div>

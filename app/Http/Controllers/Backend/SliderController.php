@@ -17,12 +17,27 @@ class SliderController extends Controller
     {
         return view('backend.slider.create');
     }
-    public function store()
+    public function store(Request $request)
     {
-        return view('backend.slider.create');
+        $request->validate([
+            'slider_image' => 'required|image',
+        ]);
+
+        $image_path = null;
+
+        if ($request->hasFile('slider_image')) {
+            $image_path = $this->uploadImage($request->file('slider_image'), 'slider_images');
+        }
+
+        Slider::create([
+            'slider_image' => $image_path,
+
+        ]);
+
+        return redirect()->route('admin.slider.index');
     }
     public function destroy()
     {
-        return view('backend.slider.create');
+        return view('backend.slider.index');
     }
 }
