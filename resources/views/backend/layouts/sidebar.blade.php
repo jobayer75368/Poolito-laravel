@@ -56,9 +56,9 @@
             <span class="nav-text">Portfolio</span>
         </a>
 
-        <a @class(['nav-link', 'active'=> request()->routeIs(['admin.slider.index'])]) href="{{ route('admin.slider.index') }}">
+        <a @class(['nav-link', 'active'=> request()->routeIs(['admin.slider.index','admin.slider.create'])]) href="{{ route('admin.slider.index') }}">
             <span class="nav-icon">
-                <i class="bi bi-slides"></i>
+                <i class="bi bi-images"></i>
             </span>
             <span class="nav-text">Sliders</span>
         </a>

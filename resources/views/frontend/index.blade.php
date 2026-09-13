@@ -18,12 +18,11 @@
                 <div class="col-lg-6">
                     <div class="vs-hero__image position-relative">
                         <div class="main-img vs-carousel" data-fade="true" data-autoplay="true">
+                            @foreach ($sliders as $slider )
                             <div class="slide-item">
-                                <img src="{{ asset('/frontend/assets/img/hero/hero-img-1-1.png') }}" alt="Hero Image">
+                                <img src="{{ $slider->slider_image? (filter_var($slider->slider_image, FILTER_VALIDATE_URL)?$slider->slider_image :asset('storage/'.$slider->slider_image)) :'' }}" alt="Hero Image">
                             </div>
-                            <div class="slide-item">
-                                <img src="{{ asset('/frontend/assets/img/hero/hero-img-1-2.png') }}" alt="Hero Image">
-                            </div>
+                            @endforeach
                         </div>
                         <span class="shape-mockup hero-shep3 custome-sheap1 wow animate__zoomIn" data-wow-delay="0.90s" style="left: -50px; bottom: 0;"><img src="{{ asset('/frontend/assets/img/shapes/hero-shep-1-1.svg') }}" alt="hero element"></span>
                         <span class="shape-mockup hero-shep4 custome-sheap1 wow animate__zoomIn" data-wow-delay="0.80s" style="left: -130px; bottom: 0;"><img src="{{ asset('/frontend/assets/img/shapes/hero-shep-1-2.svg') }}" alt="hero element"></span>

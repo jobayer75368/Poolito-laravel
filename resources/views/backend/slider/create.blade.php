@@ -5,7 +5,7 @@
         <div class="page-heading">
             <div class="page-heading-copy">
                 <span class="page-icon">
-                    <i class="bi bi-tools"></i>
+                    <i class="bi bi-images"></i>
                 </span>
                 <div>
                     <h1 class="h3 mb-1">Slide Management</h1>
@@ -22,7 +22,6 @@
                     </li>
                 </ul>
             </div>
-
         </div>
 
         <section class="row g-3">
@@ -32,7 +31,7 @@
                     <div class="panel-header">
                         <div>
                             <h2 class="h5 mb-1 section-title">
-                                <i class="bi bi-tools"></i>
+                                <i class="bi bi-images"></i>
                                 <span>Add Slide</span>
                             </h2>
                         </div>
@@ -40,11 +39,11 @@
                     <div class="row g-3">
 
                         <div class="col-12">
-                            <label class="form-label" for="serviceImg">Slide Image</label>
-                            <input class="form-control" id="serviceImg" name="service_image" type="file">
-                            <div class="invalid-feedback">Service Image is required.</div>
+                            <label class="form-label" for="slideImg">Slide Image</label>
+                            <input class="form-control" id="slideImg" name="slider_image" type="file">
+                            <div class="invalid-feedback">Slide Image is required.</div>
                             <div class="mt-2">
-                                <img id="serviceImagePreview" src="" alt="" style="height:200px; display:none;">
+                                <img id="slideImagePreview" src="" alt="" style="height:200px; display:none;">
                             </div>
                         </div>
 

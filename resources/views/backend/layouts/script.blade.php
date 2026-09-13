@@ -58,4 +58,5 @@
     previewImage('pageBanner', 'pageBannerPreview');
     previewImage('aboutImage1', 'aboutImage1Preview');
     previewImage('aboutImage2', 'aboutImage2Preview');
+    previewImage('slideImg', 'slideImagePreview');
 </script>

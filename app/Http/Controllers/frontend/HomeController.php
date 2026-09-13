@@ -8,6 +8,7 @@ use App\Models\Member;
 use App\Models\Portfolio;
 use Illuminate\Http\Request;
 use App\Models\Service;
+use App\Models\Slider;
 
 class HomeController extends Controller
 {
@@ -17,7 +18,8 @@ class HomeController extends Controller
         $services = Service::where('status', 'active')->get();
         $blogs = Blog::where('status', 'published')->get();
         $members = Member::where('status', 'active')->get();
-        return view('frontend.index', compact('services', 'blogs', 'members'));
+        $sliders = Slider::all();
+        return view('frontend.index', compact('services', 'blogs', 'members', 'sliders'));
     }
     public function serviceIndex()
     {

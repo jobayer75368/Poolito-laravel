@@ -5,7 +5,7 @@
         <div class="page-heading">
             <div class="page-heading-copy">
                 <span class="page-icon">
-                    <i class="bi bi-tools"></i>
+                    <i class="bi bi-images"></i>
                 </span>
                 <div>
                     <h1 class="h3 mb-1">Slide Management</h1>
@@ -40,57 +40,27 @@
                 <div>
                     @if (session('success'))
                     <div class="alert alert-success" role="alert"><strong>Success:</strong>
-                        session('success')
+                        {{ session('success') }}
                     </div>
                     @endif
                 </div>
                 <table class="table align-middle mb-0" id="usersTable" data-searchable-table>
-                    <thead>
-                        <tr>
-                            <th scope="col">Sl</th>
-                            <th scope="col">Title</th>
-                            <th scope="col">Image</th>
-                            <th scope="col">Status</th>
-                            <th scope="col">Created At</th>
-                            <th scope="col" class="text-end">Action</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr class="fw-semibold mb-0">
-                            <td> $key+1 </td>
-                            <td> </td>
+                    <tbody class="row">
 
-                            <td>
-                                <img style="width: 120px;" src="" alt=" ->service_title ">
-                            </td>
-
-                            <td>
-                                <span class="badge bg- ->status=='active'?'success':'danger' "> </span>
-                            </td>
-
-                            <td class="small">
-                                ->created_at->format('d M Y')
-                            </td>
-
-                            <td>
-                                <div class="text-end d-flex justify-content-center align-items-center gap-2">
-
-                                    <a class="btn btn-light btn-sm" href=" route('admin.service.show',->id) ">
-                                        <i class="bi bi-eye"></i>
-                                    </a>
-
-                                    <a class="btn btn-sm btn-outline-primary" href=" route('admin.service.edit',->id) ">
-                                        <i class="bi bi-pencil-square"></i>
-                                    </a>
-
+                        @foreach ($sliders as $slider)
+                        <tr class="fw-semibold col-md-4">
+                            <td class="" style="height:300px;width:500px">
+                                <img style="width:100%;height:100%" src="{{ $slider->slider_image ? (filter_var($slider->slider_image, FILTER_VALIDATE_URL)? $slider->slider_image : asset('storage/'.$slider->slider_image)):asset('no-image.png') }}" alt="SLider Image">
+                                <div class="d-flex justify-content-center align-items-center gap-2 mt-4">
                                     <a class="btn btn-sm btn-outline-danger" data-bs-toggle="modal"
-                                        data-bs-target="#serviceDeleteModal ->id ">
-                                        <i class="bi bi-trash me-1"></i>
+                                        data-bs-target="#sliderDeleteModal{{$slider->id }}">
+                                        <i class="bi bi-trash me-1"></i>Delete
                                     </a>
                                 </div>
                             </td>
                         </tr>
 
+                        @endforeach
 
                     </tbody>
                 </table>
@@ -103,16 +73,16 @@
 
 <!-- Delete modal  -->
 
-
-<div class="modal fade" id="serviceDeleteModal ->id " tabindex="-1" aria-labelledby="confirmModalLabel" aria-hidden="true">
+@foreach ($sliders as $slider )
+<div class="modal fade" id="sliderDeleteModal{{$slider->id }}" tabindex="-1" aria-labelledby="confirmModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
             <div class="modal-header">
                 <h2 class="modal-title h5" id="confirmModalLabel">Confirm Action</h2><button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-            <div class="modal-body">Are you sure you want to Delete this service?</div>
+            <div class="modal-body">Are you sure you want to Delete this slider?</div>
 
-            <form method="POST" action=" route('admin.service.destroy',->id) " class="modal-footer">
+            <form method="POST" action=" {{ route('admin.slider.destroy',$slider->id) }}" class="modal-footer">
                 @csrf
                 <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Cancel</button>
                 <input type="submit" value="Confirm" class="btn btn-primary">
@@ -120,5 +90,6 @@
         </div>
     </div>
 </div>
+@endforeach
 
 @endsection

@@ -5,13 +5,16 @@ namespace App\Http\Controllers\Backend;
 use App\Http\Controllers\Controller;
 use App\Models\Slider;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Log;
+use Throwable;
 
 class SliderController extends Controller
 {
     public function index()
     {
-        // $sliders = Slider::all();
-        return view('backend.slider.index');
+        $sliders = Slider::all();
+        return view('backend.slider.index', compact('sliders'));
     }
     public function create()
     {
@@ -36,8 +39,21 @@ class SliderController extends Controller
 
         return redirect()->route('admin.slider.index');
     }
-    public function destroy()
+    public function destroy(int $id)
     {
-        return view('backend.slider.index');
+        DB::beginTransaction();
+        try {
+            $slider = Slider::findOrFail($id);
+            $image_path = $slider->slider_image;
+            $this->deleteImage($image_path);
+
+            $slider->delete();
+            DB::commit();
+            return redirect()->route('admin.slider.index')->with('success', 'Slide deleted Successfully!');
+        } catch (Throwable $th) {
+            DB::rollBack();
+            Log::error('Error deleting Slide', [$th->getMessage() . '-' . $th->getLine()]);
+            return redirect()->route('admin.slider.index')->with('success', 'Something went Wrong!');
+        }
     }
 }
