@@ -47,15 +47,9 @@ class SliderController extends Controller
             $fileName = uniqid() . '.webp';
             $tempPath = storage_path('app/' . $fileName);
 
-            $low = 1;
-            $high = 100;
-            $bestQuality = 1;
+            $quality = 85;
 
-            // Encode as Webp 
-
-            while ($low <= $high) {
-                $quality = intdiv($low + $high, 2);
-
+            while (true) {
                 $image->encodeUsingFormat(
                     Format::WEBP,
                     quality: $quality
@@ -64,14 +58,16 @@ class SliderController extends Controller
                 $fileSize = filesize($tempPath);
 
                 if ($fileSize <= 1024 * 1024) {
-                    $bestQuality = $quality;
-                    $low = $quality + 1;
-                } else {
-                    $high = $quality - 1;
+                    break;
+                }
+
+                $quality -= 10;
+
+                if ($quality < 20) {
+                    $quality = 20;
+                    break;
                 }
             }
-
-            $image->encodeUsingFormat(Format::WEBP, quality: $bestQuality)->save($tempPath);
 
             $file = new UploadedFile(
                 $tempPath,
