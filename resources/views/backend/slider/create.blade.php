@@ -39,8 +39,11 @@
                     <div class="row g-3">
 
                         <div class="col-12">
-                            <label class="form-label" for="slideImg">Slide Image</label>
+                            <label class="form-label" for="slideImg">Slide Image (max : 4.00 mb)</label>
                             <input class="form-control" id="slideImg" name="slider_image" type="file">
+                            @error('slider_image')
+                            <span class="text-danger">{{ $message }}</span>
+                            @enderror
                             <div class="invalid-feedback">Slide Image is required.</div>
                             <div class="mt-2">
                                 <img id="slideImagePreview" src="" alt="" style="height:200px; display:none;">
@@ -57,5 +60,26 @@
         </section>
     </div>
 </main>
+
+<!-- image maximum size check  -->
+<script>
+    document.getElementById('slideImg').addEventListener('change', function() {
+        const maxSize = 4 * 1024 * 1024; // 4 MB
+        const error = this.parentElement.querySelector('.text-danger');
+
+        if (this.files[0] && this.files[0].size > maxSize) {
+            this.value = '';
+
+            if (error) {
+                error.textContent = 'Image size must not be larger than 4 MB.';
+            } else {
+                this.insertAdjacentHTML(
+                    'afterend',
+                    '<span class="text-danger">Image size must not be larger than 4 MB.</span>'
+                );
+            }
+        }
+    });
+</script>
 
 @endsection
