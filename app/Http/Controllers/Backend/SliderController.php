@@ -26,64 +26,32 @@ class SliderController extends Controller
     }
     public function store(Request $request)
     {
-        $request->validate(
-            [
-                'slider_image' => 'required|image|mimes:jpg,jpeg,png,webp|max:4096',
-            ],
-            [
-                'slider_image.max' => 'Image size must not be larger than 4 MB.',
-            ]
-        );
+        $request->validate([
+            'slider_image' => 'required|image|mimes:jpg,jpeg,png,webp,gif,avif|max:1536',
+        ], [
+            'slider_image.max' => 'Image size must not be larger than 1.5 MB.',
+        ]);
 
         $file = $request->file('slider_image');
 
-        if ($file->getSize() > 1024 * 1024) {
-            $manager = ImageManager::usingDriver(Driver::class);
+        $image = ImageManager::usingDriver(Driver::class)->decode($file);
 
-            // read 
-            $image = $manager->decode($file);
-            $image->scaleDown(width: 2100);
+        $image->cover(893, 822);
 
-            $fileName = uniqid() . '.webp';
-            $tempPath = storage_path('app/' . $fileName);
+        $path = storage_path('app/' . uniqid() . '.webp');
 
-            $quality = 85;
+        $image->encodeUsingFormat(Format::WEBP)->save($path);
 
-            while (true) {
-                $image->encodeUsingFormat(
-                    Format::WEBP,
-                    quality: $quality
-                )->save($tempPath);
-
-                $fileSize = filesize($tempPath);
-
-                if ($fileSize <= 1024 * 1024) {
-                    break;
-                }
-
-                $quality -= 10;
-
-                if ($quality < 20) {
-                    $quality = 20;
-                    break;
-                }
-            }
-
-            $file = new UploadedFile(
-                $tempPath,
-                $fileName,
-                'image/webp',
-                null,
-                true
-            );
-        }
-        $image_path = $this->uploadImage(
-            $file,
-            'slider_images'
+        $file = new UploadedFile(
+            $path,
+            basename($path),
+            'image/webp',
+            null,
+            true
         );
-        if (isset($tempPath)) {
-            unlink($tempPath);
-        }
+
+        $image_path = $this->uploadImage($file, 'slider_images');
+        unlink($path);
 
         Slider::create([
             'slider_image' => $image_path,
@@ -91,13 +59,26 @@ class SliderController extends Controller
 
         return redirect()->route('admin.slider.index');
     }
+
+
+
     public function destroy(int $id)
     {
         DB::beginTransaction();
         try {
             $slider = Slider::findOrFail($id);
             $image_path = $slider->slider_image;
-            $this->deleteImage($image_path);
+
+
+            if (app()->environment('local')) {
+                $this->deleteImage($image_path);
+            } else {
+                $publicId = pathinfo(parse_url($image_path, PHP_URL_PATH), PATHINFO_FILENAME);
+
+                (new \Cloudinary\Cloudinary())
+                    ->uploadApi()
+                    ->destroy('slider_images/' . $publicId);
+            }
 
             $slider->delete();
             DB::commit();

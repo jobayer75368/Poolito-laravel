@@ -39,7 +39,7 @@
                     <div class="row g-3">
 
                         <div class="col-12">
-                            <label class="form-label" for="slideImg">Slide Image (max : 4.00 mb)</label>
+                            <label class="form-label" for="slideImg">Slide Image (max : 1.5 mb)</label>
                             <input class="form-control" id="slideImg" name="slider_image" type="file">
                             @error('slider_image')
                             <span class="text-danger">{{ $message }}</span>
@@ -64,7 +64,7 @@
 <!-- image maximum size check  -->
 <script>
     document.getElementById('slideImg').addEventListener('change', function() {
-        const maxSize = 4 * 1024 * 1024; // 4 MB
+        const maxSize = 1.5 * 1024 * 1024; // 4 MB
         const error = this.parentElement.querySelector('.text-danger');
 
         if (this.files[0] && this.files[0].size > maxSize) {
@@ -75,7 +75,7 @@
             } else {
                 this.insertAdjacentHTML(
                     'afterend',
-                    '<span class="text-danger">Image size must not be larger than 4 MB.</span>'
+                    '<span class="text-danger">Image size must not be larger than 1.5 MB.</span>'
                 );
             }
         }
