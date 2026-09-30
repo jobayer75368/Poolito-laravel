@@ -10,7 +10,11 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Log;
+use Intervention\Image\Drivers\Imagick\Driver;
+use Intervention\Image\Format;
+use Intervention\Image\ImageManager;
 use Throwable;
+use Illuminate\Http\UploadedFile;
 
 class BlogController extends Controller
 {
@@ -27,13 +31,26 @@ class BlogController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'blog_image' => 'required|image',
+            'blog_image' => 'required|image|mimes:jpg,jpeg,png,webp,gif,avif|max:1536',
+        ], [
+            'blog_image.max' => 'Image size must not be larger than 1.5 MB.',
         ]);
-        $image_path = null;
-        if ($request->hasFile('blog_image')) {
-            $image_path = $this->uploadImage($request->file('blog_image'), 'blog_images');
-        }
+        $file = $request->file('blog_image');
 
+        $image = ImageManager::usingDriver(Driver::class)->decode($file);
+        $image->cover(920, 539);
+        $path = storage_path('app/' . uniqid() . '.webp');
+        $image->encodeUsingFormat(Format::WEBP)->save($path);
+
+        $file = new UploadedFile(
+            $path,
+            basename($path),
+            'image/webp',
+            null,
+            true
+        );
+        $image_path = $this->uploadImage($file, 'blog_images');
+        unlink($path);
         Blog::create([
 
             'blog_title' => $request->blog_title,
@@ -62,16 +79,31 @@ class BlogController extends Controller
 
     public function update(Request $request, int $id)
     {
-        // $request->validate([
-        //     'blog_image' => 'required|image',
-        // ]);
+        $request->validate([
+            'blog_image' => 'required|image|mimes:jpg,jpeg,png,webp,gif,avif|max:1536',
+        ], [
+            'blog_image.max' => 'Image size must not be larger than 1.5 MB.',
+        ]);
+
         $blog = Blog::findOrFail($id);
         $image_path = $blog->blog_image;
 
-        if ($request->hasFile('blog_image')) {
-            $this->deleteImage($image_path);
-            $image_path = $this->uploadImage($request->file('blog_image'), 'blog_images');
-        }
+        $file = $request->file('blog_image');
+
+        $image = ImageManager::usingDriver(Driver::class)->decode($file);
+        $image->cover(920, 539);
+        $path = storage_path('app/' . uniqid() . '.webp');
+        $image->encodeUsingFormat(Format::WEBP)->save($path);
+
+        $file = new UploadedFile(
+            $path,
+            basename($path),
+            'image/webp',
+            null,
+            true
+        );
+        $image_path = $this->uploadImage($file, 'blog_images');
+        unlink($path);
 
         $blog->update([
 
@@ -93,7 +125,16 @@ class BlogController extends Controller
         try {
             $blog = Blog::findOrFail($id);
             $image_path = $blog->blog_image;
-            $this->deleteImage($image_path);
+
+            if (app()->environment('local')) {
+                $this->deleteImage($image_path);
+            } else {
+                $publicId = pathinfo(parse_url($image_path, PHP_URL_PATH), PATHINFO_FILENAME);
+
+                (new \Cloudinary\Cloudinary())
+                    ->uploadApi()
+                    ->destroy('blog_images/' . $publicId);
+            }
 
             $blog->delete();
             DB::commit();

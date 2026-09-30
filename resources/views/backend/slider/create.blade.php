@@ -71,7 +71,7 @@
             this.value = '';
 
             if (error) {
-                error.textContent = 'Image size must not be larger than 4 MB.';
+                error.textContent = 'Image size must not be larger than 1.5 MB.';
             } else {
                 this.insertAdjacentHTML(
                     'afterend',
