@@ -5,10 +5,14 @@ namespace App\Http\Controllers\Backend;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Member;
+use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
+use Intervention\Image\Drivers\Imagick\Driver;
+use Intervention\Image\Format;
+use Intervention\Image\ImageManager;
 use Throwable;
 
 class MemberController extends Controller
@@ -27,12 +31,30 @@ class MemberController extends Controller
 
     {
 
-        // $request->validate([
-        //     'member_image' => 'required|image',
-        // ]);
+        $request->validate([
+            'member_image' => 'image|mimes:jpg,jpeg,png,webp,gif,avif|max:1536',
+        ], [
+            'member_image.max' => 'Image size must not be larger than 1.5 MB.',
+        ]);
+
         $image_path = null;
         if ($request->hasFile('member_image')) {
-            $image_path = $this->uploadImage($request->file('member_image'), 'member_images');
+            $file = $request->file('member_image');
+
+            $image = ImageManager::usingDriver(Driver::class)->decode($file);
+            $image->cover(299, 320);
+            $path = storage_path('app/' . uniqid() . '.webp');
+            $image->encodeUsingFormat(Format::WEBP)->save($path);
+
+            $file = new UploadedFile(
+                $path,
+                basename($path),
+                'image/webp',
+                null,
+                true
+            );
+            $image_path = $this->uploadImage($file, 'member_images');
+            unlink($path);
         }
 
         Member::create([
@@ -72,15 +94,47 @@ class MemberController extends Controller
 
     {
 
-        // $request->validate([
-        //     'member_image' => 'required|image',
-        // ]);
+        $request->validate([
+            'member_image' => 'image|mimes:jpg,jpeg,png,webp,gif,avif|max:1536',
+        ], [
+            'member_image.max' => 'Image size must not be larger than 1.5 MB.',
+        ]);
+
         $member = Member::findOrFail($id);
         $image_path = $member->member_image;
+
         if ($request->hasFile('member_image')) {
 
-            $this->deleteImage($image_path);
-            $image_path = $this->uploadImage($request->file('member_image'), 'member_images');
+            $file = $request->file('member_image');
+
+            $image = ImageManager::usingDriver(Driver::class)->decode($file);
+            $image->cover(299, 320);
+            $path = storage_path('app/' . uniqid() . '.webp');
+            $image->encodeUsingFormat(Format::WEBP)->save($path);
+
+            $file = new UploadedFile(
+                $path,
+                basename($path),
+                'image/webp',
+                null,
+                true
+            );
+            $image_path = $this->uploadImage($file, 'member_images');
+            unlink($path);
+
+            // Delete previous image
+            if (app()->environment('local')) {
+                $this->deleteImage($member->member_image);
+            } else {
+                $publicId = pathinfo(
+                    parse_url($member->member_image, PHP_URL_PATH),
+                    PATHINFO_FILENAME
+                );
+
+                (new \Cloudinary\Cloudinary())
+                    ->uploadApi()
+                    ->destroy('member_images/' . $publicId);
+            }
         }
 
         $member->update([
@@ -111,7 +165,15 @@ class MemberController extends Controller
             $member = Member::findOrFail($id);
             $image_path = $member->member_image;
 
-            $this->deleteImage($image_path);
+            if (app()->environment('local')) {
+                $this->deleteImage($image_path);
+            } else {
+                $publicId = pathinfo(parse_url($image_path, PHP_URL_PATH), PATHINFO_FILENAME);
+
+                (new \Cloudinary\Cloudinary())
+                    ->uploadApi()
+                    ->destroy('member_images/' . $publicId);
+            }
 
             $member->delete();
             DB::commit();

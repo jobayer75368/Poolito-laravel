@@ -140,4 +140,25 @@
         </section>
     </div>
 </main>
+
+<!-- image maximum size check  -->
+<script>
+    document.getElementById('memberImg').addEventListener('change', function() {
+        const maxSize = 1.5 * 1024 * 1024; // 4 MB
+        const error = this.parentElement.querySelector('.text-danger');
+
+        if (this.files[0] && this.files[0].size > maxSize) {
+            this.value = '';
+
+            if (error) {
+                error.textContent = 'Image size must not be larger than 1.5 MB.';
+            } else {
+                this.insertAdjacentHTML(
+                    'afterend',
+                    '<span class="text-danger">Image size must not be larger than 1.5 MB.</span>'
+                );
+            }
+        }
+    });
+</script>
 @endsection

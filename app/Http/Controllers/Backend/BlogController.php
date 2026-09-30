@@ -105,6 +105,20 @@ class BlogController extends Controller
         $image_path = $this->uploadImage($file, 'blog_images');
         unlink($path);
 
+        // Delete previous image
+        if (app()->environment('local')) {
+            $this->deleteImage($blog->blog_image);
+        } else {
+            $publicId = pathinfo(
+                parse_url($blog->blog_image, PHP_URL_PATH),
+                PATHINFO_FILENAME
+            );
+
+            (new \Cloudinary\Cloudinary())
+                ->uploadApi()
+                ->destroy('blog_images/' . $publicId);
+        }
+
         $blog->update([
 
             'blog_title' => $request->blog_title,
