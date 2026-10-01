@@ -65,7 +65,7 @@
                         </div>
 
                         <div class="col-12">
-                            <label class="form-label" for="portfolioImg">Image</label>
+                            <label class="form-label" for="portfolioImg">Image (max: 1.5 mb)</label>
                             <input class="form-control" id="portfolioImg" type="file" name="portfolio_image" value="{{ $portfolio->portfolio_image }}">
                             <div class="invalid-feedback">Portfolio Image is required.</div>
                             <div class="mt-2">
@@ -86,4 +86,25 @@
         </section>
     </div>
 </main>
+
+<!-- image maximum size check  -->
+<script>
+    document.getElementById('portfolioImg').addEventListener('change', function() {
+        const maxSize = 1.5 * 1024 * 1024; // 4 MB
+        const error = this.parentElement.querySelector('.text-danger');
+
+        if (this.files[0] && this.files[0].size > maxSize) {
+            this.value = '';
+
+            if (error) {
+                error.textContent = 'Image size must not be larger than 1.5 MB.';
+            } else {
+                this.insertAdjacentHTML(
+                    'afterend',
+                    '<span class="text-danger">Image size must not be larger than 1.5 MB.</span>'
+                );
+            }
+        }
+    });
+</script>
 @endsection
